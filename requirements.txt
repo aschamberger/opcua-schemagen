@@ -1,0 +1,4 @@
+asyncua
+datamodel-code-generator
+mashumaro
+pytest

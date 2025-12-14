@@ -1,0 +1,423 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://opcfoundation.org/UA/ISA95-JOBCONTROL_V2",
+  "$defs": {
+    "ISA95EquipmentDataType": {
+      "$id": "/isa95equipmentdatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "EquipmentUse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Quantity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Properties": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95JobOrderAndStateDataType": {
+      "$id": "/isa95joborderandstatedatatype",
+      "type": "object",
+      "properties": {
+        "JobOrder": {
+          "$ref": "/isa95joborderdatatype"
+        },
+        "State": {
+          "type": "array",
+          "items": {
+            "$ref": "/isa95statedatatype"
+          }
+        }
+      }
+    },
+    "ISA95JobOrderDataType": {
+      "$id": "/isa95joborderdatatype",
+      "type": "object",
+      "properties": {
+        "JobOrderID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "WorkMasterID": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "StartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EndTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Priority": {
+          "type": "integer",
+          "format": "int16"
+        },
+        "JobOrderParameters": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "PersonnelRequirements": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "EquipmentRequirements": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "PhysicalAssetRequirements": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "MaterialRequirements": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95JobResponseDataType": {
+      "$id": "/isa95jobresponsedatatype",
+      "type": "object",
+      "properties": {
+        "JobResponseID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "$ref": "http://opcfoundation.org/UA/LocalizedText"
+        },
+        "JobOrderID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "StartTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "EndTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "JobState": {
+          "type": "array",
+          "items": {
+            "$ref": "/isa95statedatatype"
+          }
+        },
+        "JobResponseData": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "PersonnelActuals": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "EquipmentActuals": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "PhysicalAssetActuals": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        },
+        "MaterialActuals": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95MaterialDataType": {
+      "$id": "/isa95materialdatatype",
+      "type": "object",
+      "properties": {
+        "MaterialClassID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "MaterialDefinitionID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "MaterialLotID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "MaterialSublotID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "MaterialUse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Quantity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Properties": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95ParameterDataType": {
+      "$id": "/isa95parameterdatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Value": {
+          "$ref": "http://opcfoundation.org/UA/BaseDataType"
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Subparameters": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95PersonnelDataType": {
+      "$id": "/isa95personneldatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "PersonnelUse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Quantity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Properties": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95PhysicalAssetDataType": {
+      "$id": "/isa95physicalassetdatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "PhysicalAssetUse": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Quantity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Properties": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95PropertyDataType": {
+      "$id": "/isa95propertydatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Value": {
+          "$ref": "http://opcfoundation.org/UA/BaseDataType"
+        },
+        "Description": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/LocalizedText"
+          }
+        },
+        "EngineeringUnits": {
+          "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+        },
+        "Subproperties": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    },
+    "ISA95StateDataType": {
+      "$id": "/isa95statedatatype",
+      "type": "object",
+      "properties": {
+        "BrowsePath": {
+          "$ref": "http://opcfoundation.org/UA/RelativePath"
+        },
+        "StateText": {
+          "$ref": "http://opcfoundation.org/UA/LocalizedText"
+        },
+        "StateNumber": {
+          "type": "integer",
+          "format": "uint32"
+        }
+      }
+    },
+    "ISA95WorkMasterDataType": {
+      "$id": "/isa95workmasterdatatype",
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "Description": {
+          "$ref": "http://opcfoundation.org/UA/LocalizedText"
+        },
+        "Parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "http://opcfoundation.org/UA/ExtensionObject"
+          }
+        }
+      }
+    }
+  }
+}
