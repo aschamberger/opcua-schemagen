@@ -211,7 +211,7 @@ def appschema(
     spec: Annotated[str, typer.Argument()] = "ISA95-JOBCONTROL",
     filename: Annotated[
         str, typer.Argument(help="Output filename for JSON Schema.")
-    ] = "model.jsonschema.json",
+    ] = "",
 ):
     print(f"[bold purple]Searching nodeset2.xml file for: {spec}[/bold purple]")
     nodeset_file = get_nodeset_file_from_spec_path(spec)
@@ -219,6 +219,8 @@ def appschema(
     print()
 
     ns2js = NodesetToJSONSchema(main_path, nodeset_file, spec)
+    if filename == "":
+        filename = f"{spec.lower().replace('/', '_')}.jsonschema.json"
     outfile = schemas_path / filename
     ns2js.save_schema(outfile)
     print(f"[bold green]JSON Schema saved to {outfile}[/bold green]\n")
