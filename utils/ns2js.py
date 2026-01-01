@@ -1,4 +1,5 @@
 from pathlib import Path
+from pyexpat import model
 from typing import Any
 
 from asyncua import ua
@@ -42,6 +43,7 @@ class NodesetToJSONSchema:
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
         self._import_nodeset(own_namespace)
 
+        model_any_of: list[str] = []
         self.schema = (
             JSONSchemaBuilder.start()
             .id(f"https://aschamberger.github.com/schemas/UA/{spec}/app.json")
@@ -69,6 +71,7 @@ class NodesetToJSONSchema:
             .end()
             .end()
         )
+        model_any_of.append("meta")
 
         # manually add LocalizedText type, does not have definition in nodeset
         # maybe because it is a base type...
@@ -91,7 +94,6 @@ class NodesetToJSONSchema:
                         self._add_datatype(ns, node)
 
         # objects, methods, events
-        model_any_of: list[str] = []
         for nodeid, node in self.nodes[own_namespace].items():
             match node.nodetype:
                 case "UAObjectType":

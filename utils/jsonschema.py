@@ -55,14 +55,15 @@ class JSONSchemaBuilder:
                     f"'{method_name}' requires {allowed_types}, found '{t}'."
                 )
 
-    # --- 1. The Build Function with Topological Sort ---
-    def _extract_refs(self, schema: Any, refs: set[str]) -> None:
-        """Helper to find all local $defs references in a schema node."""
+    # --- 1. Deterministic Topological Sort ---
+    def _extract_refs(self, schema: Any, refs: List[str]) -> None:
         if isinstance(schema, dict):
             if "$ref" in schema:
                 ref = schema["$ref"]
                 if isinstance(ref, str) and ref.startswith("#/$defs/"):
-                    refs.add(ref.split("/")[-1])
+                    ref_name = ref.split("/")[-1]
+                    if ref_name not in refs:
+                        refs.append(ref_name)
             for val in schema.values():
                 self._extract_refs(val, refs)
         elif isinstance(schema, list):
@@ -76,11 +77,17 @@ class JSONSchemaBuilder:
         if not defs:
             return full_schema
 
-        graph: Dict[str, set[str]] = {name: set() for name in defs}
-        for name, subschema in defs.items():
-            self._extract_refs(subschema, graph[name])
+        # 1. Build Dependency Graph using Lists for determinism
+        # We sort defs.keys() to ensure starting order is always the same
+        sorted_keys = sorted(defs.keys())
+        graph: Dict[str, List[str]] = {name: [] for name in sorted_keys}
+        for name in sorted_keys:
+            self._extract_refs(defs[name], graph[name])
+            graph[name].sort()  # Sort neighbors for stable traversal
 
-        sorted_names, visited, temp_stack = [], set(), set()
+        sorted_names: List[str] = []
+        visited: set[str] = set()
+        temp_stack: set[str] = set()
 
         def visit(node: str):
             if node in temp_stack:
@@ -94,9 +101,9 @@ class JSONSchemaBuilder:
                 visited.add(node)
                 sorted_names.append(node)
 
-        for name in defs:
-            if name not in visited:
-                visit(name)
+        # 2. Iterate through sorted keys to ensure deterministic start
+        for name in sorted_keys:
+            visit(name)
 
         full_schema["$defs"] = {name: defs[name] for name in sorted_names}
         return full_schema

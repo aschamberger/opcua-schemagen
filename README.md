@@ -10,7 +10,6 @@ uv run ./scripts/opcmodelgen.py nodeset appschema Machinery/Jobs machinery_jobs.
 
 ## TODO
 
-* order of types is non deterministic
 * dataclasses:generate
 * generate state machine:
   * this lib?! https://github.com/pytransitions/transitions/blob/master/examples/Frequently%20asked%20questions.ipynb
