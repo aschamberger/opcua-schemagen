@@ -16,7 +16,7 @@
       },
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.7"
     },
-    "AbortInputArguments": {
+    "AbortCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -32,9 +32,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10",
+      "x-opc-ua-response": "AbortResponse",
       "x-opc-ua-type": "Method"
     },
-    "AbortOutputArguments": {
+    "AbortResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -137,7 +138,7 @@
       },
       "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.6"
     },
-    "CancelInputArguments": {
+    "CancelCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -153,9 +154,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12",
+      "x-opc-ua-response": "CancelResponse",
       "x-opc-ua-type": "Method"
     },
-    "CancelOutputArguments": {
+    "CancelResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -166,7 +168,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12",
       "x-opc-ua-type": "Method"
     },
-    "ClearInputArguments": {
+    "ClearCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -182,9 +184,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13",
+      "x-opc-ua-response": "ClearResponse",
       "x-opc-ua-type": "Method"
     },
-    "ClearOutputArguments": {
+    "ClearResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -892,7 +895,7 @@
       },
       "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.7"
     },
-    "PauseInputArguments": {
+    "PauseCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -908,9 +911,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7",
+      "x-opc-ua-response": "PauseResponse",
       "x-opc-ua-type": "Method"
     },
-    "PauseOutputArguments": {
+    "PauseResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -946,7 +950,7 @@
       ],
       "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.8"
     },
-    "RequestJobResponseByJobOrderIDInputArguments": {
+    "RequestJobResponseByJobOrderIDCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -955,9 +959,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2",
+      "x-opc-ua-response": "RequestJobResponseByJobOrderIDResponse",
       "x-opc-ua-type": "Method"
     },
-    "RequestJobResponseByJobOrderIDOutputArguments": {
+    "RequestJobResponseByJobOrderIDResponse": {
       "type": "object",
       "properties": {
         "JobResponse": {
@@ -972,7 +977,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2",
       "x-opc-ua-type": "Method"
     },
-    "RequestJobResponseByJobOrderStateInputArguments": {
+    "RequestJobResponseByJobOrderStateCall": {
       "type": "object",
       "properties": {
         "JobOrderState": {
@@ -984,9 +989,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3",
+      "x-opc-ua-response": "RequestJobResponseByJobOrderStateResponse",
       "x-opc-ua-type": "Method"
     },
-    "RequestJobResponseByJobOrderStateOutputArguments": {
+    "RequestJobResponseByJobOrderStateResponse": {
       "type": "object",
       "properties": {
         "JobResponses": {
@@ -1004,7 +1010,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3",
       "x-opc-ua-type": "Method"
     },
-    "ResumeInputArguments": {
+    "ResumeCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -1020,9 +1026,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8",
+      "x-opc-ua-response": "ResumeResponse",
       "x-opc-ua-type": "Method"
     },
-    "ResumeOutputArguments": {
+    "ResumeResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1033,7 +1040,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8",
       "x-opc-ua-type": "Method"
     },
-    "RevokeStartInputArguments": {
+    "RevokeStartCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -1049,9 +1056,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6",
+      "x-opc-ua-response": "RevokeStartResponse",
       "x-opc-ua-type": "Method"
     },
-    "RevokeStartOutputArguments": {
+    "RevokeStartResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1062,7 +1070,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6",
       "x-opc-ua-type": "Method"
     },
-    "StartInputArguments": {
+    "StartCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -1078,9 +1086,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5",
+      "x-opc-ua-response": "StartResponse",
       "x-opc-ua-type": "Method"
     },
-    "StartOutputArguments": {
+    "StartResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1091,7 +1100,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5",
       "x-opc-ua-type": "Method"
     },
-    "StopInputArguments": {
+    "StopCall": {
       "type": "object",
       "properties": {
         "JobOrderID": {
@@ -1107,9 +1116,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11",
+      "x-opc-ua-response": "StopResponse",
       "x-opc-ua-type": "Method"
     },
-    "StopOutputArguments": {
+    "StopResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1120,7 +1130,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11",
       "x-opc-ua-type": "Method"
     },
-    "StoreAndStartInputArguments": {
+    "StoreAndStartCall": {
       "type": "object",
       "properties": {
         "JobOrder": {
@@ -1136,9 +1146,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4",
+      "x-opc-ua-response": "StoreAndStartResponse",
       "x-opc-ua-type": "Method"
     },
-    "StoreAndStartOutputArguments": {
+    "StoreAndStartResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1149,7 +1160,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4",
       "x-opc-ua-type": "Method"
     },
-    "StoreInputArguments": {
+    "StoreCall": {
       "type": "object",
       "properties": {
         "JobOrder": {
@@ -1165,9 +1176,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3",
+      "x-opc-ua-response": "StoreResponse",
       "x-opc-ua-type": "Method"
     },
-    "StoreOutputArguments": {
+    "StoreResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1178,7 +1190,7 @@
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3",
       "x-opc-ua-type": "Method"
     },
-    "UpdateInputArguments": {
+    "UpdateCall": {
       "type": "object",
       "properties": {
         "JobOrder": {
@@ -1194,9 +1206,10 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9",
+      "x-opc-ua-response": "UpdateResponse",
       "x-opc-ua-type": "Method"
     },
-    "UpdateOutputArguments": {
+    "UpdateResponse": {
       "type": "object",
       "properties": {
         "ReturnStatus": {
@@ -1237,85 +1250,85 @@
       "$ref": "#/$defs/JobOrderControl"
     },
     {
-      "$ref": "#/$defs/AbortInputArguments"
+      "$ref": "#/$defs/AbortCall"
     },
     {
-      "$ref": "#/$defs/AbortOutputArguments"
+      "$ref": "#/$defs/AbortResponse"
     },
     {
-      "$ref": "#/$defs/CancelInputArguments"
+      "$ref": "#/$defs/CancelCall"
     },
     {
-      "$ref": "#/$defs/CancelOutputArguments"
+      "$ref": "#/$defs/CancelResponse"
     },
     {
-      "$ref": "#/$defs/ClearInputArguments"
+      "$ref": "#/$defs/ClearCall"
     },
     {
-      "$ref": "#/$defs/ClearOutputArguments"
+      "$ref": "#/$defs/ClearResponse"
     },
     {
-      "$ref": "#/$defs/PauseInputArguments"
+      "$ref": "#/$defs/PauseCall"
     },
     {
-      "$ref": "#/$defs/PauseOutputArguments"
+      "$ref": "#/$defs/PauseResponse"
     },
     {
-      "$ref": "#/$defs/ResumeInputArguments"
+      "$ref": "#/$defs/ResumeCall"
     },
     {
-      "$ref": "#/$defs/ResumeOutputArguments"
+      "$ref": "#/$defs/ResumeResponse"
     },
     {
-      "$ref": "#/$defs/RevokeStartInputArguments"
+      "$ref": "#/$defs/RevokeStartCall"
     },
     {
-      "$ref": "#/$defs/RevokeStartOutputArguments"
+      "$ref": "#/$defs/RevokeStartResponse"
     },
     {
-      "$ref": "#/$defs/StartInputArguments"
+      "$ref": "#/$defs/StartCall"
     },
     {
-      "$ref": "#/$defs/StartOutputArguments"
+      "$ref": "#/$defs/StartResponse"
     },
     {
-      "$ref": "#/$defs/StopInputArguments"
+      "$ref": "#/$defs/StopCall"
     },
     {
-      "$ref": "#/$defs/StopOutputArguments"
+      "$ref": "#/$defs/StopResponse"
     },
     {
-      "$ref": "#/$defs/StoreInputArguments"
+      "$ref": "#/$defs/StoreCall"
     },
     {
-      "$ref": "#/$defs/StoreOutputArguments"
+      "$ref": "#/$defs/StoreResponse"
     },
     {
-      "$ref": "#/$defs/StoreAndStartInputArguments"
+      "$ref": "#/$defs/StoreAndStartCall"
     },
     {
-      "$ref": "#/$defs/StoreAndStartOutputArguments"
+      "$ref": "#/$defs/StoreAndStartResponse"
     },
     {
-      "$ref": "#/$defs/UpdateInputArguments"
+      "$ref": "#/$defs/UpdateCall"
     },
     {
-      "$ref": "#/$defs/UpdateOutputArguments"
+      "$ref": "#/$defs/UpdateResponse"
     },
     {
       "$ref": "#/$defs/JobOrderResults"
     },
     {
-      "$ref": "#/$defs/RequestJobResponseByJobOrderIDInputArguments"
+      "$ref": "#/$defs/RequestJobResponseByJobOrderIDCall"
     },
     {
-      "$ref": "#/$defs/RequestJobResponseByJobOrderIDOutputArguments"
+      "$ref": "#/$defs/RequestJobResponseByJobOrderIDResponse"
     },
     {
-      "$ref": "#/$defs/RequestJobResponseByJobOrderStateInputArguments"
+      "$ref": "#/$defs/RequestJobResponseByJobOrderStateCall"
     },
     {
-      "$ref": "#/$defs/RequestJobResponseByJobOrderStateOutputArguments"
+      "$ref": "#/$defs/RequestJobResponseByJobOrderStateResponse"
     },
     {
       "$ref": "#/$defs/ISA95JobOrderStatusEventType"

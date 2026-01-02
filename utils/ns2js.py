@@ -1,6 +1,7 @@
 from pathlib import Path
 from pyexpat import model
 from typing import Any
+from urllib import response
 
 from asyncua import ua
 from asyncua.common.xmlparser import ExtObj, Field, NodeData
@@ -401,7 +402,10 @@ class NodesetToJSONSchema:
                     nodetype="UAVariable",
                 )
                 for arg_node in child_nodes2:
-                    method = f"{str(child_node.displayname)}{str(arg_node.displayname)}"
+                    if arg_node.displayname == "InputArguments":
+                        method = f"{str(child_node.displayname)}Call"
+                    else:
+                        method = f"{str(child_node.displayname)}Response"
                     if method not in model_any_of:
                         model_any_of.append(method)
                     js_methodtype = self.schema.definition(method).object()
@@ -469,6 +473,9 @@ class NodesetToJSONSchema:
 
                     if child_node.desc:
                         js_methodtype = js_methodtype.description(child_node.desc)
+                    if arg_node.displayname == "InputArguments":
+                        response = f"{str(child_node.displayname)}Response"
+                        js_methodtype = js_methodtype.set("x-opc-ua-response", response)
                     js_methodtype = (
                         js_methodtype.set("x-opc-ua-type", "Method").end().end()
                     )
