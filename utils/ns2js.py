@@ -1,7 +1,5 @@
 from pathlib import Path
-from pyexpat import model
 from typing import Any
-from urllib import response
 
 from asyncua import ua
 from asyncua.common.xmlparser import ExtObj, Field, NodeData
@@ -36,6 +34,8 @@ class NodesetToJSONSchema:
     aliases: dict[str, dict[str, str]] = {}
     nodes: dict[str, dict[str, NodeData]] = {}
 
+    cloudevents_type_path: str
+    cloudevents_dataschema_path: str
     schema: JSONSchemaBuilder
 
     def __init__(self, nodeset_path: Path, nodeset_file: Path, spec: str) -> None:
@@ -44,10 +44,18 @@ class NodesetToJSONSchema:
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
         self._import_nodeset(own_namespace)
 
+        # FIXME handling versions???
+        self.cloudevents_type_path = (
+            f"com.github.aschamberger.ua.{spec.replace('/', '.')}"
+        )
+        self.cloudevents_dataschema_path = (
+            f"https://aschamberger.github.com/schemas/UA/{spec}/"
+        )
+
         model_any_of: list[str] = []
         self.schema = (
             JSONSchemaBuilder.start()
-            .id(f"https://aschamberger.github.com/schemas/UA/{spec}/app.json")
+            .id(self.cloudevents_dataschema_path)
             .title(f"{spec_desc[spec]} for MQTT")
             .description(
                 f"A JSON Schema to represent the {spec_desc[spec]} information model for a MQTT environment."
@@ -145,9 +153,18 @@ class NodesetToJSONSchema:
                                 js_objecttype = js_objecttype.description(
                                     parent_object.desc
                                 )
-                        self.schema = js_objecttype.set(
-                            "x-opc-ua-type", "DataSet"
-                        ).end()
+                        self.schema = (
+                            js_objecttype.set(
+                                "x-cloudevent-type",
+                                f"{self.cloudevents_type_path}.{displayname}",
+                            )
+                            .set(
+                                "x-cloudevent-dataschema",
+                                f"{self.cloudevents_dataschema_path}{displayname}/",
+                            )
+                            .set("x-opc-ua-type", "DataSet")
+                            .end()
+                        )
 
                         # add methods
                         js_methodtype = self._resolve_type_hierarchy_methods(
@@ -475,9 +492,22 @@ class NodesetToJSONSchema:
                         js_methodtype = js_methodtype.description(child_node.desc)
                     if arg_node.displayname == "InputArguments":
                         response = f"{str(child_node.displayname)}Response"
-                        js_methodtype = js_methodtype.set("x-opc-ua-response", response)
+                        js_methodtype = js_methodtype.set(
+                            "x-response-type",
+                            f"{self.cloudevents_type_path}.{response}",
+                        )
                     js_methodtype = (
-                        js_methodtype.set("x-opc-ua-type", "Method").end().end()
+                        js_methodtype.set(
+                            "x-cloudevent-type",
+                            f"{self.cloudevents_type_path}.{method}",
+                        )
+                        .set(
+                            "x-cloudevent-dataschema",
+                            f"{self.cloudevents_dataschema_path}{method}/",
+                        )
+                        .set("x-opc-ua-type", "Method")
+                        .end()
+                        .end()
                     )
         return js_methodtype
 
@@ -532,7 +562,19 @@ class NodesetToJSONSchema:
                 self._add_object_variables(own_namespace, js_eventtype, child_nodes2)
                 if child_node.desc:
                     js_eventtype = js_eventtype.description(child_node.desc)
-                js_eventtype = js_eventtype.set("x-opc-ua-type", "Event").end().end()
+                js_eventtype = (
+                    js_eventtype.set(
+                        "x-cloudevent-type",
+                        f"{self.cloudevents_type_path}.{displayname}",
+                    )
+                    .set(
+                        "x-cloudevent-dataschema",
+                        f"{self.cloudevents_dataschema_path}{displayname}/",
+                    )
+                    .set("x-opc-ua-type", "Event")
+                    .end()
+                    .end()
+                )
         return js_eventtype
 
     def _resolve_and_add_datatype(self, own_namespace: str, object_name: str) -> None:

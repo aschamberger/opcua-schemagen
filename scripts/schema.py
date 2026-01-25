@@ -1,7 +1,14 @@
 import pathlib
 import sys
 from typing import Annotated
+
 import typer
+from datamodel_code_generator import PythonVersion
+from datamodel_code_generator.config import JSONSchemaParserConfig
+from datamodel_code_generator.enums import DataModelType
+from datamodel_code_generator.format import Formatter
+from datamodel_code_generator.model import get_data_model_types
+from datamodel_code_generator.parser.jsonschema import JsonSchemaParser
 from rich import print
 from rich.table import Table
 
@@ -12,24 +19,64 @@ app = typer.Typer()
 
 schemas_path = pathlib.Path(__file__).parent.parent / "schemas"
 
+
 @app.command()
 def index():
-    print(f"[bold purple]Searching schema files ...[/bold purple]")
+    print("[bold purple]Searching schema files ...[/bold purple]")
     parent_path_len = len(str(schemas_path)) + 1
 
     table = Table()
     table.add_column("File", style="cyan", no_wrap=True)
 
-    for schema_file in sorted(schemas_path.glob(f"**/*.json")):
-        file_size = schema_file.stat().st_size
+    for schema_file in sorted(schemas_path.glob("**/*.json")):
         table.add_row(str(schema_file)[parent_path_len:])
     print(table)
 
+
 @app.command()
-def dataclass(schema_file: Annotated[pathlib.Path, typer.Argument()]):
+def dataclasses(schema_file: Annotated[pathlib.Path, typer.Argument()]):
+    schema_file_path = schemas_path / schema_file
+    if not schema_file_path.exists():
+        print(f"[bold red]Schema file does not exist: {schema_file_path}[/bold red]")
+        raise typer.Exit(code=1)
+
     print(f"[bold purple]Using schema file: {schema_file}[/bold purple]")
     print()
-    print(f"[bold red]Not yet implemented[/bold red]\n")
+    print("[bold red]Not yet implemented[/bold red]\n")
+
+    data_model_types = get_data_model_types(
+        DataModelType.DataclassesDataclass, target_python_version=PythonVersion.PY_314
+    )
+    config = JSONSchemaParserConfig(
+        target_python_version=PythonVersion.PY_314,
+        use_union_operator=True,
+        use_standard_collections=True,
+        formatters=[Formatter.RUFF_FORMAT, Formatter.RUFF_CHECK],
+        custom_template_dir=pathlib.Path(__file__).parent / "template",
+        data_model_type=data_model_types.data_model,
+        data_model_root_type=data_model_types.root_model,
+        data_model_field_type=data_model_types.field_model,
+        data_type_manager_type=data_model_types.data_type_manager,
+        dump_resolve_reference_action=data_model_types.dump_resolve_reference_action,
+        keyword_only=True,
+        use_subclass_enum=True,
+        capitalise_enum_members=True,
+        snake_case_field=True,
+        use_field_description=True,
+        use_schema_description=True,
+        use_title_as_name=True,
+        additional_imports=[
+            "app.dataclass.DataClassConfig",
+        ],
+    )
+    parser = JsonSchemaParser(schema_file_path.read_text(), config=config)
+    result = parser.parse()
+    out = schemas_path / (schema_file_path.stem + ".py")
+    f = out.open("w")
+    f.write(f'# Auto-generated from "{schema_file}". Do not modify!\n')
+    f.write(result)
+    f.close()
+    print(f"[bold green]Wrote dataclasses to: {out}[/bold green]")
 
 
 if __name__ == "__main__":

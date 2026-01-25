@@ -1,0 +1,1558 @@
+# Auto-generated from "machinery_jobs.jsonschema.json". Do not modify!
+from app.dataclass import DataClassConfig
+from dataclasses import dataclass
+from typing import Any
+from enum import IntEnum
+
+
+@dataclass(kw_only=True)
+class LocalizedText:
+    """
+    https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.7
+    """
+
+    locale: str | None = None
+    text: str | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "locale": "Locale",
+            "text": "Text",
+        }
+
+
+@dataclass(kw_only=True)
+class AbortCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.AbortCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class AbortResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class EUInformation:
+    """
+    https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3
+    """
+
+    namespace_uri: str | None = None
+    unit_id: int | None = None
+    display_name: LocalizedText | None = None
+    description: LocalizedText | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "namespace_uri": "NamespaceUri",
+            "unit_id": "UnitId",
+            "display_name": "DisplayName",
+            "description": "Description",
+        }
+
+
+type OutputInfoType = int
+"""
+https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.4
+"""
+
+
+@dataclass(kw_only=True)
+class OutputInformationDataType:
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.3
+    """
+
+    item_number: str | None = None
+    """
+    ItemNumber defines an Identifier to identify the Type of the item (Material Identifier).
+    """
+    output_info: OutputInfoType | None = None
+    """
+    Bitmask indicating which of the optional fields are used for identification. If none is selected, only ItemNumber is used. Each selected optional field shall provide a value.
+    """
+    order_number: str | None = None
+    """
+    OrderNumber defines an Identifier to identify the order. Shall be provided if defined in OutputInfo.
+    """
+    lot_number: str | None = None
+    """
+    LotNumber defines an Identifier to identify the production-group of the item (Lot Identifier). Shall be provided if defined in OutputInfo.
+    """
+    serial_number: str | None = None
+    """
+    SerialNumber defines an Identifier to identify the one entity of the item (Product Identifier). Shall be provided if defined in OutputInfo.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "item_number": "ItemNumber",
+            "output_info": "OutputInfo",
+            "order_number": "OrderNumber",
+            "lot_number": "LotNumber",
+            "serial_number": "SerialNumber",
+        }
+
+
+@dataclass(kw_only=True)
+class BOMComponentInformationDataType:
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.5
+    """
+
+    identification: OutputInformationDataType | None = None
+    """
+    Identification of the output.
+    """
+    quantity: float | None = None
+    """
+    Quantity defines the amount of material. This quantity can be specified in different ways, e.g. weight or number.
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The engineering unit of the quantity.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "identification": "Identification",
+            "quantity": "Quantity",
+            "engineering_units": "EngineeringUnits",
+        }
+
+
+@dataclass(kw_only=True)
+class BOMInformationDataType:
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.6
+    """
+
+    identification: OutputInformationDataType | None = None
+    """
+    Identification of the output.
+    """
+    component_information: list[BOMComponentInformationDataType] | None = None
+    """
+    Contains information about components.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "identification": "Identification",
+            "component_information": "ComponentInformation",
+        }
+
+
+@dataclass(kw_only=True)
+class CancelCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.CancelCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class CancelResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class ClearCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.ClearCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class ClearResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95PropertyDataType:
+    """
+    A subtype of OPC UA Structure that defines two linked data items: an ID, which is a unique identifier for a property within the scope of the associated resource, and the value, which is the data for the property.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.9
+    """
+
+    id: str | None = None
+    """
+    Unique identifier for a property within the scope of the associated resource
+    """
+    value: Any | None = None
+    """
+    Value for the property
+    """
+    description: list[LocalizedText] | None = None
+    """
+    An optional description of the parameter.
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the value
+    """
+    subproperties: list[ISA95PropertyDataType] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "value": "Value",
+            "description": "Description",
+            "engineering_units": "EngineeringUnits",
+            "subproperties": "Subproperties",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95EquipmentDataType:
+    """
+    Defines an equipment resource or a piece of equipment, a quantity, an optional description, and an optional collection of properties.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.1
+    """
+
+    id: str | None = None
+    """
+    An identification of an EquipmentClass or Equipment.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    Additional information and description about the resource.
+    """
+    equipment_use: str | None = None
+    """
+    Information about the expected use of the equipment, see the ISA 95 Part 2 standard for defined values.
+    """
+    quantity: str | None = None
+    """
+    The quantity of the resource
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the quantity
+    """
+    properties: list[ISA95PropertyDataType] | None = None
+    """
+    Any associated properties, or empty if there are no properties defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "description": "Description",
+            "equipment_use": "EquipmentUse",
+            "quantity": "Quantity",
+            "engineering_units": "EngineeringUnits",
+            "properties": "Properties",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95MaterialDataType:
+    """
+    Defines a material resource, a quantity, an optional description, and an optional collection of properties.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.6
+    """
+
+    material_class_id: str | None = None
+    """
+    An identification of the resource, or null if the Material Class is not used to identify the material.
+    """
+    material_definition_id: str | None = None
+    """
+    An identification of the resource, or null if the Material Definition is not used to identify the material.
+    """
+    material_lot_id: str | None = None
+    """
+    An identification of the resource, or null if the Material Lot is not used to identify the material.
+    """
+    material_sublot_id: str | None = None
+    """
+    An identification of the resource, or null if the Material Sublot is not used to identify the material.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    Additional information and description about the resource.
+    """
+    material_use: str | None = None
+    """
+    Information about the expected use of the material, see the ISA 95 Part 2 standard for defined values.
+    """
+    quantity: str | None = None
+    """
+    The quantity of the resource
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the quantity
+    """
+    properties: list[ISA95PropertyDataType] | None = None
+    """
+    Any associated properties, or empty if there are no properties defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "material_class_id": "MaterialClassID",
+            "material_definition_id": "MaterialDefinitionID",
+            "material_lot_id": "MaterialLotID",
+            "material_sublot_id": "MaterialSublotID",
+            "description": "Description",
+            "material_use": "MaterialUse",
+            "quantity": "Quantity",
+            "engineering_units": "EngineeringUnits",
+            "properties": "Properties",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95ParameterDataType:
+    """
+    A subtype of OPC UA Structure that defines three linked data items: the ID, which is a unique identifier for a property, the value, which is the data that is identified, and an optional description of the parameter.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.10
+    """
+
+    id: str | None = None
+    """
+    A unique identifier for a parameter
+    """
+    value: Any | None = None
+    """
+    Value of the parameter.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    An optional description of the parameter. The array allows to provide descriptions in different languages when writing. When accessing, the server shall only provide one entry in the array.
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the value
+    """
+    subparameters: list[ISA95ParameterDataType] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "value": "Value",
+            "description": "Description",
+            "engineering_units": "EngineeringUnits",
+            "subparameters": "Subparameters",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95PersonnelDataType:
+    """
+    Defines a personnel resource or a person, a quantity, an optional description, and an optional collection of properties.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.7
+    """
+
+    id: str | None = None
+    """
+    An identification of a Personnel Class or Person.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    Additional information and description about the resource.
+    """
+    personnel_use: str | None = None
+    """
+    Information about the expected use of the personnel, see the ISA 95 Part 2 standard for defined values.
+    """
+    quantity: str | None = None
+    """
+    The quantity of the resource
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the quantity
+    """
+    properties: list[ISA95PropertyDataType] | None = None
+    """
+    Any associated properties, or empty if there are no properties defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "description": "Description",
+            "personnel_use": "PersonnelUse",
+            "quantity": "Quantity",
+            "engineering_units": "EngineeringUnits",
+            "properties": "Properties",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95PhysicalAssetDataType:
+    """
+    Defines a physical asset, a quantity, an optional description, and an optional collection of properties.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.8
+    """
+
+    id: str | None = None
+    """
+    An identification of a Physical Asset Class or Physical Asset.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    Additional information and description about the resource.
+    """
+    physical_asset_use: str | None = None
+    """
+    Information about the expected use of the physical asset, see the ISA 95 Part 2 standard for defined values.
+    """
+    quantity: str | None = None
+    """
+    The quantity of the resource
+    """
+    engineering_units: EUInformation | None = None
+    """
+    The Unit Of Measure of the quantity
+    """
+    properties: list[ISA95PropertyDataType] | None = None
+    """
+    Any associated properties, or empty if there are no properties defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "description": "Description",
+            "physical_asset_use": "PhysicalAssetUse",
+            "quantity": "Quantity",
+            "engineering_units": "EngineeringUnits",
+            "properties": "Properties",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95WorkMasterDataType:
+    """
+    Defines a Work Master ID and the defined parameters for the Work Master.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.11
+    """
+
+    id: str | None = None
+    """
+    An identification of the Work Master.
+    """
+    description: LocalizedText | None = None
+    """
+    Additional information and description about the Work Master.
+    """
+    parameters: list[ISA95ParameterDataType] | None = None
+    """
+    Defined parameters for the Work Master.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "id": "ID",
+            "description": "Description",
+            "parameters": "Parameters",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95JobOrderDataType:
+    """
+    Defines the information needed to schedule and execute a job.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.4
+    """
+
+    job_order_id: str | None = None
+    """
+    An identification of the Job Order.
+    """
+    description: list[LocalizedText] | None = None
+    """
+    Addition information about the Job Order The array allows to provide descriptions in different languages.
+    """
+    work_master_id: list[ISA95WorkMasterDataType] | None = None
+    """
+    Work Master associated with the job order. If multiple work masters are defined, then the execution system can select the work master based on the availability of resources.
+    """
+    start_time: str | None = None
+    """
+    The proposed start time for the order, may be empty if not specified
+    """
+    end_time: str | None = None
+    """
+    The proposed end time for the order, may be empty if not specified
+    """
+    priority: int | None = None
+    """
+    The priority of the job order, may be empty of not specified. Higher numbers have higher priority.  This type allows the Job Order clients to pick their own ranges, and the Job Order server only has to pick the highest number.
+    """
+    job_order_parameters: list[ISA95ParameterDataType] | None = None
+    """
+    Key value pair with values, not associated with a resource that is provided as part of the job order, may be empty if not specified.
+    """
+    personnel_requirements: list[ISA95PersonnelDataType] | None = None
+    """
+    A specification of any personnel requirements associated with the job order, may be empty if not specified
+    """
+    equipment_requirements: list[ISA95EquipmentDataType] | None = None
+    """
+    A specification of any equipment requirements associated with the job order, may be empty if not specified.
+    """
+    physical_asset_requirements: list[ISA95PhysicalAssetDataType] | None = None
+    """
+    A specification of any physical asset requirements associated with the job order, may be empty if not specified.
+    """
+    material_requirements: list[ISA95MaterialDataType] | None = None
+    """
+    A specification of any material requirements associated with the job order, may be empty if not specified.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "description": "Description",
+            "work_master_id": "WorkMasterID",
+            "start_time": "StartTime",
+            "end_time": "EndTime",
+            "priority": "Priority",
+            "job_order_parameters": "JobOrderParameters",
+            "personnel_requirements": "PersonnelRequirements",
+            "equipment_requirements": "EquipmentRequirements",
+            "physical_asset_requirements": "PhysicalAssetRequirements",
+            "material_requirements": "MaterialRequirements",
+        }
+
+
+@dataclass(kw_only=True)
+class RelativePathElement:
+    """
+    https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30
+    """
+
+    reference_type_id: str | None = None
+    is_inverse: bool | None = None
+    include_subtypes: bool | None = None
+    target_name: str | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "reference_type_id": "ReferenceTypeId",
+            "is_inverse": "IsInverse",
+            "include_subtypes": "IncludeSubtypes",
+            "target_name": "TargetName",
+        }
+
+
+@dataclass(kw_only=True)
+class RelativePath:
+    """
+    https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30
+    """
+
+    elements: list[RelativePathElement] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "elements": "Elements",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95StateDataType:
+    """
+    Defines the information needed to schedule and execute a job.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.2
+    """
+
+    browse_path: RelativePath | None = None
+    """
+    The browse path of substates. Shall be null when the top-level state is represented.
+    """
+    state_text: LocalizedText | None = None
+    """
+    The state represented as human readable text. Shall represent the same text as the CurrentState Variable of a StateMachine would.
+    """
+    state_number: int | None = None
+    """
+    The state represented as number. Shall represent the same number as the Number subvariable of the CurrentState Variable of a StateMachine would.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "browse_path": "BrowsePath",
+            "state_text": "StateText",
+            "state_number": "StateNumber",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95JobOrderAndStateDataType:
+    """
+    Defines the information needed to schedule and execute a job.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.3
+    """
+
+    job_order: ISA95JobOrderDataType | None = None
+    """
+    The job order
+    """
+    state: list[ISA95StateDataType] | None = None
+    """
+    The State of the job order. The array shall provide at least one entry representing the top level state and potentially additional entries representing substates. The first entry shall be the top level entry, having the BrowsePath set to Null. The order of the subtstates is not defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "job_order": "JobOrder",
+            "state": "State",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95JobResponseDataType:
+    """
+    Defines the information needed to schedule and execute a job.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.5
+    """
+
+    job_response_id: str | None = None
+    """
+    An identification of the Job Response
+    """
+    description: LocalizedText | None = None
+    """
+    Additional information about the Job Response
+    """
+    job_order_id: str | None = None
+    """
+    An identification of the job order associated with the job response.
+    """
+    start_time: str | None = None
+    """
+    The actual start time for the order.
+    """
+    end_time: str | None = None
+    """
+    The actual end time for the order.
+    """
+    job_state: list[ISA95StateDataType] | None = None
+    """
+    The current state of the job. The array shall provide at least one entry representing the top level state and potentially additional entries representing substates. The first entry shall be the top level entry, having the BrowsePath set to Null. The order of the subtstates is not defined.
+    """
+    job_response_data: list[ISA95ParameterDataType] | None = None
+    """
+    Key value pair with values, not associated with a resource that is provided as part of the job response, may be empty if not specified.
+    """
+    personnel_actuals: list[ISA95PersonnelDataType] | None = None
+    """
+    A specification of any personnel requirements associated with the job response, may be empty if not specified.
+    """
+    equipment_actuals: list[ISA95EquipmentDataType] | None = None
+    """
+    A specification of any equipment requirements associated with the job response, may be empty if not specified.
+    """
+    physical_asset_actuals: list[ISA95PhysicalAssetDataType] | None = None
+    """
+    A specification of any physical asset requirements associated with the job response, may be empty if not specified.
+    """
+    material_actuals: list[ISA95MaterialDataType] | None = None
+    """
+    A specification of any material requirements associated with the job response, may be empty if not specified.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "job_response_id": "JobResponseID",
+            "description": "Description",
+            "job_order_id": "JobOrderID",
+            "start_time": "StartTime",
+            "end_time": "EndTime",
+            "job_state": "JobState",
+            "job_response_data": "JobResponseData",
+            "personnel_actuals": "PersonnelActuals",
+            "equipment_actuals": "EquipmentActuals",
+            "physical_asset_actuals": "PhysicalAssetActuals",
+            "material_actuals": "MaterialActuals",
+        }
+
+
+@dataclass(kw_only=True)
+class ISA95JobOrderStatusEventType:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.6
+    """
+
+    job_order: ISA95JobOrderDataType | None = None
+    job_response: ISA95JobResponseDataType | None = None
+    job_state: list[ISA95StateDataType] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = (
+            "com.github.aschamberger.ua.Machinery.Jobs.ISA95JobOrderStatusEventType"
+        )
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ISA95JobOrderStatusEventType/"
+        opcua_type = "Event"
+        aliases: dict[str, str] = {
+            "job_order": "JobOrder",
+            "job_response": "JobResponse",
+            "job_state": "JobState",
+        }
+
+
+class JobExecutionMode(IntEnum):
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.1
+    """
+
+    INTEGER_0 = 0
+    INTEGER_1 = 1
+    INTEGER_2 = 2
+
+
+@dataclass(kw_only=True)
+class JobOrderControl:
+    """
+    The OPENSCSJobOrderReciverObjectType contains a method to receive job order commands and optional definitions of allowable job order information
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.2
+    """
+
+    current_state: LocalizedText | None = None
+    last_transition: LocalizedText | None = None
+    available_states: list[str] | None = None
+    available_transitions: list[str] | None = None
+    equipment_id: list[str] | None = None
+    """
+    Defines a read-only set of Equipment Class IDs and Equipment IDs that may be specified in a job order.
+    """
+    job_order_list: list[ISA95JobOrderAndStateDataType] | None = None
+    """
+    Defines a read-only list of job order information available from the server.
+    """
+    material_class_id: list[str] | None = None
+    """
+    Defines a read-only set of Material Classes IDs that may be specified in a job order.
+    """
+    material_definition_id: list[str] | None = None
+    """
+    Defines a read-only set of Material Classes IDs that may be specified in a job order.
+    """
+    max_downloadable_job_orders: int | None = None
+    personnel_id: list[str] | None = None
+    """
+    Defines a read-only set of Personnel IDs and Person IDs that may be specified in a job order.
+    """
+    physical_asset_id: list[str] | None = None
+    """
+    Defines a read-only set of Physical Asset Class IDs and Physical Asset IDs that may be specified in a job order.
+    """
+    work_master: list[ISA95WorkMasterDataType] | None = None
+    """
+    Defines a read-only set of work master IDs that may be specified in a job order, and the read-only set of parameters that may be specified for a specific work master.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.JobOrderControl"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderControl/"
+        )
+        opcua_type = "DataSet"
+        aliases: dict[str, str] = {
+            "current_state": "CurrentState",
+            "last_transition": "LastTransition",
+            "available_states": "AvailableStates",
+            "available_transitions": "AvailableTransitions",
+            "equipment_id": "EquipmentID",
+            "job_order_list": "JobOrderList",
+            "material_class_id": "MaterialClassID",
+            "material_definition_id": "MaterialDefinitionID",
+            "max_downloadable_job_orders": "MaxDownloadableJobOrders",
+            "personnel_id": "PersonnelID",
+            "physical_asset_id": "PhysicalAssetID",
+            "work_master": "WorkMaster",
+        }
+
+
+@dataclass(kw_only=True)
+class JobOrderResults:
+    """
+    The OPENSCSJobResponseProviderObjectType contains a method to receive unsolicited job response requests.
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.1
+    """
+
+    job_order_response_list: list[ISA95JobResponseDataType] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.JobOrderResults"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderResults/"
+        )
+        opcua_type = "DataSet"
+        aliases: dict[str, str] = {
+            "job_order_response_list": "JobOrderResponseList",
+        }
+
+
+class JobResult(IntEnum):
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.2
+    """
+
+    INTEGER_0 = 0
+    INTEGER_1 = 1
+    INTEGER_2 = 2
+
+
+class OutputInfoTypeMasks(IntEnum):
+    INTEGER_1 = 1
+    INTEGER_2 = 2
+    INTEGER_4 = 4
+
+
+@dataclass(kw_only=True)
+class OutputPerformanceInfoDataType:
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.7
+    """
+
+    identification: OutputInformationDataType | None = None
+    """
+    Identification of the output.
+    """
+    start_time: str | None = None
+    """
+    Output of first item from order.
+    """
+    end_time: str | None = None
+    """
+    Output of last item from order.
+    """
+    parameters: list[ISA95ParameterDataType] | None = None
+    """
+    Parameters specific to the performance like pressure or temperature.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "identification": "Identification",
+            "start_time": "StartTime",
+            "end_time": "EndTime",
+            "parameters": "Parameters",
+        }
+
+
+@dataclass(kw_only=True)
+class PauseCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.PauseCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class PauseResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+class ProcessIrregularity(IntEnum):
+    """
+    https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.8
+    """
+
+    INTEGER_0 = 0
+    INTEGER_1 = 1
+    INTEGER_2 = 2
+    INTEGER_3 = 3
+
+
+@dataclass(kw_only=True)
+class RequestJobResponseByJobOrderIDCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains an ID of the job order, as specified by the method caller.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDCall"
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDCall/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+        }
+
+
+@dataclass(kw_only=True)
+class RequestJobResponseByJobOrderIDResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2
+    """
+
+    job_response: ISA95JobResponseDataType | None = None
+    """
+    Contains information about the execution of a job order, such as the current status of the job, actual material consumed, actual material produced, actual equipment used, and job specific data.
+    """
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse"
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDResponse/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_response": "JobResponse",
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class RequestJobResponseByJobOrderStateCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3
+    """
+
+    job_order_state: list[ISA95StateDataType] | None = None
+    """
+    Contains a job status of the JobResponse to be returned. The array shall provide at least one entry representing the top level state and potentially additional entries representing substates. The first entry shall be the top level entry, having the BrowsePath set to null. The order of the substates is not defined.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateCall"
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateCall/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_state": "JobOrderState",
+        }
+
+
+@dataclass(kw_only=True)
+class RequestJobResponseByJobOrderStateResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3
+    """
+
+    job_responses: list[ISA95JobResponseDataType] | None = None
+    """
+    Contains a list of information about the execution of a job order, such as the current status of the job, actual material consumed, actual material produced, actual equipment used, and job specific data.
+    """
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse"
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateResponse/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_responses": "JobResponses",
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class ResumeCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.ResumeCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class ResumeResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class RevokeStartCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class RevokeStartResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = (
+            "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse"
+        )
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartResponse/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class StartCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.StartResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StartCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class StartResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StartResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class StopCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11
+    """
+
+    job_order_id: str | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.StopResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StopCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order_id": "JobOrderID",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class StopResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StopResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class StoreAndStartCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4
+    """
+
+    job_order: ISA95JobOrderDataType | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = (
+            "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse"
+        )
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartCall"
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartCall/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order": "JobOrder",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class StoreAndStartResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = (
+            "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse"
+        )
+        cloudevent_dataschema = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartResponse/"
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class StoreCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3
+    """
+
+    job_order: ISA95JobOrderDataType | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StoreCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order": "JobOrder",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class StoreResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class UpdateCall:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9
+    """
+
+    job_order: ISA95JobOrderDataType | None = None
+    """
+    Contains information defining the job order with all parameters and any material, equipment, or physical asset requirements associated with the order.
+    """
+    comment: list[LocalizedText] | None = None
+    """
+    The comment provides a description of why the method was called. In order to provide the comment in several languages, it is an array of LocalizedText. The array may be empty, when no comment is provided.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        response_type = "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse"
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.UpdateCall"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateCall/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "job_order": "JobOrder",
+            "comment": "Comment",
+        }
+
+
+@dataclass(kw_only=True)
+class UpdateResponse:
+    """
+    https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9
+    """
+
+    return_status: int | None = None
+    """
+    Returns the status of the method execution.
+    """
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        cloudevent_type = "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse"
+        cloudevent_dataschema = (
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateResponse/"
+        )
+        opcua_type = "Method"
+        aliases: dict[str, str] = {
+            "return_status": "ReturnStatus",
+        }
+
+
+@dataclass(kw_only=True)
+class Meta:
+    model_uri: str | None = "http://opcfoundation.org/UA/Machinery/Jobs/"
+    model_version: str | None = "1.0.1"
+    model_date: Any | None = "2024-05-01T00:00:00"
+    additional_attributes: list[Any] | None = None
+
+    # mashumaro config class
+    class Config(DataClassConfig):
+        aliases: dict[str, str] = {
+            "model_uri": "modelUri",
+            "model_version": "modelVersion",
+            "model_date": "modelDate",
+            "additional_attributes": "additionalAttributes",
+        }
+
+
+type Opc400013MachineryJobMgmtForMqtt = (
+    Meta
+    | JobOrderControl
+    | AbortCall
+    | AbortResponse
+    | CancelCall
+    | CancelResponse
+    | ClearCall
+    | ClearResponse
+    | PauseCall
+    | PauseResponse
+    | ResumeCall
+    | ResumeResponse
+    | RevokeStartCall
+    | RevokeStartResponse
+    | StartCall
+    | StartResponse
+    | StopCall
+    | StopResponse
+    | StoreCall
+    | StoreResponse
+    | StoreAndStartCall
+    | StoreAndStartResponse
+    | UpdateCall
+    | UpdateResponse
+    | JobOrderResults
+    | RequestJobResponseByJobOrderIDCall
+    | RequestJobResponseByJobOrderIDResponse
+    | RequestJobResponseByJobOrderStateCall
+    | RequestJobResponseByJobOrderStateResponse
+    | ISA95JobOrderStatusEventType
+)
+"""
+A JSON Schema to represent the OPC 40001-3: Machinery Job Mgmt information model for a MQTT environment.
+"""

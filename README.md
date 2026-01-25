@@ -6,6 +6,7 @@ Python dataclasses generated from OPC UA nodesets/specs for usage in MQTT app2ap
 
 ```
 uv run ./scripts/opcmodelgen.py nodeset appschema Machinery/Jobs machinery_jobs.jsonschema.json
+uv run ./scripts/opcmodelgen.py schema dataclasses machinery_jobs.jsonschema.json
 ```
 
 ## TODO
