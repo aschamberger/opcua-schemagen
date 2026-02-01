@@ -69,7 +69,9 @@ def dataclasses(schema_file: Annotated[pathlib.Path, typer.Argument()]):
     )
     parser = JsonSchemaParser(schema_file_path.read_text(), config=config)
     result = parser.parse()
-    out = schemas_path / (schema_file_path.stem + ".py")
+    out = schemas_path / (
+        schema_file_path.name.replace("".join(schema_file_path.suffixes), ".py")
+    )
     f = out.open("w")
     f.write(f'# Auto-generated from "{schema_file}". Do not modify!\n')
     f.write(result)
