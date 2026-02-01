@@ -63,6 +63,9 @@ class {{ class_name }}:
     {%- if extensions is defined and extensions.get('x-opc-ua-type') %}
         opcua_type = "{{ extensions['x-opc-ua-type'] }}"
     {%- endif %}
+    {%- if extensions is defined and extensions.get('x-opc-ua-state-machine') %}
+        opcua_state_machine = "{{ extensions['x-opc-ua-state-machine'] }}"
+    {%- endif %}
         aliases: dict[str, str] = {
     {%- for field in fields %}
             "{{ field.name }}": "{{ field.alias }}",

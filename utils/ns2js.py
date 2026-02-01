@@ -153,7 +153,7 @@ class NodesetToJSONSchema:
                                 js_objecttype = js_objecttype.description(
                                     parent_object.desc
                                 )
-                        self.schema = (
+                        js_objecttype = (
                             js_objecttype.set(
                                 "x-cloudevent-type",
                                 f"{self.cloudevents_type_path}.{displayname}",
@@ -163,8 +163,15 @@ class NodesetToJSONSchema:
                                 f"{self.cloudevents_dataschema_path}{displayname}/",
                             )
                             .set("x-opc-ua-type", "DataSet")
-                            .end()
                         )
+                        state_machine = self._resolve_type_hierarchy_states(
+                            datatype, own_namespace
+                        )
+                        if state_machine["states"] or state_machine["transitions"]:
+                            js_objecttype = js_objecttype.set(
+                                "x-opc-ua-state-machine", state_machine
+                            )
+                        self.schema = js_objecttype.end()
 
                         # add methods
                         js_methodtype = self._resolve_type_hierarchy_methods(
@@ -229,7 +236,14 @@ class NodesetToJSONSchema:
             print(f"[red]Nodeset file for URI {uri} not found![/red]")
             return
         parser = WrappedXMLParser()
-        parser.parse_sync(nodeset_file)
+        # parser.parse_sync(nodeset_file)
+
+        # FIXME read file and replace nodeid ns=2;i=1002 with ns=2;i=1008 to add sub statemachines
+        with open(nodeset_file, "r", encoding="utf-8") as f:
+            xml_content = f.read()
+        xml_content = xml_content.replace("ns=2;i=1002", "ns=2;i=1008")
+        parser.parse_sync(xmlstring=xml_content)
+
         nodeset_namespaces = parser.get_nodeset_namespaces()
         namespace = nodeset_namespaces[0][0]
 
@@ -341,7 +355,101 @@ class NodesetToJSONSchema:
             js_objecttype = self._add_object_variables(
                 target_namespace, js_objecttype, child_nodes
             )
+
         return js_objecttype
+
+    def _resolve_type_hierarchy_states(
+        self, datatype: str, own_namespace: str
+    ) -> dict[str, dict[str, dict[str, Any]]]:
+        target_namespace, node_id_target = self._transform_node_id(
+            datatype, own_namespace
+        )
+        state_machine: dict[str, dict[str, dict[str, Any]]] = {
+            "states": {},
+            "transitions": {},
+        }
+        object = self.nodes[target_namespace].get(node_id_target)
+        if object:
+            datatype2 = WrappedXMLParser.get_node_type(object)
+            if datatype2 not in self.base_types:  # BaseDataType/BaseObjectType
+                state_machine = self._resolve_type_hierarchy_states(
+                    datatype2, target_namespace
+                )
+
+            self.populate_state_machine(target_namespace, state_machine, object)
+        return state_machine
+
+    def populate_state_machine(self, target_namespace, state_machine, object):
+        child_nodes = WrappedXMLParser.get_node_children_by_ref_types(
+            object,
+            self.nodes[target_namespace],
+            reftypes=["HasComponent"],
+            nodetype="UAObject",
+        )
+
+        for child_node in child_nodes:
+            name = str(child_node.displayname)
+            item: dict[str, Any] = {
+                "description": child_node.desc,
+            }
+
+            for ref in child_node.refs:
+                if ref.reftype == "HasProperty":
+                    property_node = self.nodes[target_namespace].get(str(ref.target))
+                    if property_node and property_node.value is not None:
+                        item["number"] = property_node.value
+                elif child_node.typedef == "i=2307":  # StateType
+                    match ref.reftype:
+                        case "HasSubStateMachine":
+                            property_node = self.nodes[target_namespace].get(
+                                str(ref.target)
+                            )
+                            if property_node:
+                                item["subStateMachine"] = {
+                                    "description": str(property_node.desc),
+                                    "states": {},
+                                    "transitions": {},
+                                }
+                                submachine = (
+                                    WrappedXMLParser.get_node_children_by_ref_types(
+                                        property_node,
+                                        self.nodes[target_namespace],
+                                        reftypes=["HasTypeDefinition"],
+                                        nodetype="UAObjectType",
+                                    )[0]
+                                )
+                                self.populate_state_machine(
+                                    target_namespace,
+                                    item["subStateMachine"],
+                                    submachine,
+                                )
+                elif child_node.typedef == "i=2310":  # TransitionType
+                    match ref.reftype:
+                        case "FromState":
+                            node = self.nodes[target_namespace].get(str(ref.target))
+                            if node:
+                                item["fromState"] = str(node.displayname)
+                        case "ToState":
+                            node = self.nodes[target_namespace].get(str(ref.target))
+                            if node:
+                                item["toState"] = str(node.displayname)
+                        case "HasEffect":
+                            property_node = self.nodes[target_namespace].get(
+                                str(ref.target)
+                            )
+                            if property_node:
+                                item["effect"] = str(property_node.displayname)
+                        case "HasCause":
+                            property_node = self.nodes[target_namespace].get(
+                                str(ref.target)
+                            )
+                            if property_node:
+                                item["cause"] = str(property_node.displayname)
+            match child_node.typedef:
+                case "i=2307":  # StateType
+                    state_machine["states"][name] = item
+                case "i=2310":  # TransitionType
+                    state_machine["transitions"][name] = item
 
     def _add_object_variables(
         self,
@@ -369,6 +477,12 @@ class NodesetToJSONSchema:
                         js_objecttype = getattr(js_objecttype, variable_type)()
                 if child_node.rank >= 1:
                     js_objecttype = js_objecttype.end()
+                for ref in child_node.refs:
+                    if (
+                        ref.reftype == "HasModellingRule" and ref.target == "i=80"
+                    ):  # Optional
+                        js_objecttype = js_objecttype.nullable()
+                        break
                 if child_node.desc:
                     js_objecttype = js_objecttype.description(child_node.desc)
                 js_objecttype = js_objecttype.end()

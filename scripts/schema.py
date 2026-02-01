@@ -41,8 +41,6 @@ def dataclasses(schema_file: Annotated[pathlib.Path, typer.Argument()]):
         raise typer.Exit(code=1)
 
     print(f"[bold purple]Using schema file: {schema_file}[/bold purple]")
-    print()
-    print("[bold red]Not yet implemented[/bold red]\n")
 
     data_model_types = get_data_model_types(
         DataModelType.DataclassesDataclass, target_python_version=PythonVersion.PY_314

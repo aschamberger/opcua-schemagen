@@ -11,10 +11,10 @@ uv run ./scripts/opcmodelgen.py schema dataclasses machinery_jobs.jsonschema.jso
 
 ## TODO
 
-* dataclasses:generate
-* generate state machine:
-  * this lib?! https://github.com/pytransitions/transitions/blob/master/examples/Frequently%20asked%20questions.ipynb
-  * states can be put in JSON schema into variable from "FiniteStateMachine"
+* try state machine
+  * this lib: https://github.com/pytransitions/transitions/
+  * can be initialized from config: https://github.com/pytransitions/transitions/blob/master/examples/Frequently%20asked%20questions.ipynb
+* look at FIXMEs
 * test with another nodeset: tightening?
 
 * ???: how to handle spec versions schemas? $id with versions? how to match versions of files in OPC UA nodeset repo?
@@ -41,6 +41,7 @@ To achieve a modern and standards based application architecture for manufacturi
 * Generate 'Event' for every UAEvent
 * root allOf contains all non-datatype objects
 * custom attribute "x-opc-ua-type" to distinguish: "DataSet", "Method", "Event"
+* custom attribute "x-opc-ua-state-machine" with extracted state machine
 
 Links:
 * https://github.com/FreeOpcUa/opcua-asyncio/blob/master/asyncua/common/xmlparser.py
