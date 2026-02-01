@@ -34,7 +34,12 @@ def index():
 
 
 @app.command()
-def dataclasses(schema_file: Annotated[pathlib.Path, typer.Argument()]):
+def dataclasses(
+    schema_file: Annotated[pathlib.Path, typer.Argument()],
+    imports: Annotated[list[str], typer.Argument()] = [
+        "schemas.dataclass.DataClassConfig"
+    ],
+):
     schema_file_path = schemas_path / schema_file
     if not schema_file_path.exists():
         print(f"[bold red]Schema file does not exist: {schema_file_path}[/bold red]")
@@ -63,9 +68,7 @@ def dataclasses(schema_file: Annotated[pathlib.Path, typer.Argument()]):
         use_field_description=True,
         use_schema_description=True,
         use_title_as_name=True,
-        additional_imports=[
-            "app.dataclass.DataClassConfig",
-        ],
+        additional_imports=imports,
     )
     parser = JsonSchemaParser(schema_file_path.read_text(), config=config)
     result = parser.parse()

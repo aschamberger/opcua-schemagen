@@ -596,6 +596,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "pytest" },
+    { name = "transitions" },
 ]
 
 [package.metadata]
@@ -606,7 +607,10 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [{ name = "pytest", specifier = ">=9.0.2" }]
+dev = [
+    { name = "pytest", specifier = ">=9.0.2" },
+    { name = "transitions", specifier = ">=0.9.3" },
+]
 
 [[package]]
 name = "pytokens"
@@ -756,6 +760,18 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e8/c4/ba2f8066cceb6f23394729afe52f3bf7adec04bf9ed2c820b39e19299111/sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88", size = 30594, upload-time = "2021-05-16T22:03:42.897Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/32/46/9cb0e58b2deb7f82b84065f37f3bffeb12413f947f9388e4cac22c4621ce/sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0", size = 29575, upload-time = "2021-05-16T22:03:41.177Z" },
+]
+
+[[package]]
+name = "transitions"
+version = "0.9.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4f/83/9e90f3494057d73c9e6bd8de8488af7c9fa714666ccc2db30fe07d147818/transitions-0.9.3.tar.gz", hash = "sha256:881fb75bb1654ed55d86060bb067f2c716f8e155f57bb73fd444e53713aafec8", size = 1191029, upload-time = "2025-07-02T10:49:03.153Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f4/05/fea3020e90aa378941ff10de8860fb3b1288313c27efd10fa0c476498f7e/transitions-0.9.3-py2.py3-none-any.whl", hash = "sha256:02463248f2b668d86f66636b1e3c9e8de84d93e22915247f4e1aa9ee1cae28aa", size = 112792, upload-time = "2025-07-02T10:49:01.415Z" },
 ]
 
 [[package]]

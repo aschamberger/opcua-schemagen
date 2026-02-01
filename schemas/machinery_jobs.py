@@ -1,5 +1,5 @@
 # Auto-generated from "machinery_jobs.jsonschema.json". Do not modify!
-from app.dataclass import DataClassConfig
+from schemas.dataclass import DataClassConfig
 from dataclasses import dataclass
 from typing import Any
 from enum import IntEnum
