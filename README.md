@@ -5,9 +5,10 @@ Python dataclasses generated from OPC UA nodesets/specs for usage in MQTT app2ap
 ## Usage
 
 ```
-uv run ./scripts/opcmodelgen.py nodeset appschema Machinery/Jobs machinery_jobs.jsonschema.json
+uv run ./scripts/opcmodelgen.py nodeset appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002=ns=2;i=1008"
 uv run ./scripts/opcmodelgen.py schema dataclasses machinery_jobs.jsonschema.json
 ```
+node ids need to be replaced to active the sub statemachines
 
 ## TODO
 

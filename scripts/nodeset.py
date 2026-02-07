@@ -1,4 +1,5 @@
 import pathlib
+import re
 import sys
 from typing import Annotated
 
@@ -212,13 +213,27 @@ def appschema(
     filename: Annotated[
         str, typer.Argument(help="Output filename for JSON Schema.")
     ] = "",
+    nodeid_replace: Annotated[
+        list[str],
+        typer.Option(
+            "--nodeid-replace",
+            help="Replace NodeId values in Nodeset XML (format: FROM->TO). Can be used multiple times.",
+        ),
+    ] = [],
 ):
     print(f"[bold purple]Searching nodeset2.xml file for: {spec}[/bold purple]")
     nodeset_file = get_nodeset_file_from_spec_path(spec)
     print(f"Using file: {nodeset_file}")
     print()
 
-    ns2js = NodesetToJSONSchema(main_path, nodeset_file, spec)
+    replacements: list[tuple[str, str]] = []
+    for item in nodeid_replace:
+        if "->" in item:
+            find_text, replace_text = item.split("->", 1)
+            replacements.append((find_text, replace_text))
+    ns2js = NodesetToJSONSchema(
+        main_path, nodeset_file, spec, nodeid_replacements=replacements
+    )
     if filename == "":
         filename = f"{spec.lower().replace('/', '_')}.jsonschema.json"
     outfile = schemas_path / filename

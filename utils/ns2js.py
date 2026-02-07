@@ -107,7 +107,14 @@ class NodesetToJSONSchema:
     cloudevents_dataschema_path: str
     schema: JSONSchemaBuilder
 
-    def __init__(self, nodeset_path: Path, nodeset_file: Path, spec: str) -> None:
+    def __init__(
+        self,
+        nodeset_path: Path,
+        nodeset_file: Path,
+        spec: str,
+        nodeid_replacements: list[tuple[str, str]] | None = None,
+    ) -> None:
+        self._nodeid_replacements = nodeid_replacements or []
         self._nodeset_file_to_uri(nodeset_path)
 
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
@@ -306,13 +313,15 @@ class NodesetToJSONSchema:
             print(f"[red]Nodeset file for URI {uri} not found![/red]")
             return
         parser = WrappedXMLParser()
-        # parser.parse_sync(nodeset_file)
-
-        # FIXME read file and replace nodeid ns=2;i=1002 with ns=2;i=1008 to add sub statemachines
-        with open(nodeset_file, "r", encoding="utf-8") as f:
-            xml_content = f.read()
-        xml_content = xml_content.replace("ns=2;i=1002", "ns=2;i=1008")
-        parser.parse_sync(xmlstring=xml_content)
+        if self._nodeid_replacements:
+            xml_content = nodeset_file.read_bytes()
+            for find_text, replace_text in self._nodeid_replacements:
+                xml_content = xml_content.replace(
+                    find_text.encode("utf-8"), replace_text.encode("utf-8")
+                )
+            parser.parse_sync(xmlstring=xml_content)
+        else:
+            parser.parse_sync(nodeset_file)
 
         nodeset_namespaces = parser.get_nodeset_namespaces()
         namespace = nodeset_namespaces[0][0]
