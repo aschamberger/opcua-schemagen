@@ -50,7 +50,11 @@ class {{ class_name }}:
 {%- endfor %}
 
     # mashumaro config class
-    class Config(DataClassConfig):
+    {%- if config_base_class %}
+    class Config({{ config_base_class }}):
+    {%- else %}
+    class Config:
+    {%- endif %}
     {%- if extensions is defined and extensions.get('x-response-type') %}
         response_type: str = "{{ extensions['x-response-type'] }}"
     {%- endif %}

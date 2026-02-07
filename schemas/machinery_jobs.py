@@ -1,12 +1,12 @@
 # Auto-generated from "machinery_jobs.jsonschema.json". Do not modify!
-from schemas.dataclass import DataClassConfig
+from schemas.dataclass import DataClassConfig, DataClassMixin
 from dataclasses import dataclass
 from typing import Any
 from enum import IntEnum
 
 
 @dataclass(kw_only=True)
-class LocalizedText:
+class LocalizedText(DataClassMixin):
     """
     https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.7
     """
@@ -23,7 +23,7 @@ class LocalizedText:
 
 
 @dataclass(kw_only=True)
-class AbortCall:
+class AbortCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10
     """
@@ -52,7 +52,7 @@ class AbortCall:
 
 
 @dataclass(kw_only=True)
-class AbortResponse:
+class AbortResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10
     """
@@ -75,7 +75,7 @@ class AbortResponse:
 
 
 @dataclass(kw_only=True)
-class EUInformation:
+class EUInformation(DataClassMixin):
     """
     https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3
     """
@@ -102,7 +102,7 @@ https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.4
 
 
 @dataclass(kw_only=True)
-class OutputInformationDataType:
+class OutputInformationDataType(DataClassMixin):
     """
     https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.3
     """
@@ -140,7 +140,7 @@ class OutputInformationDataType:
 
 
 @dataclass(kw_only=True)
-class BOMComponentInformationDataType:
+class BOMComponentInformationDataType(DataClassMixin):
     """
     https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.5
     """
@@ -168,7 +168,7 @@ class BOMComponentInformationDataType:
 
 
 @dataclass(kw_only=True)
-class BOMInformationDataType:
+class BOMInformationDataType(DataClassMixin):
     """
     https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.6
     """
@@ -191,7 +191,7 @@ class BOMInformationDataType:
 
 
 @dataclass(kw_only=True)
-class CancelCall:
+class CancelCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12
     """
@@ -220,7 +220,7 @@ class CancelCall:
 
 
 @dataclass(kw_only=True)
-class CancelResponse:
+class CancelResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12
     """
@@ -243,7 +243,7 @@ class CancelResponse:
 
 
 @dataclass(kw_only=True)
-class ClearCall:
+class ClearCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13
     """
@@ -272,7 +272,7 @@ class ClearCall:
 
 
 @dataclass(kw_only=True)
-class ClearResponse:
+class ClearResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13
     """
@@ -295,7 +295,7 @@ class ClearResponse:
 
 
 @dataclass(kw_only=True)
-class ISA95PropertyDataType:
+class ISA95PropertyDataType(DataClassMixin):
     """
     A subtype of OPC UA Structure that defines two linked data items: an ID, which is a unique identifier for a property within the scope of the associated resource, and the value, which is the data for the property.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.9
@@ -331,7 +331,7 @@ class ISA95PropertyDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95EquipmentDataType:
+class ISA95EquipmentDataType(DataClassMixin):
     """
     Defines an equipment resource or a piece of equipment, a quantity, an optional description, and an optional collection of properties.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.1
@@ -375,7 +375,7 @@ class ISA95EquipmentDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95MaterialDataType:
+class ISA95MaterialDataType(DataClassMixin):
     """
     Defines a material resource, a quantity, an optional description, and an optional collection of properties.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.6
@@ -434,7 +434,7 @@ class ISA95MaterialDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95ParameterDataType:
+class ISA95ParameterDataType(DataClassMixin):
     """
     A subtype of OPC UA Structure that defines three linked data items: the ID, which is a unique identifier for a property, the value, which is the data that is identified, and an optional description of the parameter.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.10
@@ -470,7 +470,7 @@ class ISA95ParameterDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95PersonnelDataType:
+class ISA95PersonnelDataType(DataClassMixin):
     """
     Defines a personnel resource or a person, a quantity, an optional description, and an optional collection of properties.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.7
@@ -514,7 +514,7 @@ class ISA95PersonnelDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95PhysicalAssetDataType:
+class ISA95PhysicalAssetDataType(DataClassMixin):
     """
     Defines a physical asset, a quantity, an optional description, and an optional collection of properties.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.8
@@ -558,7 +558,7 @@ class ISA95PhysicalAssetDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95WorkMasterDataType:
+class ISA95WorkMasterDataType(DataClassMixin):
     """
     Defines a Work Master ID and the defined parameters for the Work Master.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.11
@@ -587,7 +587,7 @@ class ISA95WorkMasterDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95JobOrderDataType:
+class ISA95JobOrderDataType(DataClassMixin):
     """
     Defines the information needed to schedule and execute a job.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.4
@@ -656,7 +656,7 @@ class ISA95JobOrderDataType:
 
 
 @dataclass(kw_only=True)
-class RelativePathElement:
+class RelativePathElement(DataClassMixin):
     """
     https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30
     """
@@ -677,7 +677,7 @@ class RelativePathElement:
 
 
 @dataclass(kw_only=True)
-class RelativePath:
+class RelativePath(DataClassMixin):
     """
     https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30
     """
@@ -692,7 +692,7 @@ class RelativePath:
 
 
 @dataclass(kw_only=True)
-class ISA95StateDataType:
+class ISA95StateDataType(DataClassMixin):
     """
     Defines the information needed to schedule and execute a job.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.2
@@ -721,7 +721,7 @@ class ISA95StateDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95JobOrderAndStateDataType:
+class ISA95JobOrderAndStateDataType(DataClassMixin):
     """
     Defines the information needed to schedule and execute a job.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.3
@@ -745,7 +745,7 @@ class ISA95JobOrderAndStateDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95JobResponseDataType:
+class ISA95JobResponseDataType(DataClassMixin):
     """
     Defines the information needed to schedule and execute a job.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.5
@@ -814,7 +814,7 @@ class ISA95JobResponseDataType:
 
 
 @dataclass(kw_only=True)
-class ISA95JobOrderStatusEventType:
+class ISA95JobOrderStatusEventType(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.6
     """
@@ -848,7 +848,7 @@ class JobExecutionMode(IntEnum):
 
 
 @dataclass(kw_only=True)
-class JobOrderControl:
+class JobOrderControl(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.2/#7.2.2.2
     """
@@ -1120,7 +1120,7 @@ class JobOrderControl:
 
 
 @dataclass(kw_only=True)
-class JobOrderResults:
+class JobOrderResults(DataClassMixin):
     """
     The OPENSCSJobResponseProviderObjectType contains a method to receive unsolicited job response requests.
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.1
@@ -1157,7 +1157,7 @@ class OutputInfoTypeMasks(IntEnum):
 
 
 @dataclass(kw_only=True)
-class OutputPerformanceInfoDataType:
+class OutputPerformanceInfoDataType(DataClassMixin):
     """
     https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.7
     """
@@ -1190,7 +1190,7 @@ class OutputPerformanceInfoDataType:
 
 
 @dataclass(kw_only=True)
-class PauseCall:
+class PauseCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7
     """
@@ -1219,7 +1219,7 @@ class PauseCall:
 
 
 @dataclass(kw_only=True)
-class PauseResponse:
+class PauseResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7
     """
@@ -1253,7 +1253,7 @@ class ProcessIrregularity(IntEnum):
 
 
 @dataclass(kw_only=True)
-class RequestJobResponseByJobOrderIDCall:
+class RequestJobResponseByJobOrderIDCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2
     """
@@ -1275,7 +1275,7 @@ class RequestJobResponseByJobOrderIDCall:
 
 
 @dataclass(kw_only=True)
-class RequestJobResponseByJobOrderIDResponse:
+class RequestJobResponseByJobOrderIDResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2
     """
@@ -1301,7 +1301,7 @@ class RequestJobResponseByJobOrderIDResponse:
 
 
 @dataclass(kw_only=True)
-class RequestJobResponseByJobOrderStateCall:
+class RequestJobResponseByJobOrderStateCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3
     """
@@ -1323,7 +1323,7 @@ class RequestJobResponseByJobOrderStateCall:
 
 
 @dataclass(kw_only=True)
-class RequestJobResponseByJobOrderStateResponse:
+class RequestJobResponseByJobOrderStateResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3
     """
@@ -1349,7 +1349,7 @@ class RequestJobResponseByJobOrderStateResponse:
 
 
 @dataclass(kw_only=True)
-class ResumeCall:
+class ResumeCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8
     """
@@ -1378,7 +1378,7 @@ class ResumeCall:
 
 
 @dataclass(kw_only=True)
-class ResumeResponse:
+class ResumeResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8
     """
@@ -1401,7 +1401,7 @@ class ResumeResponse:
 
 
 @dataclass(kw_only=True)
-class RevokeStartCall:
+class RevokeStartCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6
     """
@@ -1432,7 +1432,7 @@ class RevokeStartCall:
 
 
 @dataclass(kw_only=True)
-class RevokeStartResponse:
+class RevokeStartResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6
     """
@@ -1455,7 +1455,7 @@ class RevokeStartResponse:
 
 
 @dataclass(kw_only=True)
-class StartCall:
+class StartCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5
     """
@@ -1484,7 +1484,7 @@ class StartCall:
 
 
 @dataclass(kw_only=True)
-class StartResponse:
+class StartResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5
     """
@@ -1507,7 +1507,7 @@ class StartResponse:
 
 
 @dataclass(kw_only=True)
-class StopCall:
+class StopCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11
     """
@@ -1536,7 +1536,7 @@ class StopCall:
 
 
 @dataclass(kw_only=True)
-class StopResponse:
+class StopResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11
     """
@@ -1559,7 +1559,7 @@ class StopResponse:
 
 
 @dataclass(kw_only=True)
-class StoreAndStartCall:
+class StoreAndStartCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4
     """
@@ -1590,7 +1590,7 @@ class StoreAndStartCall:
 
 
 @dataclass(kw_only=True)
-class StoreAndStartResponse:
+class StoreAndStartResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4
     """
@@ -1613,7 +1613,7 @@ class StoreAndStartResponse:
 
 
 @dataclass(kw_only=True)
-class StoreCall:
+class StoreCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3
     """
@@ -1642,7 +1642,7 @@ class StoreCall:
 
 
 @dataclass(kw_only=True)
-class StoreResponse:
+class StoreResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3
     """
@@ -1665,7 +1665,7 @@ class StoreResponse:
 
 
 @dataclass(kw_only=True)
-class UpdateCall:
+class UpdateCall(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9
     """
@@ -1694,7 +1694,7 @@ class UpdateCall:
 
 
 @dataclass(kw_only=True)
-class UpdateResponse:
+class UpdateResponse(DataClassMixin):
     """
     https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9
     """
@@ -1717,7 +1717,7 @@ class UpdateResponse:
 
 
 @dataclass(kw_only=True)
-class Meta:
+class Meta(DataClassMixin):
     model_uri: str | None = "http://opcfoundation.org/UA/Machinery/Jobs/"
     model_version: str | None = "1.0.1"
     model_date: Any | None = "2024-05-01T00:00:00"

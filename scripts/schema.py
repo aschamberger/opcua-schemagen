@@ -1,5 +1,6 @@
 import pathlib
 import sys
+from collections import defaultdict
 from typing import Annotated
 
 import typer
@@ -8,6 +9,7 @@ from datamodel_code_generator.config import JSONSchemaParserConfig
 from datamodel_code_generator.enums import DataModelType
 from datamodel_code_generator.format import Formatter
 from datamodel_code_generator.model import get_data_model_types
+from datamodel_code_generator.model.base import ALL_MODEL
 from datamodel_code_generator.parser.jsonschema import JsonSchemaParser
 from rich import print
 from rich.table import Table
@@ -37,8 +39,13 @@ def index():
 def dataclasses(
     schema_file: Annotated[pathlib.Path, typer.Argument()],
     imports: Annotated[list[str], typer.Argument()] = [
-        "schemas.dataclass.DataClassConfig"
+        "schemas.dataclass.DataClassMixin",
+        "schemas.dataclass.DataClassConfig",
     ],
+    base_class: Annotated[str, typer.Argument()] = "schemas.dataclass.DataClassMixin",
+    config_base_class: Annotated[
+        str, typer.Argument()
+    ] = "schemas.dataclass.DataClassConfig",
 ):
     schema_file_path = schemas_path / schema_file
     if not schema_file_path.exists():
@@ -50,6 +57,13 @@ def dataclasses(
     data_model_types = get_data_model_types(
         DataModelType.DataclassesDataclass, target_python_version=PythonVersion.PY_314
     )
+    extra_template_data = {
+        ALL_MODEL: {
+            "config_base_class": config_base_class.split(".")[-1]
+            if config_base_class
+            else None,
+        }
+    }
     config = JSONSchemaParserConfig(
         target_python_version=PythonVersion.PY_314,
         use_union_operator=True,
@@ -69,6 +83,8 @@ def dataclasses(
         use_schema_description=True,
         use_title_as_name=True,
         additional_imports=imports,
+        base_class=base_class,
+        extra_template_data=defaultdict(dict, extra_template_data),
     )
     parser = JsonSchemaParser(schema_file_path.read_text(), config=config)
     result = parser.parse()
