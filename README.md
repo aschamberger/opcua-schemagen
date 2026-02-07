@@ -11,14 +11,11 @@ uv run ./scripts/opcmodelgen.py schema dataclasses machinery_jobs.jsonschema.jso
 
 ## TODO
 
-* try state machine
-  * this lib: https://github.com/pytransitions/transitions/
-  * can be initialized from config: https://github.com/pytransitions/transitions/blob/master/examples/Frequently%20asked%20questions.ipynb
 * look at FIXMEs
+* versioning: how to handle spec versions schemas? $id with versions? how to match versions of files in OPC UA nodeset repo?
+* schema file per nodeset file?
+* what can be upstreamed to asyncua from wrapper class?
 * test with another nodeset: tightening?
-
-* ???: how to handle spec versions schemas? $id with versions? how to match versions of files in OPC UA nodeset repo?
-* ???: what can be upstreamed to asyncua from wrapper class?
 
 ## Overall Design
 
@@ -49,16 +46,27 @@ Links:
 #### 2. Generate dataclasses from JSON Schema
 
 * Generate Python dataclasses via `datamodel-code-generator`
+* custom template to generate:
+  * `Config` inner class for mashumaro
+  * custom attributes "x-*" in `Config` inner class
+  * `opcua_state_machine` with serialized python dict from JSON Schema (use `ast.literal_eval()` to deserialize str to dict)
+  * custom attributes `opcua_state_machine_states` and `opcua_state_machine_transitions` with ready to use dictionaries for usage with `transitions` library
+  * custom attribute `opcua_state_machine_effects` storing transition events
 
-#### 3. Generate `StateMachine` from nodeset
+#### 3. Manual additions for Machinery Job Management
 
-<TODO>
+* `MethodReturnStatus` enum
+* additional `JobOrderControlExt` class that adds "the dotted states and transitions" from the spec (without the meta state `Prepared`)
+* fix missing transition name for `Run`
+* add initial states to sub statemachines
+* helpers to map to/from state names to ids
 
 ## Python Libs
 
 * https://github.com/fastapi/typer
 * https://github.com/FreeOpcUa/opcua-asyncio/
 * https://github.com/koxudaxi/datamodel-code-generator
+* https://github.com/pytransitions/transitions/
 
 ## Notes
 
