@@ -61,6 +61,14 @@ Links:
 * add initial states to sub statemachines
 * helpers to map to/from state names to ids
 
+### Annoyances
+
+* Nodesets overall:
+  * do not contain the spec's title
+* Machinery JobMgmt Nodeset:
+  * does not contain method's return status
+  * does not contain the full state machine
+
 ## Python Libs
 
 * https://github.com/fastapi/typer

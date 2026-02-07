@@ -1,3 +1,8 @@
+import html as html_module
+import re
+import urllib.error
+import urllib.request
+from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 
@@ -8,10 +13,74 @@ from rich import print
 from utils.jsonschema import JSONSchemaBuilder
 from utils.xmlparser import WrappedXMLParser
 
-# FIXME proper source???
-spec_desc = {
-    "Machinery/Jobs": "OPC 40001-3: Machinery Job Mgmt",
-}
+
+class _HeadlineParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self._in_p_h3 = False
+        self._texts: list[str] = []
+        self._h1s: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs):  # type: ignore[override]
+        tag_lower = tag.lower()
+        if tag_lower == "p":
+            for name, value in attrs:
+                if name.lower() == "class" and value and "h3" in value.split():
+                    self._in_p_h3 = True
+                    self._texts = []
+                    return
+
+    def handle_endtag(self, tag: str) -> None:
+        tag_lower = tag.lower()
+        if tag_lower == "p" and self._in_p_h3:
+            text = html_module.unescape(" ".join(self._texts)).strip()
+            if text:
+                self._h1s.append(text)
+            self._texts = []
+            self._in_p_h3 = False
+
+    def handle_data(self, data: str) -> None:
+        if self._in_p_h3:
+            self._texts.append(data)
+
+    def first_h1_containing(self, needle: str) -> str | None:
+        for text in self._h1s:
+            if needle in text:
+                return text
+        return None
+
+
+def _extract_docs_base_url(nodeset_file: Path) -> str | None:
+    try:
+        content = nodeset_file.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return None
+
+    for match in re.finditer(
+        r"<Documentation>(.*?)</Documentation>", content, re.DOTALL
+    ):
+        url = match.group(1).strip()
+        if "docs/" in url:
+            base = url.split("docs/")[0] + "docs/"
+            return base
+    return None
+
+
+def get_spec_title(nodeset_file: Path) -> str | None:
+    docs_url = _extract_docs_base_url(nodeset_file)
+    if not docs_url:
+        return None
+
+    try:
+        with urllib.request.urlopen(docs_url, timeout=10) as response:
+            charset = response.headers.get_content_charset() or "utf-8"
+            html_text = response.read().decode(charset, errors="ignore")
+    except (urllib.error.URLError, TimeoutError, ValueError):
+        return None
+
+    parser = _HeadlineParser()
+    parser.feed(html_text)
+    return parser.first_h1_containing("OPC")
 
 
 class NodesetToJSONSchema:
@@ -52,13 +121,14 @@ class NodesetToJSONSchema:
             f"https://aschamberger.github.com/schemas/UA/{spec}/"
         )
 
+        spec_title = get_spec_title(nodeset_file)
         model_any_of: list[str] = []
         self.schema = (
             JSONSchemaBuilder.start()
             .id(self.cloudevents_dataschema_path)
-            .title(f"{spec_desc[spec]} for MQTT")
+            .title(f"{spec_title} for MQTT")
             .description(
-                f"A JSON Schema to represent the {spec_desc[spec]} information model for a MQTT environment."
+                f"A JSON Schema to represent the {spec_title} information model for a MQTT environment."
             )
             .definition("meta")
             .object()
