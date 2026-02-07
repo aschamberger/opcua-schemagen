@@ -2,6 +2,7 @@ import html as html_module
 import re
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
@@ -120,12 +121,13 @@ class NodesetToJSONSchema:
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
         self._import_nodeset(own_namespace)
 
-        # FIXME handling versions???
+        model_version = str(self.nodeset_namespaces[own_namespace][0][1])
+        major_version = model_version.split(".")[0]
         self.cloudevents_type_path = (
-            f"com.github.aschamberger.ua.{spec.replace('/', '.')}"
+            f"com.github.aschamberger.ua.{spec.replace('/', '.')}.v{major_version}"
         )
         self.cloudevents_dataschema_path = (
-            f"https://aschamberger.github.com/schemas/UA/{spec}/"
+            f"https://aschamberger.github.com/schemas/UA/{spec}/v{model_version}/"
         )
 
         spec_title = get_spec_title(nodeset_file)
@@ -334,6 +336,60 @@ class NodesetToJSONSchema:
         required_models = WrappedXMLParser.list_required_models(nodeset_file)
         for model in required_models:
             self._import_nodeset(model["ModelUri"])
+            self._check_required_model(model)
+
+    @staticmethod
+    def _parse_version(version: str) -> tuple[int, ...]:
+        """Parse a version string like '1.04.11' into a tuple of ints for comparison."""
+        try:
+            return tuple(int(part) for part in version.split("."))
+        except (ValueError, AttributeError):
+            return (0,)
+
+    @staticmethod
+    def _parse_publication_date(date_str: str) -> datetime:
+        """Parse a publication date string into a timezone-aware datetime."""
+        if date_str.endswith("Z"):
+            return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ").replace(
+                tzinfo=timezone.utc
+            )
+        return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S%z")
+
+    def _check_required_model(self, model: dict[str, str]) -> None:
+        """Check that the loaded model satisfies the minimum version and publication date."""
+        required_uri = model["ModelUri"]
+        if required_uri not in self.nodeset_namespaces:
+            return
+
+        loaded = self.nodeset_namespaces[required_uri][0]
+        loaded_version = str(loaded[1])
+        loaded_date: datetime = loaded[2]  # type: ignore[assignment]
+
+        required_version = model.get("Version", "")
+        required_date_str = model.get("PublicationDate", "")
+
+        if required_version and loaded_version:
+            if self._parse_version(loaded_version) < self._parse_version(
+                required_version
+            ):
+                print(
+                    f"[yellow]Warning: {required_uri} requires minimum version "
+                    f"{required_version}, but loaded version is {loaded_version}[/yellow]"
+                )
+
+        if required_date_str:
+            required_date = self._parse_publication_date(required_date_str)
+            # normalize loaded_date to timezone-aware for comparison
+            comparable_date = (
+                loaded_date.replace(tzinfo=timezone.utc)
+                if loaded_date.tzinfo is None
+                else loaded_date
+            )
+            if comparable_date < required_date:
+                print(
+                    f"[yellow]Warning: {required_uri} requires minimum publication date "
+                    f"{required_date_str}, but loaded date is {loaded_date.isoformat()}[/yellow]"
+                )
 
     def _ua_basictype_to_schema_basictype(self, type: str) -> str:
         # defined from https://reference.opcfoundation.org/Core/Part5/v105/docs/12

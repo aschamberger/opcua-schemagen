@@ -12,8 +12,6 @@ node ids need to be replaced to active the sub statemachines
 
 ## TODO
 
-* look at FIXMEs
-* versioning: how to handle spec versions schemas? $id with versions? how to match versions of files in OPC UA nodeset repo?
 * schema file per nodeset file?
 * what can be upstreamed to asyncua from wrapper class?
 * test with another nodeset: tightening?

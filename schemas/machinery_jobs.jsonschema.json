@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/",
+  "$id": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/",
   "title": "OPC 40001-3: Machinery Job Mgmt for MQTT",
   "description": "A JSON Schema to represent the OPC 40001-3: Machinery Job Mgmt information model for a MQTT environment.",
   "$defs": {
@@ -32,9 +32,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.AbortCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/AbortCall/",
       "x-opc-ua-type": "Method"
     },
     "AbortResponse": {
@@ -46,8 +46,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.10",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/AbortResponse/",
       "x-opc-ua-type": "Method"
     },
     "EUInformation": {
@@ -158,9 +158,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.CancelCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/CancelCall/",
       "x-opc-ua-type": "Method"
     },
     "CancelResponse": {
@@ -172,8 +172,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.12",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/CancelResponse/",
       "x-opc-ua-type": "Method"
     },
     "ClearCall": {
@@ -192,9 +192,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.ClearCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ClearCall/",
       "x-opc-ua-type": "Method"
     },
     "ClearResponse": {
@@ -206,8 +206,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.13",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ClearResponse/",
       "x-opc-ua-type": "Method"
     },
     "ISA95PropertyDataType": {
@@ -723,8 +723,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.6",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.ISA95JobOrderStatusEventType",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ISA95JobOrderStatusEventType/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ISA95JobOrderStatusEventType",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ISA95JobOrderStatusEventType/",
       "x-opc-ua-type": "Event"
     },
     "JobExecutionMode": {
@@ -828,8 +828,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.2/#7.2.2.2",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.JobOrderControl",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderControl/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.JobOrderControl",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/JobOrderControl/",
       "x-opc-ua-type": "DataSet",
       "x-opc-ua-state-machine": {
         "states": {
@@ -1125,8 +1125,8 @@
         }
       },
       "description": "The OPENSCSJobResponseProviderObjectType contains a method to receive unsolicited job response requests.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.1",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.JobOrderResults",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderResults/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.JobOrderResults",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/JobOrderResults/",
       "x-opc-ua-type": "DataSet"
     },
     "JobResult": {
@@ -1217,9 +1217,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.PauseCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/PauseCall/",
       "x-opc-ua-type": "Method"
     },
     "PauseResponse": {
@@ -1231,8 +1231,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.7",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/PauseResponse/",
       "x-opc-ua-type": "Method"
     },
     "ProcessIrregularity": {
@@ -1269,9 +1269,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderIDCall/",
       "x-opc-ua-type": "Method"
     },
     "RequestJobResponseByJobOrderIDResponse": {
@@ -1287,8 +1287,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.2",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderIDResponse/",
       "x-opc-ua-type": "Method"
     },
     "RequestJobResponseByJobOrderStateCall": {
@@ -1303,9 +1303,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderStateCall/",
       "x-opc-ua-type": "Method"
     },
     "RequestJobResponseByJobOrderStateResponse": {
@@ -1324,8 +1324,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.7/#7.2.7.3",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderStateResponse/",
       "x-opc-ua-type": "Method"
     },
     "ResumeCall": {
@@ -1344,9 +1344,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.ResumeCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ResumeCall/",
       "x-opc-ua-type": "Method"
     },
     "ResumeResponse": {
@@ -1358,8 +1358,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.8",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ResumeResponse/",
       "x-opc-ua-type": "Method"
     },
     "RevokeStartCall": {
@@ -1378,9 +1378,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RevokeStartCall/",
       "x-opc-ua-type": "Method"
     },
     "RevokeStartResponse": {
@@ -1392,8 +1392,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.6",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RevokeStartResponse/",
       "x-opc-ua-type": "Method"
     },
     "StartCall": {
@@ -1412,9 +1412,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.StartResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StartCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StartResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StartCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StartCall/",
       "x-opc-ua-type": "Method"
     },
     "StartResponse": {
@@ -1426,8 +1426,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.5",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StartResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StartResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StartResponse/",
       "x-opc-ua-type": "Method"
     },
     "StopCall": {
@@ -1446,9 +1446,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.StopResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StopCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StopResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StopCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StopCall/",
       "x-opc-ua-type": "Method"
     },
     "StopResponse": {
@@ -1460,8 +1460,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.11",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StopResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StopResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StopResponse/",
       "x-opc-ua-type": "Method"
     },
     "StoreAndStartCall": {
@@ -1480,9 +1480,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreAndStartCall/",
       "x-opc-ua-type": "Method"
     },
     "StoreAndStartResponse": {
@@ -1494,8 +1494,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.4",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreAndStartResponse/",
       "x-opc-ua-type": "Method"
     },
     "StoreCall": {
@@ -1514,9 +1514,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreCall/",
       "x-opc-ua-type": "Method"
     },
     "StoreResponse": {
@@ -1528,8 +1528,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.3",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreResponse/",
       "x-opc-ua-type": "Method"
     },
     "UpdateCall": {
@@ -1548,9 +1548,9 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9",
-      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.UpdateCall",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateCall/",
+      "x-response-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateResponse",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateCall",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/UpdateCall/",
       "x-opc-ua-type": "Method"
     },
     "UpdateResponse": {
@@ -1562,8 +1562,8 @@
         }
       },
       "description": "https://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.2.1/#7.2.1.9",
-      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateResponse/",
+      "x-cloudevent-type": "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateResponse",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/UpdateResponse/",
       "x-opc-ua-type": "Method"
     },
     "meta": {

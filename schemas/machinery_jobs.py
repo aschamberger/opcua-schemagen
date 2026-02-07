@@ -39,11 +39,11 @@ class AbortCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.AbortCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/AbortCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -64,10 +64,10 @@ class AbortResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.AbortResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/AbortResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.AbortResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/AbortResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -207,11 +207,11 @@ class CancelCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.CancelCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/CancelCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -233,11 +233,9 @@ class CancelResponse:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.CancelResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.CancelResponse"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/CancelResponse/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/CancelResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -261,11 +259,11 @@ class ClearCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.ClearCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ClearCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -286,10 +284,10 @@ class ClearResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.ClearResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ClearResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.ClearResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ClearResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -828,9 +826,9 @@ class ISA95JobOrderStatusEventType:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.ISA95JobOrderStatusEventType"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.ISA95JobOrderStatusEventType"
         )
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ISA95JobOrderStatusEventType/"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ISA95JobOrderStatusEventType/"
         opcua_type: str = "Event"
         aliases: dict[str, str] = {
             "job_order": "JobOrder",
@@ -892,11 +890,9 @@ class JobOrderControl:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.JobOrderControl"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.JobOrderControl"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderControl/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/JobOrderControl/"
         opcua_type: str = "DataSet"
         opcua_state_machine: str = "{'states': {'Aborted': {'description': 'The job order is aborted.', 'number': 6}, 'AllowedToStart': {'description': 'The job order is stored and may be executed.', 'subStateMachine': {'description': 'Substates of AllowedToStart', 'states': {'Loaded': {'description': 'In situations where only one job may be in active memory and is able to be run, then the job is loaded in active memory, the necessary pre-conditions have been met, and the job order is ready to run, awaiting a Start command.', 'number': 3}, 'Ready': {'description': 'The necessary pre-conditions have been met and the job order is ready to run, awaiting a Start command.', 'number': 2}, 'Waiting': {'description': 'The necessary pre-conditions have not been met and the job order is not ready to run.', 'number': 1}}, 'transitions': {'FromLoadedToReady': {'description': 'This transition is triggered when the program or configuration to execute the job order is unloaded.', 'fromState': 'Loaded', 'toState': 'Ready', 'number': 4}, 'FromLoadedToWaiting': {'description': 'This transition is triggered when the system is not ready to start the execution of the job order anymore.', 'fromState': 'Loaded', 'number': 5, 'toState': 'Waiting'}, 'FromReadyToLoaded': {'description': 'This transition is triggered when the program or configuration to execute the job order is loaded.', 'toState': 'Loaded', 'fromState': 'Ready', 'number': 2}, 'FromReadyToWaiting': {'description': 'This transition is triggered when the system is not ready to start the execution of the job order anymore.', 'fromState': 'Ready', 'number': 3, 'toState': 'Waiting'}, 'FromWaitingToReady': {'description': 'This transition is triggered when the system is ready to start the execution of the job order.', 'toState': 'Ready', 'number': 1, 'fromState': 'Waiting'}}}, 'number': 2}, 'Ended': {'description': 'The job order has been completed and is no longer in execution.', 'subStateMachine': {'description': 'Substates of Ended', 'states': {'Closed': {'description': 'The job order has been completed and no further post processing is performed.', 'number': 2}, 'Completed': {'description': 'The job order has been completed and is no longer in execution.', 'number': 1}}, 'transitions': {'FromCompletedToClosed': {'description': 'This transition is triggered when the system has finalized post processing of a ended job order.', 'toState': 'Closed', 'fromState': 'Completed', 'number': 1}}}, 'number': 5}, 'Interrupted': {'description': 'The job order has been temporarily stopped.', 'subStateMachine': {'description': 'Substates of Interrupted', 'states': {'Held': {'description': 'The job order has been temporarily stopped due to a constraint of some form.', 'number': 1}, 'Suspended': {'description': 'The job order has been temporarily stopped due to a deliberate decision within the execution system.', 'number': 2}}, 'transitions': {'FromHeldToSuspended': {'description': 'This transition is triggered when the system has switched the job order from internally held to externally suspended, for example by a call of the Pause Method.', 'fromState': 'Held', 'toState': 'Suspended', 'number': 1}, 'FromSuspendedToHeld': {'description': 'This transition is triggered when the system has switched the job order from externally suspended to an internal held, for example by a call of the Resume Method.', 'toState': 'Held', 'fromState': 'Suspended', 'number': 2}}}, 'number': 4}, 'NotAllowedToStart': {'description': 'The job order is stored but may not be executed.', 'subStateMachine': {'description': 'Substates of NotAllowedToStart', 'states': {'Loaded': {'description': 'In situations where only one job may be in active memory and is able to be run, then the job is loaded in active memory, the necessary pre-conditions have been met, and the job order is ready to run, awaiting a Start command.', 'number': 3}, 'Ready': {'description': 'The necessary pre-conditions have been met and the job order is ready to run, awaiting a Start command.', 'number': 2}, 'Waiting': {'description': 'The necessary pre-conditions have not been met and the job order is not ready to run.', 'number': 1}}, 'transitions': {'FromLoadedToReady': {'description': 'This transition is triggered when the program or configuration to execute the job order is unloaded.', 'fromState': 'Loaded', 'toState': 'Ready', 'number': 4}, 'FromLoadedToWaiting': {'description': 'This transition is triggered when the system is not ready to start the execution of the job order anymore.', 'fromState': 'Loaded', 'number': 5, 'toState': 'Waiting'}, 'FromReadyToLoaded': {'description': 'This transition is triggered when the program or configuration to execute the job order is loaded.', 'toState': 'Loaded', 'fromState': 'Ready', 'number': 2}, 'FromReadyToWaiting': {'description': 'This transition is triggered when the system is not ready to start the execution of the job order anymore.', 'fromState': 'Ready', 'number': 3, 'toState': 'Waiting'}, 'FromWaitingToReady': {'description': 'This transition is triggered when the system is ready to start the execution of the job order.', 'toState': 'Ready', 'number': 1, 'fromState': 'Waiting'}}}, 'number': 1}, 'Running': {'description': 'The job order is executing.', 'number': 3}}, 'transitions': {'FromAllowedToStartToAborted': {'description': 'This transition is triggered when Abort Method is called.', 'cause': 'Abort', 'toState': 'Aborted', 'fromState': 'AllowedToStart', 'effect': 'ISA95JobOrderStatusEventType', 'number': 13}, 'FromAllowedToStartToAllowedToStart': {'description': 'This transition is triggered when the Update Method is called and the job order is modified.', 'fromState': 'AllowedToStart', 'toState': 'AllowedToStart', 'effect': 'ISA95JobOrderStatusEventType', 'number': 4, 'cause': 'Update'}, 'FromAllowedToStartToNotAllowedToStart': {'description': 'This transition is triggered when the RevokeStart Method is called.', 'fromState': 'AllowedToStart', 'effect': 'ISA95JobOrderStatusEventType', 'toState': 'NotAllowedToStart', 'cause': 'RevokeStart', 'number': 3}, 'FromAllowedToStartToRunning': {'description': 'This transition is triggered when a job order is started to be executed.', 'fromState': 'AllowedToStart', 'effect': 'ISA95JobOrderStatusEventType', 'toState': 'Running', 'number': 5}, 'FromInterruptedToAborted': {'description': 'This transition is triggered when Abort Method is called.', 'cause': 'Abort', 'toState': 'Aborted', 'fromState': 'Interrupted', 'effect': 'ISA95JobOrderStatusEventType', 'number': 9}, 'FromInterruptedToEnded': {'description': 'This transition is triggered when Stop Method is called.', 'toState': 'Ended', 'fromState': 'Interrupted', 'effect': 'ISA95JobOrderStatusEventType', 'cause': 'Stop', 'number': 11}, 'FromInterruptedToRunning': {'description': 'This transition is triggered when Resume Method is called.', 'fromState': 'Interrupted', 'effect': 'ISA95JobOrderStatusEventType', 'cause': 'Resume', 'toState': 'Running', 'number': 10}, 'FromNotAllowedToStartToAborted': {'description': 'This transition is triggered when Abort Method is called.', 'cause': 'Abort', 'toState': 'Aborted', 'effect': 'ISA95JobOrderStatusEventType', 'fromState': 'NotAllowedToStart', 'number': 12}, 'FromNotAllowedToStartToAllowedToStart': {'description': 'This transition is triggered when the Start Method is called.', 'toState': 'AllowedToStart', 'effect': 'ISA95JobOrderStatusEventType', 'fromState': 'NotAllowedToStart', 'cause': 'Start', 'number': 2}, 'FromNotAllowedToStartToNotAllowedToStart': {'description': 'This transition is triggered when the Update Method is called and the job order is modified.', 'effect': 'ISA95JobOrderStatusEventType', 'fromState': 'NotAllowedToStart', 'toState': 'NotAllowedToStart', 'number': 1, 'cause': 'Update'}, 'FromRunningToAborted': {'description': 'This transition is triggered when Abort Method is called.', 'cause': 'Abort', 'toState': 'Aborted', 'effect': 'ISA95JobOrderStatusEventType', 'fromState': 'Running', 'number': 8}, 'FromRunningToEnded': {'description': 'This transition is triggered when the execution of a job order has finished, either internally or by the Stop Method.', 'toState': 'Ended', 'effect': 'ISA95JobOrderStatusEventType', 'fromState': 'Running', 'cause': 'Stop', 'number': 7}, 'FromRunningToInterrupted': {'description': 'This transition is triggered when an executing job order gets interrupted, either internally or by the Pause Method.', 'toState': 'Interrupted', 'effect': 'ISA95JobOrderStatusEventType', 'cause': 'Pause', 'fromState': 'Running', 'number': 6}}}"
         opcua_state_machine_states: list[dict[str, Any]] = [
@@ -1135,11 +1131,9 @@ class JobOrderResults:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.JobOrderResults"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.JobOrderResults"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/JobOrderResults/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/JobOrderResults/"
         opcua_type: str = "DataSet"
         aliases: dict[str, str] = {
             "job_order_response_list": "JobOrderResponseList",
@@ -1212,11 +1206,11 @@ class PauseCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.PauseCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/PauseCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -1237,10 +1231,10 @@ class PauseResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.PauseResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/PauseResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.PauseResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/PauseResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1271,9 +1265,9 @@ class RequestJobResponseByJobOrderIDCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDCall"
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDCall/"
+        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDResponse"
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderIDCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -1297,8 +1291,8 @@ class RequestJobResponseByJobOrderIDResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderIDResponse"
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderIDResponse/"
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderIDResponse"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderIDResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_response": "JobResponse",
@@ -1319,9 +1313,9 @@ class RequestJobResponseByJobOrderStateCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateCall"
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateCall/"
+        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateResponse"
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderStateCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_state": "JobOrderState",
@@ -1345,8 +1339,8 @@ class RequestJobResponseByJobOrderStateResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.RequestJobResponseByJobOrderStateResponse"
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RequestJobResponseByJobOrderStateResponse/"
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.RequestJobResponseByJobOrderStateResponse"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RequestJobResponseByJobOrderStateResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_responses": "JobResponses",
@@ -1371,11 +1365,11 @@ class ResumeCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.ResumeCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ResumeCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -1397,11 +1391,9 @@ class ResumeResponse:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.ResumeResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.ResumeResponse"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/ResumeResponse/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/ResumeResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1426,14 +1418,12 @@ class RevokeStartCall:
     # mashumaro config class
     class Config(DataClassConfig):
         response_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartResponse"
         )
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartCall"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartCall"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartCall/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RevokeStartCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -1455,9 +1445,9 @@ class RevokeStartResponse:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.RevokeStartResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.RevokeStartResponse"
         )
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/RevokeStartResponse/"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/RevokeStartResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1481,11 +1471,11 @@ class StartCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StartResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StartCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StartResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.StartCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StartCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order_id": "JobOrderID",
@@ -1506,10 +1496,10 @@ class StartResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StartResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StartResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StartResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StartResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1533,10 +1523,10 @@ class StopCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StopResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StopCall"
+        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.StopResponse"
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.StopCall"
         cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopCall/"
+            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StopCall/"
         )
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
@@ -1558,10 +1548,10 @@ class StopResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StopResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StopResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StopResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StopResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1586,12 +1576,12 @@ class StoreAndStartCall:
     # mashumaro config class
     class Config(DataClassConfig):
         response_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartResponse"
         )
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartCall"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartCall"
         )
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartCall/"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreAndStartCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order": "JobOrder",
@@ -1613,9 +1603,9 @@ class StoreAndStartResponse:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.StoreAndStartResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreAndStartResponse"
         )
-        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreAndStartResponse/"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreAndStartResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1639,11 +1629,11 @@ class StoreCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StoreCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order": "JobOrder",
@@ -1664,10 +1654,10 @@ class StoreResponse:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.StoreResponse"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/StoreResponse/"
+        cloudevent_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.StoreResponse"
         )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/StoreResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
@@ -1691,11 +1681,11 @@ class UpdateCall:
 
     # mashumaro config class
     class Config(DataClassConfig):
-        response_type: str = "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse"
-        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.UpdateCall"
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateCall/"
+        response_type: str = (
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateResponse"
         )
+        cloudevent_type: str = "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateCall"
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/UpdateCall/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "job_order": "JobOrder",
@@ -1717,11 +1707,9 @@ class UpdateResponse:
     # mashumaro config class
     class Config(DataClassConfig):
         cloudevent_type: str = (
-            "com.github.aschamberger.ua.Machinery.Jobs.UpdateResponse"
+            "com.github.aschamberger.ua.Machinery.Jobs.v1.UpdateResponse"
         )
-        cloudevent_dataschema: str = (
-            "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/UpdateResponse/"
-        )
+        cloudevent_dataschema: str = "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/UpdateResponse/"
         opcua_type: str = "Method"
         aliases: dict[str, str] = {
             "return_status": "ReturnStatus",
