@@ -1,12 +1,11 @@
-# python-opc-ua-models
+# OPC UA nodesets to JSON Schema
 
-Python dataclasses generated from OPC UA nodesets/specs for usage in MQTT app2app scenarios.
+JSON Schema generated from OPC UA nodesets/companion specs for usage in MQTT app2app scenarios.
 
 ## Usage
 
 ```
-uv run ./scripts/opcmodelgen.py nodeset appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002=ns=2;i=1008"
-uv run ./scripts/opcmodelgen.py schema dataclasses machinery_jobs.jsonschema.json
+uv run ./scripts/schemagen.py appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
 ```
 node ids need to be replaced to active the sub statemachines
 
@@ -28,7 +27,11 @@ To achieve a modern and standards based application architecture for manufacturi
 
 ### Model Generation Flow
 
-#### 1. Generate JSON Schema from OPC UA nodeset XML files
+1. Generate JSON Schema from OPC UA nodeset XML files
+2. Generate dataclasses from JSON Schema
+3. Manual additions for missing things or additions (e.g. full state machine in Machinery Job Management)
+
+### JSON Schema Generation
 
 * Nodeset parsing via `opcua-asyncio` XMLParser from `FreeOpcUa`
 * Generate datatypes from nodeset(s) including base UADataTypes
@@ -42,24 +45,6 @@ To achieve a modern and standards based application architecture for manufacturi
 Links:
 * https://github.com/FreeOpcUa/opcua-asyncio/blob/master/asyncua/common/xmlparser.py
 
-#### 2. Generate dataclasses from JSON Schema
-
-* Generate Python dataclasses via `datamodel-code-generator`
-* custom template to generate:
-  * `Config` inner class for mashumaro
-  * custom attributes "x-*" in `Config` inner class
-  * `opcua_state_machine` with serialized python dict from JSON Schema (use `ast.literal_eval()` to deserialize str to dict)
-  * custom attributes `opcua_state_machine_states` and `opcua_state_machine_transitions` with ready to use dictionaries for usage with `transitions` library
-  * custom attribute `opcua_state_machine_effects` storing transition events
-
-#### 3. Manual additions for Machinery Job Management
-
-* `MethodReturnStatus` enum
-* additional `JobOrderControlExt` class that adds "the dotted states and transitions" from the spec (without the meta state `Prepared`)
-* fix missing transition name for `Run`
-* add initial states to sub statemachines
-* helpers to map to/from state names to ids
-
 ### Annoyances
 
 * Nodesets overall:
@@ -72,8 +57,6 @@ Links:
 
 * https://github.com/fastapi/typer
 * https://github.com/FreeOpcUa/opcua-asyncio/
-* https://github.com/koxudaxi/datamodel-code-generator
-* https://github.com/pytransitions/transitions/
 
 ## Notes
 
