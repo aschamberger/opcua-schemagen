@@ -104,7 +104,7 @@ class NodesetToJSONSchema:
     aliases: dict[str, dict[str, str]] = {}
     nodes: dict[str, dict[str, NodeData]] = {}
 
-    cloudevents_type_path: str
+    cloudevents_type_path: tuple[str, str]
     cloudevents_dataschema_path: str
     schema: JSONSchemaBuilder
 
@@ -121,13 +121,11 @@ class NodesetToJSONSchema:
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
         self._import_nodeset(own_namespace)
 
-        model_version = str(self.nodeset_namespaces[own_namespace][0][1])
-        major_version = model_version.split(".")[0]
-        self.cloudevents_type_path = (
-            f"com.github.aschamberger.ua.{spec.replace('/', '.')}.v{major_version}"
+        self.cloudevents_type_path = self._namespace_to_cloudevents_type_path(
+            own_namespace
         )
         self.cloudevents_dataschema_path = (
-            f"https://aschamberger.github.com/schemas/UA/{spec}/v{model_version}/"
+            self._namespace_to_cloudevents_dataschema_path(own_namespace)
         )
 
         spec_title = get_spec_title(nodeset_file)
@@ -232,14 +230,20 @@ class NodesetToJSONSchema:
                                 js_objecttype = js_objecttype.description(
                                     parent_object.desc
                                 )
+                        ce_base, ce_ver = self._namespace_to_cloudevents_type_path(
+                            own_namespace
+                        )
+                        ce_ds = self._namespace_to_cloudevents_dataschema_path(
+                            own_namespace
+                        )
                         js_objecttype = (
                             js_objecttype.set(
                                 "x-cloudevent-type",
-                                f"{self.cloudevents_type_path}.{displayname}",
+                                f"{ce_base}.{displayname}.{ce_ver}",
                             )
                             .set(
                                 "x-cloudevent-dataschema",
-                                f"{self.cloudevents_dataschema_path}{displayname}/",
+                                f"{ce_ds}{displayname}/",
                             )
                             .set("x-opc-ua-type", "DataSet")
                         )
@@ -295,6 +299,21 @@ class NodesetToJSONSchema:
 
     def save_schema(self, path: Path):
         self.schema.save(path, indent=2)
+
+    def _namespace_to_cloudevents_type_path(
+        self, namespace_uri: str
+    ) -> tuple[str, str]:
+        """Convert a namespace URI to a CloudEvent type base path and version suffix."""
+        path = namespace_uri.replace(self.ua_base_model_URI, "").strip("/")
+        model_version = str(self.nodeset_namespaces[namespace_uri][0][1])
+        major_version = model_version.split(".")[0]
+        return f"org.opcfoundation.{path.replace('/', '.')}", f"v{major_version}"
+
+    def _namespace_to_cloudevents_dataschema_path(self, namespace_uri: str) -> str:
+        """Convert a namespace URI to a CloudEvent dataschema base URL including version."""
+        path = namespace_uri.replace(self.ua_base_model_URI, "").strip("/")
+        model_version = str(self.nodeset_namespaces[namespace_uri][0][1])
+        return f"https://aschamberger.github.com/schemas/UA/{path}/v{model_version}/"
 
     def _nodeset_file_to_uri(self, nodeset_path: Path) -> None:
         # Find the nodeset file corresponding to the model URI
@@ -740,19 +759,29 @@ class NodesetToJSONSchema:
                     if child_node.desc:
                         js_methodtype = js_methodtype.description(child_node.desc)
                     if arg_node.displayname == "InputArguments":
-                        response = f"{str(child_node.displayname)}Response"
                         js_methodtype = js_methodtype.set(
                             "x-response-type",
-                            f"{self.cloudevents_type_path}.{response}",
+                            {"$ref": f"#/$defs/{str(child_node.displayname)}Response"},
                         )
+                    else:
+                        js_methodtype = js_methodtype.set(
+                            "x-request-type",
+                            {"$ref": f"#/$defs/{str(child_node.displayname)}Call"},
+                        )
+                    ce_base, ce_ver = self._namespace_to_cloudevents_type_path(
+                        own_namespace
+                    )
+                    ce_ds = self._namespace_to_cloudevents_dataschema_path(
+                        own_namespace
+                    )
                     js_methodtype = (
                         js_methodtype.set(
                             "x-cloudevent-type",
-                            f"{self.cloudevents_type_path}.{method}",
+                            f"{ce_base}.{method}.{ce_ver}",
                         )
                         .set(
                             "x-cloudevent-dataschema",
-                            f"{self.cloudevents_dataschema_path}{method}/",
+                            f"{ce_ds}{method}/",
                         )
                         .set("x-opc-ua-type", "Method")
                         .end()
@@ -811,14 +840,18 @@ class NodesetToJSONSchema:
                 self._add_object_variables(own_namespace, js_eventtype, child_nodes2)
                 if child_node.desc:
                     js_eventtype = js_eventtype.description(child_node.desc)
+                ce_base, ce_ver = self._namespace_to_cloudevents_type_path(
+                    own_namespace
+                )
+                ce_ds = self._namespace_to_cloudevents_dataschema_path(own_namespace)
                 js_eventtype = (
                     js_eventtype.set(
                         "x-cloudevent-type",
-                        f"{self.cloudevents_type_path}.{displayname}",
+                        f"{ce_base}.{displayname}.{ce_ver}",
                     )
                     .set(
                         "x-cloudevent-dataschema",
-                        f"{self.cloudevents_dataschema_path}{displayname}/",
+                        f"{ce_ds}{displayname}/",
                     )
                     .set("x-opc-ua-type", "Event")
                     .end()
