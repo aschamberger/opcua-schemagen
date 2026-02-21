@@ -305,6 +305,8 @@ class NodesetToJSONSchema:
     ) -> tuple[str, str]:
         """Convert a namespace URI to a CloudEvent type base path and version suffix."""
         path = namespace_uri.replace(self.ua_base_model_URI, "").strip("/")
+        if not path:
+            path = "BaseModel"
         model_version = str(self.nodeset_namespaces[namespace_uri][0][1])
         major_version = model_version.split(".")[0]
         return f"org.opcfoundation.{path.replace('/', '.')}", f"v{major_version}"
@@ -312,6 +314,8 @@ class NodesetToJSONSchema:
     def _namespace_to_cloudevents_dataschema_path(self, namespace_uri: str) -> str:
         """Convert a namespace URI to a CloudEvent dataschema base URL including version."""
         path = namespace_uri.replace(self.ua_base_model_URI, "").strip("/")
+        if not path:
+            path = "BaseModel"
         model_version = str(self.nodeset_namespaces[namespace_uri][0][1])
         return f"https://aschamberger.github.com/schemas/UA/{path}/v{model_version}/"
 
@@ -978,4 +982,13 @@ class NodesetToJSONSchema:
                         js_datatype = js_datatype.end()
         if node.desc:
             js_datatype = js_datatype.description(node.desc)
+        ce_base, ce_ver = self._namespace_to_cloudevents_type_path(own_namespace)
+        ce_ds = self._namespace_to_cloudevents_dataschema_path(own_namespace)
+        js_datatype = js_datatype.set(
+            "x-cloudevent-type",
+            f"{ce_base}.{node.displayname}.{ce_ver}",
+        ).set(
+            "x-cloudevent-dataschema",
+            f"{ce_ds}{node.displayname}/",
+        )
         self.schema = js_datatype.end()
