@@ -1,5 +1,4 @@
 import pathlib
-import sys
 from typing import Annotated
 
 import typer
@@ -7,16 +6,13 @@ from asyncua.common.xmlparser import Field, RefStruct
 from rich import print
 from rich.table import Table
 
-# Add parent directory to path
-sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
-
-from utils.ns2js import NodesetToJSONSchema
-from utils.xmlparser import WrappedXMLParser
+from ua_schemagen.ns2js import NodesetToJSONSchema
+from ua_schemagen.xmlparser import WrappedXMLParser
 
 app = typer.Typer()
 
-main_path = pathlib.Path(__file__).parent.parent / "UA-Nodeset"
-schemas_path = pathlib.Path(__file__).parent.parent / "schemas"
+main_path = pathlib.Path(__file__).parent.parent.parent / "UA-Nodeset"
+schemas_path = pathlib.Path(__file__).parent.parent.parent / "schemas"
 
 
 def get_nodeset_file_from_spec_path(spec: str) -> pathlib.Path:

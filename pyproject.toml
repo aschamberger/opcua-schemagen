@@ -1,7 +1,7 @@
 [project]
-name = "python-opc-ua-models"
+name = "ua-schemagen"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "asyncua>=1.1.8",
     "datamodel-code-generator[ruff]>=0.53.0",
@@ -14,5 +14,9 @@ dev = [
     "transitions>=0.9.3",
 ]
 
-[tool.ruff]
-target-version = "py314"
+[project.scripts]
+schemagen = "ua_schemagen.schemagen:app"
+
+[build-system]
+requires = ["uv_build>=0.10.7,<0.11.0"]
+build-backend = "uv_build"

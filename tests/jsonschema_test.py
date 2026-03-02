@@ -1,6 +1,8 @@
-import pytest
 import json
-from utils.jsonschema import JSONSchemaBuilder, SchemaValidationError
+
+import pytest
+
+from ua_schemagen.jsonschema import JSONSchemaBuilder, SchemaValidationError
 
 
 @pytest.fixture

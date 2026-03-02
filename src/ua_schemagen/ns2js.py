@@ -11,8 +11,8 @@ from asyncua import ua
 from asyncua.common.xmlparser import ExtObj, Field, NodeData
 from rich import print
 
-from utils.jsonschema import JSONSchemaBuilder
-from utils.xmlparser import WrappedXMLParser
+from ua_schemagen.jsonschema import JSONSchemaBuilder
+from ua_schemagen.xmlparser import WrappedXMLParser
 
 
 class _HeadlineParser(HTMLParser):
@@ -873,6 +873,11 @@ class NodesetToJSONSchema:
             self._add_datatype(target_namespace, object_node)
 
     def _add_datatype(self, own_namespace: str, node: NodeData) -> None:
+        name = str(node.displayname)
+        root_defs = self.schema._root_ref._schema.get("$defs", {})
+        if name in root_defs and root_defs[name]:
+            return  # already defined, skip to avoid duplicates
+
         if node.struct_type == "IsOptionSet":
             # define mask type
             js_masks = self.schema.definition(f"{str(node.displayname)}Masks").any_of()

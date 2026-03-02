@@ -13,10 +13,7 @@
         "Text": {
           "type": "string"
         }
-      },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.7",
-      "x-cloudevent-type": "org.opcfoundation.BaseModel.LocalizedText.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/LocalizedText/"
+      }
     },
     "EUInformation": {
       "type": "object",
@@ -397,106 +394,6 @@
     },
     "ResultEvaluationEnum": {
       "anyOf": [
-        {
-          "const": 0,
-          "title": "Undefined",
-          "description": "The evaluation of the result is unknown, for example because it failed"
-        },
-        {
-          "const": 1,
-          "title": "OK",
-          "description": "The result is in tolerance"
-        },
-        {
-          "const": 2,
-          "title": "NotOK",
-          "description": "The result is out of tolerance"
-        },
-        {
-          "const": 3,
-          "title": "NotDecidable",
-          "description": "The decision is not possible due to measurement uncertainty."
-        },
-        {
-          "const": 0,
-          "title": "Undefined",
-          "description": "The evaluation of the result is unknown, for example because it failed"
-        },
-        {
-          "const": 1,
-          "title": "OK",
-          "description": "The result is in tolerance"
-        },
-        {
-          "const": 2,
-          "title": "NotOK",
-          "description": "The result is out of tolerance"
-        },
-        {
-          "const": 3,
-          "title": "NotDecidable",
-          "description": "The decision is not possible due to measurement uncertainty."
-        },
-        {
-          "const": 0,
-          "title": "Undefined",
-          "description": "The evaluation of the result is unknown, for example because it failed"
-        },
-        {
-          "const": 1,
-          "title": "OK",
-          "description": "The result is in tolerance"
-        },
-        {
-          "const": 2,
-          "title": "NotOK",
-          "description": "The result is out of tolerance"
-        },
-        {
-          "const": 3,
-          "title": "NotDecidable",
-          "description": "The decision is not possible due to measurement uncertainty."
-        },
-        {
-          "const": 0,
-          "title": "Undefined",
-          "description": "The evaluation of the result is unknown, for example because it failed"
-        },
-        {
-          "const": 1,
-          "title": "OK",
-          "description": "The result is in tolerance"
-        },
-        {
-          "const": 2,
-          "title": "NotOK",
-          "description": "The result is out of tolerance"
-        },
-        {
-          "const": 3,
-          "title": "NotDecidable",
-          "description": "The decision is not possible due to measurement uncertainty."
-        },
-        {
-          "const": 0,
-          "title": "Undefined",
-          "description": "The evaluation of the result is unknown, for example because it failed"
-        },
-        {
-          "const": 1,
-          "title": "OK",
-          "description": "The result is in tolerance"
-        },
-        {
-          "const": 2,
-          "title": "NotOK",
-          "description": "The result is out of tolerance"
-        },
-        {
-          "const": 3,
-          "title": "NotDecidable",
-          "description": "The decision is not possible due to measurement uncertainty."
-        },
         {
           "const": 0,
           "title": "Undefined",

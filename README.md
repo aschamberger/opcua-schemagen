@@ -5,8 +5,8 @@ JSON Schema generated from OPC UA nodesets/companion specs for usage in MQTT app
 ## Usage
 
 ```
-uv run ./scripts/schemagen.py appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
-uv run ./scripts/schemagen.py appschema IJT/Tightening ijt_tightening.jsonschema.json
+uv run schemagen appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
+uv run schemagen appschema IJT/Tightening ijt_tightening.jsonschema.json
 ```
 node ids need to be replaced to active the sub statemachines
 
