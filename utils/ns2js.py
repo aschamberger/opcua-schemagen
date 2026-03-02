@@ -926,9 +926,9 @@ class NodesetToJSONSchema:
                                 field_node_id = self.aliases[own_namespace].get(
                                     field_object_name, field_object_name
                                 )
-                                if (
-                                    field_node_id not in self.base_types
-                                    and field_node_id.startswith("i=")
+                                if field_node_id not in self.base_types and (
+                                    field_node_id.startswith("i=")
+                                    or field_node_id.startswith("ns=")
                                 ):
                                     target_namespace, node_id_target = (
                                         self._transform_node_id(

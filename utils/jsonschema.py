@@ -105,7 +105,9 @@ class JSONSchemaBuilder:
         for name in sorted_keys:
             visit(name)
 
-        full_schema["$defs"] = {name: defs[name] for name in sorted_names}
+        full_schema["$defs"] = {
+            name: defs[name] for name in sorted_names if name in defs
+        }
         return full_schema
 
     # --- 2. Structural & Root ---
