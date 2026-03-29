@@ -29,10 +29,7 @@
         "Text": {
           "type": "string"
         }
-      },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.7",
-      "x-cloudevent-type": "org.opcfoundation.BaseModel.LocalizedText.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/LocalizedText/"
+      }
     },
     "AbortCall": {
       "type": "object",
