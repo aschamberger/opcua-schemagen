@@ -34,16 +34,11 @@ uv run opcua-schemagen objects ISA95-JOBCONTROL
 uv run opcua-schemagen types ISA95-JOBCONTROL
 
 # Generate JSON Schema (main command)
-uv run opcua-schemagen appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
-uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.jsonschema.json
+uv run opcua-schemagen appschema Machinery/Jobs machinery_jobs.schema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
+uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.schema.json
 ```
 
 > Note: `--nodeid-replace` is needed to activate sub state machines when node IDs require patching.
-
-## TODO
-
-* schema file per nodeset file?
-* what can be upstreamed to asyncua from wrapper class?
 
 ## Overall Design
 

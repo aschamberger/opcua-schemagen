@@ -230,7 +230,7 @@ def appschema(
         main_path, nodeset_file, spec, nodeid_replacements=replacements
     )
     if filename == "":
-        filename = f"{spec.lower().replace('/', '_')}.jsonschema.json"
+        filename = f"{spec.lower().replace('/', '_')}.schema.json"
     outfile = schemas_path / filename
     ns2js.save_schema(outfile)
     print(f"[bold green]JSON Schema saved to {outfile}[/bold green]\n")
