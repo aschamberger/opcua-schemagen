@@ -1,6 +1,8 @@
 [project]
-name = "ua-schemagen"
+name = "opcua-schemagen"
 version = "0.1.0"
+description = "Generate JSON Schema from OPC UA nodesets/companion specifications"
+readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "asyncua>=1.1.8",
@@ -11,11 +13,14 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
-    "transitions>=0.9.3",
 ]
 
 [project.scripts]
-schemagen = "ua_schemagen.schemagen:app"
+opcua-schemagen = "opcua_schemagen.schemagen:app"
+
+[project.urls]
+Homepage = "https://github.com/aschamberger/opcua-schemagen"
+Repository = "https://github.com/aschamberger/opcua-schemagen"
 
 [build-system]
 requires = ["uv_build>=0.10.7,<0.11.0"]

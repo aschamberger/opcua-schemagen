@@ -11,8 +11,8 @@ from asyncua import ua
 from asyncua.common.xmlparser import ExtObj, Field, NodeData
 from rich import print
 
-from ua_schemagen.jsonschema import JSONSchemaBuilder
-from ua_schemagen.xmlparser import WrappedXMLParser
+from opcua_schemagen.jsonschema import JSONSchemaBuilder
+from opcua_schemagen.xmlparser import WrappedXMLParser
 
 
 class _HeadlineParser(HTMLParser):

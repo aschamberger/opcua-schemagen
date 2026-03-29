@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from ua_schemagen.jsonschema import JSONSchemaBuilder, SchemaValidationError
+from opcua_schemagen.jsonschema import JSONSchemaBuilder, SchemaValidationError
 
 
 @pytest.fixture

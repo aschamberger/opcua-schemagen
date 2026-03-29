@@ -6,8 +6,8 @@ from asyncua.common.xmlparser import Field, RefStruct
 from rich import print
 from rich.table import Table
 
-from ua_schemagen.ns2js import NodesetToJSONSchema
-from ua_schemagen.xmlparser import WrappedXMLParser
+from opcua_schemagen.ns2js import NodesetToJSONSchema
+from opcua_schemagen.xmlparser import WrappedXMLParser
 
 app = typer.Typer()
 

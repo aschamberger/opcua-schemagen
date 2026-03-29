@@ -1,20 +1,49 @@
-# OPC UA nodesets to JSON Schema
+# opcua-schemagen
 
-JSON Schema generated from OPC UA nodesets/companion specs for usage in MQTT app2app scenarios.
+Generate JSON Schema from OPC UA nodesets/companion specifications for MQTT app-to-app scenarios.
+
+The repository, Python package, and CLI are named `opcua-schemagen`. The import package is `opcua_schemagen`.
+
+## Requirements
+
+* Python >= 3.14
+* [uv](https://docs.astral.sh/uv/)
+
+## Setup
+
+```
+git submodule update --init
+uv sync
+```
 
 ## Usage
 
+All commands operate on a spec path relative to `UA-Nodeset/`.
+
 ```
-uv run schemagen appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
-uv run schemagen appschema IJT/Tightening ijt_tightening.jsonschema.json
+# List all available nodesets
+uv run opcua-schemagen index
+
+# Show nodeset metadata (namespaces, required models, aliases)
+uv run opcua-schemagen info ISA95-JOBCONTROL
+
+# List UAObjectType nodes and their children
+uv run opcua-schemagen objects ISA95-JOBCONTROL
+
+# List UADataType nodes
+uv run opcua-schemagen types ISA95-JOBCONTROL
+
+# Generate JSON Schema (main command)
+uv run opcua-schemagen appschema Machinery/Jobs machinery_jobs.jsonschema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
+uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.jsonschema.json
 ```
-node ids need to be replaced to active the sub statemachines
+
+> Note: `--nodeid-replace` is needed to activate sub state machines when node IDs require patching.
 
 ## TODO
 
 * schema file per nodeset file?
 * what can be upstreamed to asyncua from wrapper class?
-* test with another nodeset: tightening?
 
 ## Overall Design
 
@@ -58,6 +87,8 @@ Links:
 
 * https://github.com/fastapi/typer
 * https://github.com/FreeOpcUa/opcua-asyncio/
+* https://github.com/Textualize/rich
+* https://github.com/koxudaxi/datamodel-code-generator
 
 ## Notes
 
