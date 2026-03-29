@@ -114,6 +114,7 @@ class NodesetToJSONSchema:
         nodeset_file: Path,
         spec: str,
         nodeid_replacements: list[tuple[str, str]] | None = None,
+        include_object_namespaces: list[str] | None = None,
     ) -> None:
         self._nodeid_replacements = nodeid_replacements or []
         self._nodeset_file_to_uri(nodeset_path)
@@ -173,20 +174,39 @@ class NodesetToJSONSchema:
             .end()
         )
 
+        # own datatypes first so they take precedence over parent definitions
+        for nodeid, node in self.nodes[own_namespace].items():
+            if node.nodetype == "UADataType":
+                self._add_datatype(own_namespace, node)
+
+        # parent/dependency datatypes (skipped if already defined by own namespace)
         for ns in self.used_namespaces[own_namespace]:
             if ns != own_namespace and ns != self.ua_base_model_URI:
                 for nodeid, node in self.nodes[ns].items():
                     if node.nodetype == "UADataType":
                         self._add_datatype(ns, node)
 
-        # objects, methods, events
-        for nodeid, node in self.nodes[own_namespace].items():
+        # objects, methods, events from included parent namespaces (before own, so own can override)
+        for included_ns in include_object_namespaces or []:
+            self._process_object_types(included_ns, model_any_of)
+
+        # objects, methods, events from own namespace (last wins for overrides)
+        self._process_object_types(own_namespace, model_any_of)
+
+        if model_any_of:
+            js_model = self.schema.any_of()  # type: ignore
+            for ref in model_any_of:
+                js_model = js_model.add().ref(ref).end()
+            self.schema = js_model.end()
+
+    def _process_object_types(self, namespace: str, model_any_of: list[str]) -> None:
+        for nodeid, node in self.nodes[namespace].items():
             match node.nodetype:
                 case "UAObjectType":
                     # ignore "HasProperty" references as these only define constant properties of the object type
                     for object in WrappedXMLParser.get_node_children_by_ref_types(
                         node,
-                        self.nodes[own_namespace],
+                        self.nodes[namespace],
                         reftypes=["HasComponent"],
                         nodetype="UAObject",
                     ):
@@ -199,19 +219,19 @@ class NodesetToJSONSchema:
                         js_objecttype = self.schema.definition(displayname).object()
                         # resolve type hierarchy
                         js_objecttype = self._resolve_type_hierarchy_variables(
-                            datatype, own_namespace, js_objecttype
+                            datatype, namespace, js_objecttype
                         )
                         # overwrite with own variables
                         variable_nodes = (
                             WrappedXMLParser.get_node_children_by_ref_types(
                                 object,
-                                self.nodes[own_namespace],
+                                self.nodes[namespace],
                                 reftypes=["HasComponent", "HasProperty"],
                                 nodetype="UAVariable",
                             )
                         )
                         js_objecttype = self._add_object_variables(
-                            own_namespace, js_objecttype, variable_nodes
+                            namespace, js_objecttype, variable_nodes
                         )
                         if object.desc:
                             js_objecttype = js_objecttype.description(object.desc)
@@ -220,7 +240,7 @@ class NodesetToJSONSchema:
                             target_namespace_parent, node_id_parent = (
                                 self._transform_node_id(
                                     WrappedXMLParser.get_node_type(object),
-                                    own_namespace,
+                                    namespace,
                                 )
                             )
                             parent_object = self.nodes[target_namespace_parent].get(
@@ -231,10 +251,10 @@ class NodesetToJSONSchema:
                                     parent_object.desc
                                 )
                         ce_base, ce_ver = self._namespace_to_cloudevents_type_path(
-                            own_namespace
+                            namespace
                         )
                         ce_ds = self._namespace_to_cloudevents_dataschema_path(
-                            own_namespace
+                            namespace
                         )
                         js_objecttype = (
                             js_objecttype.set(
@@ -248,7 +268,7 @@ class NodesetToJSONSchema:
                             .set("x-opc-ua-type", "DataSet")
                         )
                         state_machine = self._resolve_type_hierarchy_states(
-                            datatype, own_namespace
+                            datatype, namespace
                         )
                         if state_machine["states"] or state_machine["transitions"]:
                             js_objecttype = js_objecttype.set(
@@ -258,44 +278,38 @@ class NodesetToJSONSchema:
 
                         # add methods
                         js_methodtype = self._resolve_type_hierarchy_methods(
-                            datatype, own_namespace, self.schema, model_any_of
+                            datatype, namespace, self.schema, model_any_of
                         )
                         method_nodes = WrappedXMLParser.get_node_children_by_ref_types(
                             object,
-                            self.nodes[own_namespace],
+                            self.nodes[namespace],
                             reftypes=["HasComponent", "HasProperty"],
                             nodetype="UAMethod",
                         )
                         self.schema = self._add_methods(
-                            own_namespace, js_methodtype, method_nodes, model_any_of
+                            namespace, js_methodtype, method_nodes, model_any_of
                         )
 
                         # add events
                         js_eventtype = self._resolve_type_hierarchy_events(
-                            datatype, own_namespace, self.schema, model_any_of
+                            datatype, namespace, self.schema, model_any_of
                         )
                         event_nodes = WrappedXMLParser.get_node_children_by_ref_types(
                             object,
-                            self.nodes[own_namespace],
+                            self.nodes[namespace],
                             reftypes=["GeneratesEvent"],
                             nodetype="UAObjectType",
                         )
                         self.schema = self._add_events(
-                            own_namespace, js_eventtype, event_nodes, model_any_of
+                            namespace, js_eventtype, event_nodes, model_any_of
                         )
 
                 case "UADataType":
-                    self._add_datatype(own_namespace, node)
+                    self._add_datatype(namespace, node)
 
                 case "UAObject":
                     # ignore the main object and only "instantate" the object types
                     pass
-
-        if model_any_of:
-            js_model = self.schema.any_of()  # type: ignore
-            for ref in model_any_of:
-                js_model = js_model.add().ref(ref).end()
-            self.schema = js_model.end()
 
     def save_schema(self, path: Path):
         self.schema.save(path, indent=2)
@@ -617,6 +631,13 @@ class NodesetToJSONSchema:
     ) -> JSONSchemaBuilder:
         for child_node in child_nodes:
             if child_node.nodetype == "UAVariable":
+                # skip placeholder variables (OptionalPlaceholder=i=11508, MandatoryPlaceholder=i=11510)
+                if any(
+                    ref.reftype == "HasModellingRule"
+                    and ref.target in ("i=11508", "i=11510")
+                    for ref in child_node.refs
+                ):
+                    continue
                 js_objecttype = js_objecttype.prop(str(child_node.displayname))
                 datatype = self.aliases[own_namespace].get(
                     str(child_node.datatype), str(child_node.datatype)

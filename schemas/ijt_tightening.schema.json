@@ -4,6 +4,18 @@
   "title": "OPC 40451-1: Tightening Systems General for MQTT",
   "description": "A JSON Schema to represent the OPC 40451-1: Tightening Systems General information model for a MQTT environment.",
   "$defs": {
+    "AssetManagement": {
+      "type": "object",
+      "properties": {
+        "UIElement": {
+          "$ref": "#/$defs/None"
+        }
+      },
+      "description": "The AssetManagement Object is an instance of FunctionalGroupType to group assets and related objects in the joining system.",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.AssetManagement.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/AssetManagement/",
+      "x-opc-ua-type": "DataSet"
+    },
     "LocalizedText": {
       "type": "object",
       "properties": {
@@ -193,6 +205,48 @@
       "description": "This structure represents the errors occurred in the system which are outside the boundaries of the given program.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.5",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ErrorInformationDataType.v1",
       "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ErrorInformationDataType/"
+    },
+    "Health": {
+      "type": "object",
+      "properties": {
+        "UIElement": {
+          "$ref": "#/$defs/None"
+        },
+        "DeviceHealth": {
+          "$ref": "#/$defs/DeviceHealthEnumeration",
+          "description": "DeviceHealth indicates the status as defined by NAMUR Recommendation NE107. Clients can read or monitor this Variable to determine the device condition."
+        },
+        "ErrorCode": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "ErrorCode is the system specific code for the error occurred."
+        },
+        "ErrorMessage": {
+          "$ref": "#/$defs/LocalizedText",
+          "description": "ErrorMessage is the user readable text of the error reported by the given asset."
+        },
+        "ErrorTimestamp": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "ErrorTimestamp is the timestamp when the error occurred in the given asset."
+        },
+        "Temperature": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Temperature is the measured temperature of the asset."
+        }
+      },
+      "description": "The Health Object is an instance of FunctionalGroupType to group health related parameters for all the assets in a Joining System.",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Health.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Health/",
+      "x-opc-ua-type": "DataSet"
     },
     "JoiningProcessMetaDataType": {
       "type": "object",
@@ -898,12 +952,210 @@
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JointDesignDataType.v1",
       "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JointDesignDataType/"
     },
+    "MachineryBuildingBlocks": {
+      "type": "object",
+      "properties": {},
+      "description": "The MachineryBuildingBlocks contains building blocks from OPC UA for Machinery.",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.MachineryBuildingBlocks.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/MachineryBuildingBlocks/",
+      "x-opc-ua-type": "DataSet"
+    },
+    "Maintenance": {
+      "type": "object",
+      "properties": {
+        "UIElement": {
+          "$ref": "#/$defs/None"
+        }
+      },
+      "description": "The Maintenance Object is an instance of FunctionalGroupType to group maintenance related parameters for the given asset in a Joining System.",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Maintenance.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Maintenance/",
+      "x-opc-ua-type": "DataSet"
+    },
     "Number": {
       "type": "object",
       "properties": {},
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.9",
       "x-cloudevent-type": "org.opcfoundation.BaseModel.Number.v1",
       "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/Number/"
+    },
+    "SignalDataType": {
+      "type": "object",
+      "properties": {
+        "SignalId": {
+          "$ref": "#/$defs/TrimmedString",
+          "description": "It is the identifier of the signal."
+        },
+        "SignalValue": {
+          "$ref": "#/$defs/Number",
+          "description": "It is the value of the signal."
+        },
+        "SignalDescription": {
+          "type": "string",
+          "description": "It is the description of the signal."
+        },
+        "SignalType": {
+          "type": "integer",
+          "description": "It is the type of the signal."
+        }
+      },
+      "description": "This structure contains the signal information which is used in SetIOSignals and GetIOSignals methods.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.14",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SignalDataType.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/SignalDataType/"
+    },
+    "Parameters": {
+      "type": "object",
+      "properties": {
+        "Connected": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Connected indicates if a given asset is connected or disconnected. It can change by DisconnectAsset method or by some other external interface."
+        },
+        "Enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Enabled indicates if a given asset is enabled or disabled. It can change by EnableAsset method or by some other external interface."
+        },
+        "IOSignals": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/SignalDataType"
+          },
+          "description": "IOSignals is an array of signals available for the asset."
+        },
+        "Type": {
+          "type": "integer",
+          "description": "Type is the classification of a Tool."
+        },
+        "Capacity": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "Capacity is the nominal capacity of the battery."
+        },
+        "ChargeCycleCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "ChargeCycleCount is the number of times the battery has been charged since the initial operation date."
+        },
+        "NominalVoltage": {
+          "type": "number",
+          "description": "NominalVoltage is the nominal DC voltage of the battery."
+        },
+        "StateOfCharge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "StateOfCharge is the state of charge (SOC) indicator functions as a sort of fuel gauge that displays the usable amount of energy. This helps determine optimal charging and discharging. It is given in percentage."
+        },
+        "StateOfHealth": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "StateOfHealth is the State of Health is a measurement that reflects the general condition of a battery and its ability to deliver the specified performance compared with a fresh battery. It considers such factors as charge acceptance, internal resistance, voltage, and self-discharge. It is given in percentage."
+        },
+        "CableLength": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "CableLength is the length of the cable."
+        },
+        "FeedingSpeed": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "FeedingSpeed indicates the output in parts per time. Example: fasteners / second."
+        },
+        "FillLevel": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "FillLevel is the fill level in the feeder in percentage [%]. (0%=empty, 100% = full)."
+        },
+        "Material": {
+          "type": "string",
+          "description": "Material is the type or name of the part which is supplied by the feeder."
+        },
+        "StorageCapacity": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "StorageCapacity is the static information on size of the storage in Bytes."
+        },
+        "UsedSpace": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "UsedSpace is the static information on size of the used space in Bytes."
+        },
+        "ActualPower": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "ActualPower is the actual load consumption of the power supply."
+        },
+        "InputSpecification": {
+          "type": "string",
+          "description": "InputSpecification is the input specification of the power supply. Example: 230 V, 50/60 Hz, 10 A."
+        },
+        "NominalPower": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "NominalPower is the maximum output power of the power supply."
+        },
+        "OutputSpecification": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "OutputSpecification is the output specification of the power supply."
+        },
+        "MeasuredValue": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "MeasuredValue is the actual measured value reported from a sensor."
+        },
+        "OverloadCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "OverloadCount is the number of overloads of the sensor, where the permissible load of the sensor was exceeded."
+        },
+        "NodeNumber": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "NodeNumber is the node identifier in multiple configurations. Examples: Cabinet with one controller and multiple servo/modules."
+        }
+      },
+      "description": "The Parameters Object is an instance of 0:FolderType to group set of common parameters of an asset in a joining system.",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Parameters.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Parameters/",
+      "x-opc-ua-type": "DataSet"
     },
     "ReportedValueDataType": {
       "type": "object",
@@ -951,29 +1203,13 @@
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ReportedValueDataType.v1",
       "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ReportedValueDataType/"
     },
-    "SignalDataType": {
+    "Results": {
       "type": "object",
-      "properties": {
-        "SignalId": {
-          "$ref": "#/$defs/TrimmedString",
-          "description": "It is the identifier of the signal."
-        },
-        "SignalValue": {
-          "$ref": "#/$defs/Number",
-          "description": "It is the value of the signal."
-        },
-        "SignalDescription": {
-          "type": "string",
-          "description": "It is the description of the signal."
-        },
-        "SignalType": {
-          "type": "integer",
-          "description": "It is the type of the signal."
-        }
-      },
-      "description": "This structure contains the signal information which is used in SetIOSignals and GetIOSignals methods.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.14",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SignalDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/SignalDataType/"
+      "properties": {},
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/6.6",
+      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Results.v1",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Results/",
+      "x-opc-ua-type": "DataSet"
     },
     "TraceDataType": {
       "type": "object",
@@ -1016,6 +1252,24 @@
   "anyOf": [
     {
       "$ref": "#/$defs/meta"
+    },
+    {
+      "$ref": "#/$defs/Health"
+    },
+    {
+      "$ref": "#/$defs/MachineryBuildingBlocks"
+    },
+    {
+      "$ref": "#/$defs/Maintenance"
+    },
+    {
+      "$ref": "#/$defs/Parameters"
+    },
+    {
+      "$ref": "#/$defs/AssetManagement"
+    },
+    {
+      "$ref": "#/$defs/Results"
     }
   ]
 }

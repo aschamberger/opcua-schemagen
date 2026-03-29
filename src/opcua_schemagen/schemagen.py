@@ -215,6 +215,13 @@ def appschema(
             help="Replace NodeId values in Nodeset XML (format: FROM->TO). Can be used multiple times.",
         ),
     ] = [],
+    include_objects: Annotated[
+        list[str],
+        typer.Option(
+            "--include-objects",
+            help="Include objects from additional spec paths (relative to UA-Nodeset/). Can be used multiple times.",
+        ),
+    ] = [],
 ):
     print(f"[bold purple]Searching nodeset2.xml file for: {spec}[/bold purple]")
     nodeset_file = get_nodeset_file_from_spec_path(spec)
@@ -226,8 +233,25 @@ def appschema(
         if "->" in item:
             find_text, replace_text = item.split("->", 1)
             replacements.append((find_text, replace_text))
+
+    include_object_namespaces: list[str] = []
+    for inc_spec in include_objects:
+        inc_file = get_nodeset_file_from_spec_path(inc_spec)
+        print(f"[bold purple]Including objects from: {inc_file}[/bold purple]")
+        inc_parser = WrappedXMLParser()
+        inc_parser.parse_sync(inc_file)
+        inc_namespaces = inc_parser.get_nodeset_namespaces()
+        if inc_namespaces:
+            include_object_namespaces.append(inc_namespaces[0][0])
+        else:
+            print(f"[red]Could not resolve namespace URI for {inc_spec}[/red]")
+
     ns2js = NodesetToJSONSchema(
-        main_path, nodeset_file, spec, nodeid_replacements=replacements
+        main_path,
+        nodeset_file,
+        spec,
+        nodeid_replacements=replacements,
+        include_object_namespaces=include_object_namespaces,
     )
     if filename == "":
         filename = f"{spec.lower().replace('/', '_')}.schema.json"
