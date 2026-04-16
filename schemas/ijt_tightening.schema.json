@@ -13,7 +13,7 @@
       },
       "description": "The AssetManagement Object is an instance of FunctionalGroupType to group assets and related objects in the joining system.",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.AssetManagement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/AssetManagement/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AssetManagement",
       "x-opc-ua-type": "DataSet"
     },
     "LocalizedText": {
@@ -45,13 +45,13 @@
       },
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3",
       "x-cloudevent-type": "org.opcfoundation.BaseModel.EUInformation.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/EUInformation/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/EUInformation"
     },
     "UriString": {
       "type": "string",
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.39",
       "x-cloudevent-type": "org.opcfoundation.BaseModel.UriString.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/UriString/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/UriString"
     },
     "CalibrationDataType": {
       "type": "object",
@@ -101,7 +101,7 @@
       },
       "description": "This structure contains the Calibration information. It is used as an input argument in SetCalibration method.\nNote: The input data sent in SetCalibration shall be updated in the respective parameters of the asset under Maintenance/Calibration.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.13",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.CalibrationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/CalibrationDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/CalibrationDataType"
     },
     "DesignValueDataType": {
       "type": "object",
@@ -130,13 +130,13 @@
       },
       "description": "This structure provides the design value for a given physical quantity. It is used in JointDesignDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.18",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.DesignValueDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/DesignValueDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DesignValueDataType"
     },
     "TrimmedString": {
       "type": "string",
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.43",
       "x-cloudevent-type": "org.opcfoundation.BaseModel.TrimmedString.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/TrimmedString/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/TrimmedString"
     },
     "EntityDataType": {
       "type": "object",
@@ -177,7 +177,7 @@
       },
       "description": "This structure provides the identification data for a given entity in the system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.10",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.EntityDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/EntityDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/EntityDataType"
     },
     "ErrorInformationDataType": {
       "type": "object",
@@ -204,7 +204,7 @@
       },
       "description": "This structure represents the errors occurred in the system which are outside the boundaries of the given program.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.5",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ErrorInformationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ErrorInformationDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ErrorInformationDataType"
     },
     "Health": {
       "type": "object",
@@ -245,7 +245,7 @@
       },
       "description": "The Health Object is an instance of FunctionalGroupType to group health related parameters for all the assets in a Joining System.",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.Health.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Health/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Health",
       "x-opc-ua-type": "DataSet"
     },
     "JoiningProcessMetaDataType": {
@@ -307,7 +307,7 @@
       },
       "description": "This structure provides the meta data which describes the joining process.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.20",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningProcessMetaDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningProcessMetaDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessMetaDataType"
     },
     "JoiningProcessDataType": {
       "type": "object",
@@ -324,7 +324,7 @@
       },
       "description": "This structure provides the base container for any joining process in a joining system. \nNote: This specification defines the meta data of a JoiningProcess, and the actual content of the Joining Process is application specific.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.19",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningProcessDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningProcessDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessDataType"
     },
     "JoiningProcessIdentificationDataType": {
       "type": "object",
@@ -344,7 +344,7 @@
       },
       "description": "This structure contains the identification information of a Joining Process. It is used in set of methods defined in JoiningProcessManagementType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.21",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningProcessIdentificationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningProcessIdentificationDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessIdentificationDataType"
     },
     "TraceContentDataType": {
       "type": "object",
@@ -388,7 +388,7 @@
       },
       "description": "It is to describe the trace samples for a given program step. It is used in StepTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.9",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.TraceContentDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/TraceContentDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/TraceContentDataType"
     },
     "StepTraceDataType": {
       "type": "object",
@@ -429,7 +429,7 @@
       },
       "description": "It is to describe of the trace for a given program step. It is used in JoiningTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.8",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.StepTraceDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/StepTraceDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StepTraceDataType"
     },
     "JoiningTraceDataType": {
       "type": "object",
@@ -444,7 +444,7 @@
       },
       "description": "This structure is to describe the content of traces for all the steps in the given program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.7",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningTraceDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningTraceDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningTraceDataType"
     },
     "ResultEvaluationEnum": {
       "anyOf": [
@@ -471,7 +471,7 @@
       ],
       "description": "Indicates whether a result was in tolerance\nhttps://reference.opcfoundation.org/Machinery/Result/v101/docs/10.3",
       "x-cloudevent-type": "org.opcfoundation.Machinery.Result.ResultEvaluationEnum.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/ResultEvaluationEnum/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/ResultEvaluationEnum"
     },
     "ResultValueDataType": {
       "type": "object",
@@ -583,7 +583,7 @@
       },
       "description": "It is used to report measurement values of the joining operation. Those are meant to characterize the quality of the process. It is used in JoiningResultDataType and StepResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.3",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ResultValueDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ResultValueDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultValueDataType"
     },
     "StepResultDataType": {
       "type": "object",
@@ -635,7 +635,7 @@
       },
       "description": "This structure represents the measurement values corresponding to a given step in the program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.4",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.StepResultDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/StepResultDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StepResultDataType"
     },
     "JoiningResultDataType": {
       "type": "object",
@@ -679,7 +679,7 @@
       },
       "description": "This structure represents the data associated with Joining Result and the corresponding measurement values.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.2",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningResultDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningResultDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningResultDataType"
     },
     "KeyValueDataType": {
       "type": "object",
@@ -694,7 +694,7 @@
       },
       "description": "This structure is similar to 0:KeyValuePair which uses 0:TrimmedString instead of 0:QualifiedName.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.22",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.KeyValueDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/KeyValueDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/KeyValueDataType"
     },
     "ResultCounterDataType": {
       "type": "object",
@@ -717,7 +717,7 @@
       },
       "description": "This structure is used to provide various types of counters associated to a Result. These counters are related to a joining process with sub-processes.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.11",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ResultCounterDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ResultCounterDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultCounterDataType"
     },
     "JoiningResultMetaDataType": {
       "type": "object",
@@ -803,7 +803,7 @@
       },
       "description": "This structure is a subtype of ResultMetaDataType. It is used to define additional meta data of a Result in a joining system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.1",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningResultMetaDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JoiningResultMetaDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningResultMetaDataType"
     },
     "JointComponentDataType": {
       "type": "object",
@@ -840,7 +840,7 @@
       },
       "description": "This structure is the base container for any joint component such as Bolt, Rivet, Gasket, Glue string, etc. \nNote: The concrete definition of joint component is not defined in this version of the specification.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.17",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JointComponentDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JointComponentDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointComponentDataType"
     },
     "JointDataType": {
       "type": "object",
@@ -913,7 +913,7 @@
       },
       "description": "This structure provides the joint information. Joint is the physical outcome of the joining operation which determines the properties of the point where multiple parts are assembled.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.15",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JointDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JointDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointDataType"
     },
     "JointDesignDataType": {
       "type": "object",
@@ -950,14 +950,14 @@
       },
       "description": "This structure provides the design information of a given joint.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.16",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.JointDesignDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/JointDesignDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointDesignDataType"
     },
     "MachineryBuildingBlocks": {
       "type": "object",
       "properties": {},
       "description": "The MachineryBuildingBlocks contains building blocks from OPC UA for Machinery.",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.MachineryBuildingBlocks.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/MachineryBuildingBlocks/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/MachineryBuildingBlocks",
       "x-opc-ua-type": "DataSet"
     },
     "Maintenance": {
@@ -969,7 +969,7 @@
       },
       "description": "The Maintenance Object is an instance of FunctionalGroupType to group maintenance related parameters for the given asset in a Joining System.",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.Maintenance.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Maintenance/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Maintenance",
       "x-opc-ua-type": "DataSet"
     },
     "Number": {
@@ -977,7 +977,7 @@
       "properties": {},
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.9",
       "x-cloudevent-type": "org.opcfoundation.BaseModel.Number.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/Number/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/Number"
     },
     "SignalDataType": {
       "type": "object",
@@ -1001,7 +1001,7 @@
       },
       "description": "This structure contains the signal information which is used in SetIOSignals and GetIOSignals methods.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.14",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.SignalDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/SignalDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SignalDataType"
     },
     "Parameters": {
       "type": "object",
@@ -1154,7 +1154,7 @@
       },
       "description": "The Parameters Object is an instance of 0:FolderType to group set of common parameters of an asset in a joining system.",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.Parameters.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Parameters/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Parameters",
       "x-opc-ua-type": "DataSet"
     },
     "ReportedValueDataType": {
@@ -1201,14 +1201,14 @@
       },
       "description": "This structure provides the given value and corresponding limits for a given physical quantity (if applicable).\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.12",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.ReportedValueDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/ReportedValueDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReportedValueDataType"
     },
     "Results": {
       "type": "object",
       "properties": {},
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/6.6",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.Results.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/Results/",
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Results",
       "x-opc-ua-type": "DataSet"
     },
     "TraceDataType": {
@@ -1225,7 +1225,7 @@
       },
       "description": "It is a base type to encapsulate common data for a Trace.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.6",
       "x-cloudevent-type": "org.opcfoundation.IJT.Base.TraceDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/TraceDataType/"
+      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/TraceDataType"
     },
     "meta": {
       "type": "object",

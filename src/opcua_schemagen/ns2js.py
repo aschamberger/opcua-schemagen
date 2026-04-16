@@ -263,7 +263,7 @@ class NodesetToJSONSchema:
                             )
                             .set(
                                 "x-cloudevent-dataschema",
-                                f"{ce_ds}{displayname}/",
+                                f"{ce_ds}#/$defs/{displayname}",
                             )
                             .set("x-opc-ua-type", "DataSet")
                         )
@@ -802,11 +802,11 @@ class NodesetToJSONSchema:
                     js_methodtype = (
                         js_methodtype.set(
                             "x-cloudevent-type",
-                            f"{ce_base}.{method}.{ce_ver}",
+                            f"{ce_base}.{child_node.displayname}.{ce_ver}",
                         )
                         .set(
                             "x-cloudevent-dataschema",
-                            f"{ce_ds}{method}/",
+                            f"{ce_ds}#/$defs/{method}",
                         )
                         .set("x-opc-ua-type", "Method")
                         .end()
@@ -876,7 +876,7 @@ class NodesetToJSONSchema:
                     )
                     .set(
                         "x-cloudevent-dataschema",
-                        f"{ce_ds}{displayname}/",
+                        f"{ce_ds}#/$defs/{child_node.displayname}",
                     )
                     .set("x-opc-ua-type", "Event")
                     .end()
@@ -1015,6 +1015,6 @@ class NodesetToJSONSchema:
             f"{ce_base}.{node.displayname}.{ce_ver}",
         ).set(
             "x-cloudevent-dataschema",
-            f"{ce_ds}{node.displayname}/",
+            f"{ce_ds}#/$defs/{node.displayname}",
         )
         self.schema = js_datatype.end()
