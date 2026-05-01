@@ -117,10 +117,13 @@ class NodesetToJSONSchema:
         include_object_namespaces: list[str] | None = None,
         include_all_addins: bool = False,
         addin_type_names: list[str] | None = None,
+        interface_replacements: list[tuple[tuple[str, str], tuple[str, str]]]
+        | None = None,
     ) -> None:
         self._nodeid_replacements = nodeid_replacements or []
         self._include_all_addins = include_all_addins
         self._addin_type_names = addin_type_names or []
+        self._interface_replacements = interface_replacements or []
         self._nodeset_file_to_uri(nodeset_path)
 
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
@@ -204,7 +207,11 @@ class NodesetToJSONSchema:
             self.schema = js_model.end()
 
     def _process_object_node(
-        self, object: NodeData, namespace: str, model_any_of: list[str]
+        self,
+        object: NodeData,
+        namespace: str,
+        model_any_of: list[str],
+        injected_types: list[tuple[str, str]] | None = None,
     ) -> None:
         datatype = WrappedXMLParser.get_node_type(object)
         displayname = str(object.displayname)
@@ -217,6 +224,12 @@ class NodesetToJSONSchema:
         js_objecttype = self._resolve_type_hierarchy_variables(
             datatype, namespace, js_objecttype
         )
+        # resolve variables from cross-namespace interface injections
+        if injected_types:
+            for to_ns, to_id in injected_types:
+                js_objecttype = self._resolve_type_hierarchy_variables(
+                    to_id, to_ns, js_objecttype
+                )
         # overwrite with own variables
         variable_nodes = WrappedXMLParser.get_node_children_by_ref_types(
             object,
@@ -288,6 +301,17 @@ class NodesetToJSONSchema:
         for nodeid, node in self.nodes[namespace].items():
             match node.nodetype:
                 case "UAObjectType":
+                    # Compute cross-namespace interface injections for children of this type
+                    injected_types: list[tuple[str, str]] = []
+                    if self._interface_replacements:
+                        type_ns, type_id = self._transform_node_id(nodeid, namespace)
+                        for (from_ns, from_id), (
+                            to_ns,
+                            to_id,
+                        ) in self._interface_replacements:
+                            if type_ns == from_ns and type_id == from_id:
+                                injected_types.append((to_ns, to_id))
+
                     # ignore "HasProperty" references as these only define constant properties of the object type
                     for object in WrappedXMLParser.get_node_children_by_ref_types(
                         node,
@@ -295,7 +319,12 @@ class NodesetToJSONSchema:
                         reftypes=["HasComponent"],
                         nodetype="UAObject",
                     ):
-                        self._process_object_node(object, namespace, model_any_of)
+                        self._process_object_node(
+                            object,
+                            namespace,
+                            model_any_of,
+                            injected_types or None,
+                        )
 
                     # process HasAddIn children if addin support is requested
                     if self._include_all_addins or self._addin_type_names:

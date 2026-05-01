@@ -236,6 +236,17 @@ def appschema(
             help="Include addin objects whose TypeDefinition display name matches the given value. Can be used multiple times to include specific addin types.",
         ),
     ] = [],
+    interface_replace: Annotated[
+        list[str],
+        typer.Option(
+            "--interface-replace",
+            help=(
+                "Replace an interface type referenced via HasInterface with another type during variable resolution "
+                "(format: SPEC/PATH|ns=1;i=FROM_ID->SPEC/PATH|ns=1;i=TO_ID). "
+                "Used for cross-namespace interface injection patterns. Can be used multiple times."
+            ),
+        ),
+    ] = [],
 ):
     print(f"[bold purple]Searching nodeset2.xml file for: {spec}[/bold purple]")
     nodeset_file = get_nodeset_file_from_spec_path(spec)
@@ -260,6 +271,39 @@ def appschema(
         else:
             print(f"[red]Could not resolve namespace URI for {inc_spec}[/red]")
 
+    interface_replacements: list[tuple[tuple[str, str], tuple[str, str]]] = []
+    for item in interface_replace:
+        if "->" in item:
+            from_part, to_part = item.split("->", 1)
+            if "|" in from_part and "|" in to_part:
+                from_spec, from_nodeid = from_part.split("|", 1)
+                to_spec, to_nodeid = to_part.split("|", 1)
+                from_file = get_nodeset_file_from_spec_path(from_spec)
+                to_file = get_nodeset_file_from_spec_path(to_spec)
+                from_parser = WrappedXMLParser()
+                from_parser.parse_sync(from_file)
+                to_parser = WrappedXMLParser()
+                to_parser.parse_sync(to_file)
+                from_namespaces = from_parser.get_nodeset_namespaces()
+                to_namespaces = to_parser.get_nodeset_namespaces()
+                if from_namespaces and to_namespaces:
+                    from_ns = from_namespaces[0][0]
+                    to_ns = to_namespaces[0][0]
+                    interface_replacements.append(
+                        ((from_ns, from_nodeid), (to_ns, to_nodeid))
+                    )
+                    print(
+                        f"[bold purple]Interface replace: {from_ns}|{from_nodeid} -> {to_ns}|{to_nodeid}[/bold purple]"
+                    )
+                else:
+                    print(
+                        f"[red]Could not resolve namespace URI for interface-replace: {item}[/red]"
+                    )
+            else:
+                print(
+                    f"[red]Invalid --interface-replace format (expected SPEC|ns=1;i=X->SPEC|ns=1;i=Y): {item}[/red]"
+                )
+
     ns2js = NodesetToJSONSchema(
         main_path,
         nodeset_file,
@@ -268,6 +312,7 @@ def appschema(
         include_object_namespaces=include_object_namespaces,
         include_all_addins=include_all_addins,
         addin_type_names=include_addin if include_addin else [],
+        interface_replacements=interface_replacements,
     )
     if filename == "":
         filename = f"{spec.lower().replace('/', '_')}.schema.json"

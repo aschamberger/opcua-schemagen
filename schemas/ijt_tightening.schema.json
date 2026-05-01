@@ -2355,6 +2355,53 @@
             "null"
           ],
           "description": "NodeNumber is the node identifier in multiple configurations. Examples: Cabinet with one controller and multiple servo/modules."
+        },
+        "DesignType": {
+          "type": "integer",
+          "description": "DesignType provides information on the design of the Tool."
+        },
+        "DriveMethod": {
+          "type": "integer",
+          "description": "DriveMethod provides information on the drive method of the motor of the Tool."
+        },
+        "DriveType": {
+          "type": "integer",
+          "description": "DriveType provides information on the drive type of the Tool."
+        },
+        "MaxSpeed": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "MaxSpeed is the maximum rotation speed of the driving shaft."
+        },
+        "MaxTorque": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "MaxTorque is the maximum allowed torque for which the tool may be used for tightening processes. For Click Wrenches, it may not be available."
+        },
+        "MinTorque": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "MinTorque is the minimum allowed torque for which the tool may be used for tightening processes."
+        },
+        "MotorType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "MotorType is the type of motor in the tool."
+        },
+        "ShutOffMethod": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "ShutOffMethod provides information on the shutoff method of the tool."
         }
       },
       "description": "The Parameters Object is an instance of 0:FolderType to group set of common parameters of an asset in a joining system.",
