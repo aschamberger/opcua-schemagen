@@ -70,15 +70,11 @@
           "$ref": "#/$defs/LocalizedText"
         }
       },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3",
-      "x-cloudevent-type": "org.opcfoundation.BaseModel.EUInformation.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/EUInformation"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3"
     },
     "OutputInfoType": {
       "type": "integer",
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.4",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.OutputInfoType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/OutputInfoType"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.4"
     },
     "OutputInformationDataType": {
       "type": "object",
@@ -113,9 +109,7 @@
           "description": "SerialNumber defines an Identifier to identify the one entity of the item (Product Identifier). Shall be provided if defined in OutputInfo."
         }
       },
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.3",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.OutputInformationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/OutputInformationDataType"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.3"
     },
     "BOMComponentInformationDataType": {
       "type": "object",
@@ -133,9 +127,7 @@
           "description": "The engineering unit of the quantity."
         }
       },
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.5",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.BOMComponentInformationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/BOMComponentInformationDataType"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.5"
     },
     "BOMInformationDataType": {
       "type": "object",
@@ -152,9 +144,7 @@
           "description": "Contains information about components."
         }
       },
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.6",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.BOMInformationDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/BOMInformationDataType"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.6"
     },
     "CancelResponse": {
       "type": "object",
@@ -262,9 +252,7 @@
           }
         }
       },
-      "description": "A subtype of OPC UA Structure that defines two linked data items: an ID, which is a unique identifier for a property within the scope of the associated resource, and the value, which is the data for the property.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.9",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95PropertyDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95PropertyDataType"
+      "description": "A subtype of OPC UA Structure that defines two linked data items: an ID, which is a unique identifier for a property within the scope of the associated resource, and the value, which is the data for the property.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.9"
     },
     "ISA95EquipmentDataType": {
       "type": "object",
@@ -306,9 +294,7 @@
           "description": "Any associated properties, or empty if there are no properties defined."
         }
       },
-      "description": "Defines an equipment resource or a piece of equipment, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.1",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95EquipmentDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95EquipmentDataType"
+      "description": "Defines an equipment resource or a piece of equipment, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.1"
     },
     "ISA95MaterialDataType": {
       "type": "object",
@@ -374,9 +360,7 @@
           "description": "Any associated properties, or empty if there are no properties defined."
         }
       },
-      "description": "Defines a material resource, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.6",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95MaterialDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95MaterialDataType"
+      "description": "Defines a material resource, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.6"
     },
     "ISA95ParameterDataType": {
       "type": "object",
@@ -406,9 +390,7 @@
           }
         }
       },
-      "description": "A subtype of OPC UA Structure that defines three linked data items: the ID, which is a unique identifier for a property, the value, which is the data that is identified, and an optional description of the parameter.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.10",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95ParameterDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95ParameterDataType"
+      "description": "A subtype of OPC UA Structure that defines three linked data items: the ID, which is a unique identifier for a property, the value, which is the data that is identified, and an optional description of the parameter.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.10"
     },
     "ISA95PersonnelDataType": {
       "type": "object",
@@ -450,9 +432,7 @@
           "description": "Any associated properties, or empty if there are no properties defined."
         }
       },
-      "description": "Defines a personnel resource or a person, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.7",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95PersonnelDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95PersonnelDataType"
+      "description": "Defines a personnel resource or a person, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.7"
     },
     "ISA95PhysicalAssetDataType": {
       "type": "object",
@@ -494,9 +474,7 @@
           "description": "Any associated properties, or empty if there are no properties defined."
         }
       },
-      "description": "Defines a physical asset, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.8",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95PhysicalAssetDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95PhysicalAssetDataType"
+      "description": "Defines a physical asset, a quantity, an optional description, and an optional collection of properties.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.8"
     },
     "ISA95WorkMasterDataType": {
       "type": "object",
@@ -517,9 +495,7 @@
           "description": "Defined parameters for the Work Master."
         }
       },
-      "description": "Defines a Work Master ID and the defined parameters for the Work Master.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.11",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95WorkMasterDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95WorkMasterDataType"
+      "description": "Defines a Work Master ID and the defined parameters for the Work Master.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.11"
     },
     "ISA95JobOrderDataType": {
       "type": "object",
@@ -601,9 +577,7 @@
           "description": "A specification of any material requirements associated with the job order, may be empty if not specified."
         }
       },
-      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.4",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95JobOrderDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95JobOrderDataType"
+      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.4"
     },
     "RelativePathElement": {
       "type": "object",
@@ -621,9 +595,7 @@
           "type": "string"
         }
       },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30",
-      "x-cloudevent-type": "org.opcfoundation.BaseModel.RelativePathElement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/RelativePathElement"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30"
     },
     "RelativePath": {
       "type": "object",
@@ -635,9 +607,7 @@
           }
         }
       },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30",
-      "x-cloudevent-type": "org.opcfoundation.BaseModel.RelativePath.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/RelativePath"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part4/7.30"
     },
     "ISA95StateDataType": {
       "type": "object",
@@ -655,9 +625,7 @@
           "description": "The state represented as number. Shall represent the same number as the Number subvariable of the CurrentState Variable of a StateMachine would."
         }
       },
-      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.2",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95StateDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95StateDataType"
+      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.2"
     },
     "ISA95JobOrderAndStateDataType": {
       "type": "object",
@@ -674,9 +642,7 @@
           "description": "The State of the job order. The array shall provide at least one entry representing the top level state and potentially additional entries representing substates. The first entry shall be the top level entry, having the BrowsePath set to Null. The order of the subtstates is not defined."
         }
       },
-      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.3",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95JobOrderAndStateDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95JobOrderAndStateDataType"
+      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.3"
     },
     "ISA95JobResponseDataType": {
       "type": "object",
@@ -752,9 +718,7 @@
           "description": "A specification of any material requirements associated with the job response, may be empty if not specified."
         }
       },
-      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.5",
-      "x-cloudevent-type": "org.opcfoundation.ISA95-JOBCONTROL_V2.ISA95JobResponseDataType.v2",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/ISA95-JOBCONTROL_V2/v2.0.0/#/$defs/ISA95JobResponseDataType"
+      "description": "Defines the information needed to schedule and execute a job.\nhttps://reference.opcfoundation.org/ISA95JOBCONTROL/v200/docs/7.3.5"
     },
     "ISA95JobOrderStatusEventType": {
       "type": "object",
@@ -795,9 +759,7 @@
           "description": "Machine running in production mode."
         }
       ],
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.1",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.JobExecutionMode.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/JobExecutionMode"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.1"
     },
     "JobOrderControl": {
       "type": "object",
@@ -1199,9 +1161,7 @@
           "description": "Job order was not executed successful."
         }
       ],
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.2",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.JobResult.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/JobResult"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.2"
     },
     "OutputInfoTypeMasks": {
       "anyOf": [
@@ -1253,9 +1213,7 @@
           "description": "Parameters specific to the performance like pressure or temperature."
         }
       },
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.7",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.OutputPerformanceInfoDataType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/OutputPerformanceInfoDataType"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.7"
     },
     "PauseResponse": {
       "type": "object",
@@ -1319,9 +1277,7 @@
           "description": "A statement about the process irregularity is to be expected."
         }
       ],
-      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.8",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Jobs.ProcessIrregularity.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Jobs/v1.0.1/#/$defs/ProcessIrregularity"
+      "description": "https://reference.opcfoundation.org/Machinery/Jobs/v100/docs/9.8"
     },
     "RequestJobResponseByJobOrderIDResponse": {
       "type": "object",
