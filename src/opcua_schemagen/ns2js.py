@@ -1061,4 +1061,13 @@ class NodesetToJSONSchema:
                         js_datatype = js_datatype.end()
         if node.desc:
             js_datatype = js_datatype.description(node.desc)
+        ce_base, ce_ver = self._namespace_to_cloudevents_type_path(own_namespace)
+        ce_ds = self._namespace_to_cloudevents_dataschema_path(own_namespace)
+        js_datatype = js_datatype.set(
+            "x-cloudevent-type",
+            f"{ce_base}.{node.displayname}.{ce_ver}",
+        ).set(
+            "x-cloudevent-dataschema",
+            f"{ce_ds}#/$defs/{node.displayname}",
+        )
         self.schema = js_datatype.end()
