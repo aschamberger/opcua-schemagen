@@ -115,8 +115,12 @@ class NodesetToJSONSchema:
         spec: str,
         nodeid_replacements: list[tuple[str, str]] | None = None,
         include_object_namespaces: list[str] | None = None,
+        include_all_addins: bool = False,
+        addin_type_names: list[str] | None = None,
     ) -> None:
         self._nodeid_replacements = nodeid_replacements or []
+        self._include_all_addins = include_all_addins
+        self._addin_type_names = addin_type_names or []
         self._nodeset_file_to_uri(nodeset_path)
 
         own_namespace = self.nodeset_file_to_uri[nodeset_file]
@@ -199,6 +203,87 @@ class NodesetToJSONSchema:
                 js_model = js_model.add().ref(ref).end()
             self.schema = js_model.end()
 
+    def _process_object_node(
+        self, object: NodeData, namespace: str, model_any_of: list[str]
+    ) -> None:
+        datatype = WrappedXMLParser.get_node_type(object)
+        displayname = str(object.displayname)
+        if displayname not in model_any_of:
+            model_any_of.append(displayname)
+
+        # add objects to represent the variables
+        js_objecttype = self.schema.definition(displayname).object()
+        # resolve type hierarchy
+        js_objecttype = self._resolve_type_hierarchy_variables(
+            datatype, namespace, js_objecttype
+        )
+        # overwrite with own variables
+        variable_nodes = WrappedXMLParser.get_node_children_by_ref_types(
+            object,
+            self.nodes[namespace],
+            reftypes=["HasComponent", "HasProperty"],
+            nodetype="UAVariable",
+        )
+        js_objecttype = self._add_object_variables(
+            namespace, js_objecttype, variable_nodes
+        )
+        if object.desc:
+            js_objecttype = js_objecttype.description(object.desc)
+        # otherwise add description from parent object
+        elif not object.desc:
+            target_namespace_parent, node_id_parent = self._transform_node_id(
+                WrappedXMLParser.get_node_type(object),
+                namespace,
+            )
+            parent_object = self.nodes[target_namespace_parent].get(node_id_parent)
+            if parent_object and parent_object.desc:
+                js_objecttype = js_objecttype.description(parent_object.desc)
+        ce_base, ce_ver = self._namespace_to_cloudevents_type_path(namespace)
+        ce_ds = self._namespace_to_cloudevents_dataschema_path(namespace)
+        js_objecttype = (
+            js_objecttype.set(
+                "x-cloudevent-type",
+                f"{ce_base}.{displayname}.{ce_ver}",
+            )
+            .set(
+                "x-cloudevent-dataschema",
+                f"{ce_ds}#/$defs/{displayname}",
+            )
+            .set("x-opc-ua-type", "DataSet")
+        )
+        state_machine = self._resolve_type_hierarchy_states(datatype, namespace)
+        if state_machine["states"] or state_machine["transitions"]:
+            js_objecttype = js_objecttype.set("x-opc-ua-state-machine", state_machine)
+        self.schema = js_objecttype.end()
+
+        # add methods
+        js_methodtype = self._resolve_type_hierarchy_methods(
+            datatype, namespace, self.schema, model_any_of
+        )
+        method_nodes = WrappedXMLParser.get_node_children_by_ref_types(
+            object,
+            self.nodes[namespace],
+            reftypes=["HasComponent", "HasProperty"],
+            nodetype="UAMethod",
+        )
+        self.schema = self._add_methods(
+            namespace, js_methodtype, method_nodes, model_any_of
+        )
+
+        # add events
+        js_eventtype = self._resolve_type_hierarchy_events(
+            datatype, namespace, self.schema, model_any_of
+        )
+        event_nodes = WrappedXMLParser.get_node_children_by_ref_types(
+            object,
+            self.nodes[namespace],
+            reftypes=["GeneratesEvent"],
+            nodetype="UAObjectType",
+        )
+        self.schema = self._add_events(
+            namespace, js_eventtype, event_nodes, model_any_of
+        )
+
     def _process_object_types(self, namespace: str, model_any_of: list[str]) -> None:
         for nodeid, node in self.nodes[namespace].items():
             match node.nodetype:
@@ -210,99 +295,38 @@ class NodesetToJSONSchema:
                         reftypes=["HasComponent"],
                         nodetype="UAObject",
                     ):
-                        datatype = WrappedXMLParser.get_node_type(object)
-                        displayname = str(object.displayname)
-                        if displayname not in model_any_of:
-                            model_any_of.append(displayname)
+                        self._process_object_node(object, namespace, model_any_of)
 
-                        # add objects to represent the variables
-                        js_objecttype = self.schema.definition(displayname).object()
-                        # resolve type hierarchy
-                        js_objecttype = self._resolve_type_hierarchy_variables(
-                            datatype, namespace, js_objecttype
-                        )
-                        # overwrite with own variables
-                        variable_nodes = (
-                            WrappedXMLParser.get_node_children_by_ref_types(
-                                object,
-                                self.nodes[namespace],
-                                reftypes=["HasComponent", "HasProperty"],
-                                nodetype="UAVariable",
-                            )
-                        )
-                        js_objecttype = self._add_object_variables(
-                            namespace, js_objecttype, variable_nodes
-                        )
-                        if object.desc:
-                            js_objecttype = js_objecttype.description(object.desc)
-                        # otherwise add description from parent object
-                        elif not object.desc:
-                            target_namespace_parent, node_id_parent = (
-                                self._transform_node_id(
-                                    WrappedXMLParser.get_node_type(object),
-                                    namespace,
-                                )
-                            )
-                            parent_object = self.nodes[target_namespace_parent].get(
-                                node_id_parent
-                            )
-                            if parent_object and parent_object.desc:
-                                js_objecttype = js_objecttype.description(
-                                    parent_object.desc
-                                )
-                        ce_base, ce_ver = self._namespace_to_cloudevents_type_path(
-                            namespace
-                        )
-                        ce_ds = self._namespace_to_cloudevents_dataschema_path(
-                            namespace
-                        )
-                        js_objecttype = (
-                            js_objecttype.set(
-                                "x-cloudevent-type",
-                                f"{ce_base}.{displayname}.{ce_ver}",
-                            )
-                            .set(
-                                "x-cloudevent-dataschema",
-                                f"{ce_ds}#/$defs/{displayname}",
-                            )
-                            .set("x-opc-ua-type", "DataSet")
-                        )
-                        state_machine = self._resolve_type_hierarchy_states(
-                            datatype, namespace
-                        )
-                        if state_machine["states"] or state_machine["transitions"]:
-                            js_objecttype = js_objecttype.set(
-                                "x-opc-ua-state-machine", state_machine
-                            )
-                        self.schema = js_objecttype.end()
-
-                        # add methods
-                        js_methodtype = self._resolve_type_hierarchy_methods(
-                            datatype, namespace, self.schema, model_any_of
-                        )
-                        method_nodes = WrappedXMLParser.get_node_children_by_ref_types(
-                            object,
+                    # process HasAddIn children if addin support is requested
+                    if self._include_all_addins or self._addin_type_names:
+                        for (
+                            addin_obj
+                        ) in WrappedXMLParser.get_node_children_by_ref_types(
+                            node,
                             self.nodes[namespace],
-                            reftypes=["HasComponent", "HasProperty"],
-                            nodetype="UAMethod",
-                        )
-                        self.schema = self._add_methods(
-                            namespace, js_methodtype, method_nodes, model_any_of
-                        )
-
-                        # add events
-                        js_eventtype = self._resolve_type_hierarchy_events(
-                            datatype, namespace, self.schema, model_any_of
-                        )
-                        event_nodes = WrappedXMLParser.get_node_children_by_ref_types(
-                            object,
-                            self.nodes[namespace],
-                            reftypes=["GeneratesEvent"],
-                            nodetype="UAObjectType",
-                        )
-                        self.schema = self._add_events(
-                            namespace, js_eventtype, event_nodes, model_any_of
-                        )
+                            reftypes=["HasAddIn"],
+                            nodetype="UAObject",
+                        ):
+                            if not self._include_all_addins:
+                                typedef_ref = WrappedXMLParser.get_node_type(addin_obj)
+                                if typedef_ref in self.base_types:
+                                    continue
+                                typedef_ns, typedef_id = self._transform_node_id(
+                                    typedef_ref, namespace
+                                )
+                                typedef_node = self.nodes.get(typedef_ns, {}).get(
+                                    typedef_id
+                                )
+                                if typedef_node is None:
+                                    continue
+                                if (
+                                    str(typedef_node.displayname)
+                                    not in self._addin_type_names
+                                ):
+                                    continue
+                            self._process_object_node(
+                                addin_obj, namespace, model_any_of
+                            )
 
                 case "UADataType":
                     self._add_datatype(namespace, node)

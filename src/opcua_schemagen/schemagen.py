@@ -222,6 +222,20 @@ def appschema(
             help="Include objects from additional spec paths (relative to UA-Nodeset/). Can be used multiple times.",
         ),
     ] = [],
+    include_all_addins: Annotated[
+        bool,
+        typer.Option(
+            "--include-all-addins",
+            help="Include all addin objects (via HasAddIn references) found in the processed object types.",
+        ),
+    ] = False,
+    include_addin: Annotated[
+        list[str],
+        typer.Option(
+            "--include-addin",
+            help="Include addin objects whose TypeDefinition display name matches the given value. Can be used multiple times to include specific addin types.",
+        ),
+    ] = [],
 ):
     print(f"[bold purple]Searching nodeset2.xml file for: {spec}[/bold purple]")
     nodeset_file = get_nodeset_file_from_spec_path(spec)
@@ -252,6 +266,8 @@ def appschema(
         spec,
         nodeid_replacements=replacements,
         include_object_namespaces=include_object_namespaces,
+        include_all_addins=include_all_addins,
+        addin_type_names=include_addin if include_addin else [],
     )
     if filename == "":
         filename = f"{spec.lower().replace('/', '_')}.schema.json"

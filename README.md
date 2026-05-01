@@ -35,11 +35,19 @@ uv run opcua-schemagen types ISA95-JOBCONTROL
 
 # Generate JSON Schema (main command)
 uv run opcua-schemagen appschema Machinery/Jobs machinery_jobs.schema.json --nodeid-replace "ns=2;i=1002->ns=2;i=1008"
-uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.schema.json --include-objects IJT/Base
+
+# Include all HasAddIn objects (e.g. Identification, Monitoring, LifetimeCounters, ...)
+uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.schema.json --include-objects IJT/Base --include-all-addins
+
+# Include only specific addin types by their TypeDefinition display name
+uv run opcua-schemagen appschema IJT/Tightening ijt_tightening.schema.json --include-objects IJT/Base \
+  --include-addin MachineryItemIdentificationType \
+  --include-addin MonitoringType
 ```
 
 > Note: `--nodeid-replace` is needed to activate sub state machines when node IDs require patching.
 > Note: `--include-objects` includes objects/methods/events from a parent spec that the main spec extends but doesn't redefine.
+> Note: `--include-all-addins` includes all objects referenced via `HasAddIn` from every processed `UAObjectType`. Use `--include-addin <TypeName>` (repeatable) to include only addins whose `HasTypeDefinition` display name matches.
 
 ## Overall Design
 
@@ -65,7 +73,8 @@ flowchart TD
     E --> F["Parent/dependency<br>DataTypes"]
     F --> G["Included namespace<br>Objects / Methods / Events"]
     G --> H["Own namespace<br>Objects / Methods / Events"]
-    H --> I[Compose root anyOf]
+    H --> HA["HasAddIn objects<br>(--include-all-addins / --include-addin)"]
+    HA --> I[Compose root anyOf]
     I --> J["JSON Schema<br>(.schema.json)"]
 
     subgraph "Per UAObjectType"
@@ -99,6 +108,7 @@ flowchart TD
 * Own DataTypes are processed first and take precedence over parent definitions (first-wins via duplicate guard)
 * Parent/dependency DataTypes fill in anything the own namespace didn't define
 * When `--include-objects` is used, included namespace objects are processed before own namespace objects, so the own spec can override parent properties
+* When `--include-all-addins` or `--include-addin` is used, `HasAddIn` child objects of each processed `UAObjectType` are included as additional DataSet definitions; their variables, methods, and events are resolved the same way as regular component objects. `--include-addin` filters by the display name of the addin's `HasTypeDefinition` type node
 * Type hierarchy is walked recursively for variables, methods, events, and state machines — parent types contribute their members, child types overwrite
 
 #### Why `--include-objects`?
@@ -117,6 +127,7 @@ Links:
   * does not contain the full state machine
 * IJT Tightening Nodeset:
   * concrete objects live entirely in IJT/Base, Tightening only adds one abstract interface — requires `--include-objects` to produce a useful schema
+  * addin objects (Identification, LifetimeCounters, Monitoring, Notifications, OperationCounters) are defined via `HasAddIn` references in IJT/Base — requires `--include-all-addins` (or targeted `--include-addin`) to include them in the schema
 
 ## Python Libs
 
