@@ -31,13 +31,15 @@
       "x-request-type": {
         "$ref": "#/$defs/AbortJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.AbortJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AbortJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.AbortJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AbortJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "TrimmedString": {
       "type": "string",
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.43"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.43",
+      "x-type-id": "org.opcfoundation.BaseModel.TrimmedString.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/TrimmedString"
     },
     "JoiningProcessIdentificationDataType": {
       "type": "object",
@@ -55,7 +57,9 @@
           "description": "It is the configured selection name of the joining process in the system."
         }
       },
-      "description": "This structure contains the identification information of a Joining Process. It is used in set of methods defined in JoiningProcessManagementType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.21"
+      "description": "This structure contains the identification information of a Joining Process. It is used in set of methods defined in JoiningProcessManagementType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.21",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningProcessIdentificationDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessIdentificationDataType"
     },
     "AbortJoiningProcessCall": {
       "type": "object",
@@ -77,8 +81,8 @@
       "x-response-type": {
         "$ref": "#/$defs/AbortJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.AbortJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AbortJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.AbortJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AbortJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "AcknowledgeResultsResponse": {
@@ -100,8 +104,8 @@
       "x-request-type": {
         "$ref": "#/$defs/AcknowledgeResultsCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Result.AcknowledgeResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/AcknowledgeResultsResponse",
+      "x-type-id": "org.opcfoundation.Machinery.Result.AcknowledgeResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/AcknowledgeResultsResponse",
       "x-opc-ua-type": "Method"
     },
     "AcknowledgeResultsCall": {
@@ -119,8 +123,8 @@
       "x-response-type": {
         "$ref": "#/$defs/AcknowledgeResultsResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Result.AcknowledgeResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/AcknowledgeResultsCall",
+      "x-type-id": "org.opcfoundation.Machinery.Result.AcknowledgeResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/AcknowledgeResultsCall",
       "x-opc-ua-type": "Method"
     },
     "AssetManagement": {
@@ -131,8 +135,8 @@
         }
       },
       "description": "The AssetManagement Object is an instance of FunctionalGroupType to group assets and related objects in the joining system.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.AssetManagement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AssetManagement",
+      "x-type-id": "org.opcfoundation.IJT.Base.AssetManagement.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/AssetManagement",
       "x-opc-ua-type": "DataSet"
     },
     "EUInformation": {
@@ -151,11 +155,15 @@
           "$ref": "#/$defs/LocalizedText"
         }
       },
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part8/5.6.3/#5.6.3.3",
+      "x-type-id": "org.opcfoundation.BaseModel.EUInformation.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/EUInformation"
     },
     "UriString": {
       "type": "string",
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.39"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.39",
+      "x-type-id": "org.opcfoundation.BaseModel.UriString.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/UriString"
     },
     "CalibrationDataType": {
       "type": "object",
@@ -203,7 +211,9 @@
           "description": "It defines the engineering unit of the value."
         }
       },
-      "description": "This structure contains the Calibration information. It is used as an input argument in SetCalibration method.\nNote: The input data sent in SetCalibration shall be updated in the respective parameters of the asset under Maintenance/Calibration.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.13"
+      "description": "This structure contains the Calibration information. It is used as an input argument in SetCalibration method.\nNote: The input data sent in SetCalibration shall be updated in the respective parameters of the asset under Maintenance/Calibration.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.13",
+      "x-type-id": "org.opcfoundation.IJT.Base.CalibrationDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/CalibrationDataType"
     },
     "DecrementJoiningProcessCounterResponse": {
       "type": "object",
@@ -221,8 +231,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DecrementJoiningProcessCounterCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DecrementJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DecrementJoiningProcessCounterResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DecrementJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DecrementJoiningProcessCounterResponse",
       "x-opc-ua-type": "Method"
     },
     "DecrementJoiningProcessCounterCall": {
@@ -245,8 +255,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DecrementJoiningProcessCounterResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DecrementJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DecrementJoiningProcessCounterCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DecrementJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DecrementJoiningProcessCounterCall",
       "x-opc-ua-type": "Method"
     },
     "DeleteJoiningProcessResponse": {
@@ -265,8 +275,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DeleteJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "DeleteJoiningProcessCall": {
@@ -285,8 +295,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DeleteJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointResponse": {
@@ -305,8 +315,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DeleteJointCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointResponse",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointCall": {
@@ -329,8 +339,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DeleteJointResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointCall",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointComponentResponse": {
@@ -349,8 +359,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DeleteJointComponentCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointComponentResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointComponentResponse",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointComponentCall": {
@@ -369,8 +379,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DeleteJointComponentResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointComponentCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointComponentCall",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointDesignResponse": {
@@ -389,8 +399,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DeleteJointDesignCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointDesignResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointDesignResponse",
       "x-opc-ua-type": "Method"
     },
     "DeleteJointDesignCall": {
@@ -409,8 +419,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DeleteJointDesignResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeleteJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointDesignCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeleteJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeleteJointDesignCall",
       "x-opc-ua-type": "Method"
     },
     "DeselectJoiningProcessResponse": {
@@ -429,8 +439,8 @@
       "x-request-type": {
         "$ref": "#/$defs/DeselectJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeselectJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeselectJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeselectJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeselectJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "DeselectJoiningProcessCall": {
@@ -445,8 +455,8 @@
       "x-response-type": {
         "$ref": "#/$defs/DeselectJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.DeselectJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeselectJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.DeselectJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DeselectJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "DesignValueDataType": {
@@ -474,7 +484,9 @@
           "description": "It is the engineering unit of the design value."
         }
       },
-      "description": "This structure provides the design value for a given physical quantity. It is used in JointDesignDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.18"
+      "description": "This structure provides the design value for a given physical quantity. It is used in JointDesignDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.18",
+      "x-type-id": "org.opcfoundation.IJT.Base.DesignValueDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/DesignValueDataType"
     },
     "EntityDataType": {
       "type": "object",
@@ -513,7 +525,9 @@
           "description": "It provides the type of the Entity. It has the following pre-defined values which shall be used for each instance of this type.\nImportant Note: EntityType >=0 is defined as part of this specification.\nFor application specific extensions, EntityType < 0 can be used."
         }
       },
-      "description": "This structure provides the identification data for a given entity in the system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.10"
+      "description": "This structure provides the identification data for a given entity in the system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.10",
+      "x-type-id": "org.opcfoundation.IJT.Base.EntityDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/EntityDataType"
     },
     "ErrorInformationDataType": {
       "type": "object",
@@ -538,7 +552,9 @@
           "description": "It is user readable text message to describe the error."
         }
       },
-      "description": "This structure represents the errors occurred in the system which are outside the boundaries of the given program.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.5"
+      "description": "This structure represents the errors occurred in the system which are outside the boundaries of the given program.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.5",
+      "x-type-id": "org.opcfoundation.IJT.Base.ErrorInformationDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ErrorInformationDataType"
     },
     "JoiningProcessMetaDataType": {
       "type": "object",
@@ -597,7 +613,9 @@
           "description": "It is the list of entities associated to the joining process.\nExamples: ProductInstanceUri of the Controller."
         }
       },
-      "description": "This structure provides the meta data which describes the joining process.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.20"
+      "description": "This structure provides the meta data which describes the joining process.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.20",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningProcessMetaDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessMetaDataType"
     },
     "JoiningProcessDataType": {
       "type": "object",
@@ -612,7 +630,9 @@
           "description": "It is the actual content of the joining process which is defined by JoiningProcessMetaData.Classification property.\nExamples: Joining Program, Joining Job, etc.\nNote: The content is application-specific and is not defined in this version of the specification."
         }
       },
-      "description": "This structure provides the base container for any joining process in a joining system. \nNote: This specification defines the meta data of a JoiningProcess, and the actual content of the Joining Process is application specific.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.19"
+      "description": "This structure provides the base container for any joining process in a joining system. \nNote: This specification defines the meta data of a JoiningProcess, and the actual content of the Joining Process is application specific.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.19",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningProcessDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessDataType"
     },
     "GetJoiningProcessResponse": {
       "type": "object",
@@ -638,8 +658,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJoiningProcessCall": {
@@ -658,8 +678,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "GetJoiningProcessListResponse": {
@@ -685,8 +705,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJoiningProcessListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcessList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcessList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJoiningProcessListCall": {
@@ -701,8 +721,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJoiningProcessListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcessList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcessList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessListCall",
       "x-opc-ua-type": "Method"
     },
     "GetJoiningProcessRevisionListResponse": {
@@ -728,8 +748,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJoiningProcessRevisionListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcessRevisionList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessRevisionListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcessRevisionList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessRevisionListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJoiningProcessRevisionListCall": {
@@ -748,8 +768,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJoiningProcessRevisionListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoiningProcessRevisionList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessRevisionListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoiningProcessRevisionList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJoiningProcessRevisionListCall",
       "x-opc-ua-type": "Method"
     },
     "JointDataType": {
@@ -821,7 +841,9 @@
           "description": "It is a human readable text to identify the joining technology."
         }
       },
-      "description": "This structure provides the joint information. Joint is the physical outcome of the joining operation which determines the properties of the point where multiple parts are assembled.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.15"
+      "description": "This structure provides the joint information. Joint is the physical outcome of the joining operation which determines the properties of the point where multiple parts are assembled.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.15",
+      "x-type-id": "org.opcfoundation.IJT.Base.JointDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointDataType"
     },
     "GetJointResponse": {
       "type": "object",
@@ -843,8 +865,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointCall": {
@@ -863,8 +885,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointCall",
       "x-opc-ua-type": "Method"
     },
     "JointComponentDataType": {
@@ -900,7 +922,9 @@
           "description": "It is the content of the joint component.\nExamples: Bolt, Rivet, Gasket, etc.\n"
         }
       },
-      "description": "This structure is the base container for any joint component such as Bolt, Rivet, Gasket, Glue string, etc. \nNote: The concrete definition of joint component is not defined in this version of the specification.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.17"
+      "description": "This structure is the base container for any joint component such as Bolt, Rivet, Gasket, Glue string, etc. \nNote: The concrete definition of joint component is not defined in this version of the specification.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.17",
+      "x-type-id": "org.opcfoundation.IJT.Base.JointComponentDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointComponentDataType"
     },
     "GetJointComponentResponse": {
       "type": "object",
@@ -922,8 +946,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointComponentCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointComponentCall": {
@@ -942,8 +966,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointComponentResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentCall",
       "x-opc-ua-type": "Method"
     },
     "GetJointComponentListResponse": {
@@ -969,8 +993,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointComponentListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointComponentList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointComponentList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointComponentListCall": {
@@ -985,8 +1009,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointComponentListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointComponentList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointComponentList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointComponentListCall",
       "x-opc-ua-type": "Method"
     },
     "JointDesignDataType": {
@@ -1022,7 +1046,9 @@
           "description": "It is the list of joint components associated to the joint design.\nExamples: BoltId, RivetId, GasketId, etc."
         }
       },
-      "description": "This structure provides the design information of a given joint.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.16"
+      "description": "This structure provides the design information of a given joint.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.16",
+      "x-type-id": "org.opcfoundation.IJT.Base.JointDesignDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointDesignDataType"
     },
     "GetJointDesignResponse": {
       "type": "object",
@@ -1044,8 +1070,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointDesignCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointDesignCall": {
@@ -1064,8 +1090,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointDesignResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignCall",
       "x-opc-ua-type": "Method"
     },
     "GetJointDesignListResponse": {
@@ -1091,8 +1117,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointDesignListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointDesignList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointDesignList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointDesignListCall": {
@@ -1107,8 +1133,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointDesignListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointDesignList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointDesignList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointDesignListCall",
       "x-opc-ua-type": "Method"
     },
     "GetJointListResponse": {
@@ -1134,8 +1160,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointListCall": {
@@ -1150,8 +1176,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointListCall",
       "x-opc-ua-type": "Method"
     },
     "GetJointRevisionListResponse": {
@@ -1177,8 +1203,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetJointRevisionListCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointRevisionList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointRevisionListResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointRevisionList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointRevisionListResponse",
       "x-opc-ua-type": "Method"
     },
     "GetJointRevisionListCall": {
@@ -1197,8 +1223,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetJointRevisionListResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetJointRevisionList.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointRevisionListCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetJointRevisionList.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetJointRevisionListCall",
       "x-opc-ua-type": "Method"
     },
     "GetLatestResultResponse": {
@@ -1221,8 +1247,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetLatestResultCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetLatestResult.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetLatestResultResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetLatestResult.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetLatestResultResponse",
       "x-opc-ua-type": "Method"
     },
     "GetLatestResultCall": {
@@ -1237,8 +1263,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetLatestResultResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetLatestResult.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetLatestResultCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetLatestResult.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetLatestResultCall",
       "x-opc-ua-type": "Method"
     },
     "GetResultByIdResponse": {
@@ -1261,8 +1287,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetResultByIdCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetResultById.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultByIdResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetResultById.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultByIdResponse",
       "x-opc-ua-type": "Method"
     },
     "GetResultByIdCall": {
@@ -1281,8 +1307,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetResultByIdResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetResultById.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultByIdCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetResultById.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultByIdCall",
       "x-opc-ua-type": "Method"
     },
     "GetResultIdListFilteredResponse": {
@@ -1308,8 +1334,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetResultIdListFilteredCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetResultIdListFiltered.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultIdListFilteredResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetResultIdListFiltered.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultIdListFilteredResponse",
       "x-opc-ua-type": "Method"
     },
     "GetResultIdListFilteredCall": {
@@ -1339,8 +1365,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetResultIdListFilteredResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetResultIdListFiltered.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultIdListFilteredCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetResultIdListFiltered.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetResultIdListFilteredCall",
       "x-opc-ua-type": "Method"
     },
     "GetSelectedJoiningProgramResponse": {
@@ -1363,8 +1389,8 @@
       "x-request-type": {
         "$ref": "#/$defs/GetSelectedJoiningProgramCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetSelectedJoiningProgram.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetSelectedJoiningProgramResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetSelectedJoiningProgram.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetSelectedJoiningProgramResponse",
       "x-opc-ua-type": "Method"
     },
     "GetSelectedJoiningProgramCall": {
@@ -1379,8 +1405,8 @@
       "x-response-type": {
         "$ref": "#/$defs/GetSelectedJoiningProgramResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.GetSelectedJoiningProgram.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetSelectedJoiningProgramCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.GetSelectedJoiningProgram.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/GetSelectedJoiningProgramCall",
       "x-opc-ua-type": "Method"
     },
     "Health": {
@@ -1421,8 +1447,8 @@
         }
       },
       "description": "The Health Object is an instance of FunctionalGroupType to group health related parameters for all the assets in a Joining System.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Health.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Health",
+      "x-type-id": "org.opcfoundation.IJT.Base.Health.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Health",
       "x-opc-ua-type": "DataSet"
     },
     "Identification": {
@@ -1564,8 +1590,8 @@
         }
       },
       "description": "The Identification Object provides identification parameters of the joining system.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Identification.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Identification",
+      "x-type-id": "org.opcfoundation.IJT.Base.Identification.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Identification",
       "x-opc-ua-type": "DataSet"
     },
     "IncrementJoiningProcessCounterResponse": {
@@ -1584,8 +1610,8 @@
       "x-request-type": {
         "$ref": "#/$defs/IncrementJoiningProcessCounterCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.IncrementJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/IncrementJoiningProcessCounterResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.IncrementJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/IncrementJoiningProcessCounterResponse",
       "x-opc-ua-type": "Method"
     },
     "IncrementJoiningProcessCounterCall": {
@@ -1608,8 +1634,8 @@
       "x-response-type": {
         "$ref": "#/$defs/IncrementJoiningProcessCounterResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.IncrementJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/IncrementJoiningProcessCounterCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.IncrementJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/IncrementJoiningProcessCounterCall",
       "x-opc-ua-type": "Method"
     },
     "JoiningProcessManagement": {
@@ -1621,8 +1647,8 @@
         }
       },
       "description": "The JoiningProcessManagement Object is an instance of JoiningProcessManagementType which provides mechanisms to manage joining processes in the joining system.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningProcessManagement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessManagement",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningProcessManagement.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningProcessManagement",
       "x-opc-ua-type": "DataSet"
     },
     "TraceContentDataType": {
@@ -1665,7 +1691,9 @@
           "description": "It is the engineering unit of the values."
         }
       },
-      "description": "It is to describe the trace samples for a given program step. It is used in StepTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.9"
+      "description": "It is to describe the trace samples for a given program step. It is used in StepTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.9",
+      "x-type-id": "org.opcfoundation.IJT.Base.TraceContentDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/TraceContentDataType"
     },
     "StepTraceDataType": {
       "type": "object",
@@ -1704,7 +1732,9 @@
           "description": "It is an array of trace data which contains the samples of different quantities like torque, angle, time, etc. The array size of TraceContent array should be same for each quantity and that is determined by the NumberOfTracePoints value."
         }
       },
-      "description": "It is to describe of the trace for a given program step. It is used in JoiningTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.8"
+      "description": "It is to describe of the trace for a given program step. It is used in JoiningTraceDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.8",
+      "x-type-id": "org.opcfoundation.IJT.Base.StepTraceDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StepTraceDataType"
     },
     "JoiningTraceDataType": {
       "type": "object",
@@ -1717,7 +1747,9 @@
           "description": "It is an array of StepTraceDataType which provides trace content for each step in the given result."
         }
       },
-      "description": "This structure is to describe the content of traces for all the steps in the given program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.7"
+      "description": "This structure is to describe the content of traces for all the steps in the given program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.7",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningTraceDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningTraceDataType"
     },
     "ResultEvaluationEnum": {
       "anyOf": [
@@ -1742,7 +1774,9 @@
           "description": "The decision is not possible due to measurement uncertainty."
         }
       ],
-      "description": "Indicates whether a result was in tolerance\nhttps://reference.opcfoundation.org/Machinery/Result/v101/docs/10.3"
+      "description": "Indicates whether a result was in tolerance\nhttps://reference.opcfoundation.org/Machinery/Result/v101/docs/10.3",
+      "x-type-id": "org.opcfoundation.Machinery.Result.ResultEvaluationEnum.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/ResultEvaluationEnum"
     },
     "ResultValueDataType": {
       "type": "object",
@@ -1852,7 +1886,9 @@
           "description": "It is the engineering unit of the measured value."
         }
       },
-      "description": "It is used to report measurement values of the joining operation. Those are meant to characterize the quality of the process. It is used in JoiningResultDataType and StepResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.3"
+      "description": "It is used to report measurement values of the joining operation. Those are meant to characterize the quality of the process. It is used in JoiningResultDataType and StepResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.3",
+      "x-type-id": "org.opcfoundation.IJT.Base.ResultValueDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultValueDataType"
     },
     "StepResultDataType": {
       "type": "object",
@@ -1902,7 +1938,9 @@
           "description": "It is the set of values which needs to be measured as per the program step."
         }
       },
-      "description": "This structure represents the measurement values corresponding to a given step in the program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.4"
+      "description": "This structure represents the measurement values corresponding to a given step in the program. It is used in JoiningResultDataType.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.4",
+      "x-type-id": "org.opcfoundation.IJT.Base.StepResultDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StepResultDataType"
     },
     "JoiningResultDataType": {
       "type": "object",
@@ -1944,7 +1982,9 @@
           "description": "It is a structure to include the Joining Trace content. This can be NULL or empty and it is up to the application to send this as part of the Joining Result."
         }
       },
-      "description": "This structure represents the data associated with Joining Result and the corresponding measurement values.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.2"
+      "description": "This structure represents the data associated with Joining Result and the corresponding measurement values.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.2",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningResultDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningResultDataType"
     },
     "KeyValueDataType": {
       "type": "object",
@@ -1957,7 +1997,9 @@
           "description": "It is the value associated with the key."
         }
       },
-      "description": "This structure is similar to 0:KeyValuePair which uses 0:TrimmedString instead of 0:QualifiedName.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.22"
+      "description": "This structure is similar to 0:KeyValuePair which uses 0:TrimmedString instead of 0:QualifiedName.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.22",
+      "x-type-id": "org.opcfoundation.IJT.Base.KeyValueDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/KeyValueDataType"
     },
     "ResultCounterDataType": {
       "type": "object",
@@ -1978,7 +2020,9 @@
           "description": "It is the type of the counter."
         }
       },
-      "description": "This structure is used to provide various types of counters associated to a Result. These counters are related to a joining process with sub-processes.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.11"
+      "description": "This structure is used to provide various types of counters associated to a Result. These counters are related to a joining process with sub-processes.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.11",
+      "x-type-id": "org.opcfoundation.IJT.Base.ResultCounterDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultCounterDataType"
     },
     "JoiningResultMetaDataType": {
       "type": "object",
@@ -2062,14 +2106,16 @@
           "description": "It is used to send any additional meta data which cannot be sent using the existing properties. It shall be used only for sending meta data but not any content."
         }
       },
-      "description": "This structure is a subtype of ResultMetaDataType. It is used to define additional meta data of a Result in a joining system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.1"
+      "description": "This structure is a subtype of ResultMetaDataType. It is used to define additional meta data of a Result in a joining system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.1",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningResultMetaDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningResultMetaDataType"
     },
     "JoiningSystemResultReadyEventType": {
       "type": "object",
       "properties": {},
       "description": "This EventType provides information of a complete or partial result from a joining system.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/8.1",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.JoiningSystemResultReadyEventType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningSystemResultReadyEventType",
+      "x-type-id": "org.opcfoundation.IJT.Base.JoiningSystemResultReadyEventType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JoiningSystemResultReadyEventType",
       "x-opc-ua-type": "Event"
     },
     "JointManagement": {
@@ -2081,8 +2127,8 @@
         }
       },
       "description": "The JointManagement Object is an instance of JointManagementType which provides mechanisms to manage joint and associated information.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.JointManagement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointManagement",
+      "x-type-id": "org.opcfoundation.IJT.Base.JointManagement.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/JointManagement",
       "x-opc-ua-type": "DataSet"
     },
     "LifetimeCounters": {
@@ -2094,16 +2140,16 @@
         }
       },
       "description": "It provides an entry point to various lifetime variables.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.LifetimeCounters.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/LifetimeCounters",
+      "x-type-id": "org.opcfoundation.IJT.Base.LifetimeCounters.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/LifetimeCounters",
       "x-opc-ua-type": "DataSet"
     },
     "MachineryBuildingBlocks": {
       "type": "object",
       "properties": {},
       "description": "The MachineryBuildingBlocks contains building blocks from OPC UA for Machinery.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.MachineryBuildingBlocks.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/MachineryBuildingBlocks",
+      "x-type-id": "org.opcfoundation.IJT.Base.MachineryBuildingBlocks.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/MachineryBuildingBlocks",
       "x-opc-ua-type": "DataSet"
     },
     "Maintenance": {
@@ -2114,8 +2160,8 @@
         }
       },
       "description": "The Maintenance Object is an instance of FunctionalGroupType to group maintenance related parameters for the given asset in a Joining System.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Maintenance.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Maintenance",
+      "x-type-id": "org.opcfoundation.IJT.Base.Maintenance.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Maintenance",
       "x-opc-ua-type": "DataSet"
     },
     "Monitoring": {
@@ -2127,8 +2173,8 @@
         }
       },
       "description": "Entry point for monitoring information of a MachineryItem.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Monitoring.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Monitoring",
+      "x-type-id": "org.opcfoundation.IJT.Base.Monitoring.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Monitoring",
       "x-opc-ua-type": "DataSet"
     },
     "Notifications": {
@@ -2140,14 +2186,16 @@
         }
       },
       "description": "Provides notifications as events or objects.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Notifications.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Notifications",
+      "x-type-id": "org.opcfoundation.IJT.Base.Notifications.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Notifications",
       "x-opc-ua-type": "DataSet"
     },
     "Number": {
       "type": "object",
       "properties": {},
-      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.9"
+      "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/12.2.9",
+      "x-type-id": "org.opcfoundation.BaseModel.Number.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/BaseModel/v1.05.06/#/$defs/Number"
     },
     "OperationCounters": {
       "type": "object",
@@ -2182,8 +2230,8 @@
         }
       },
       "description": "It provides information about the duration something is turned on and how long it performs an activity.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.OperationCounters.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/OperationCounters",
+      "x-type-id": "org.opcfoundation.IJT.Base.OperationCounters.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/OperationCounters",
       "x-opc-ua-type": "DataSet"
     },
     "SignalDataType": {
@@ -2206,7 +2254,9 @@
           "description": "It is the type of the signal."
         }
       },
-      "description": "This structure contains the signal information which is used in SetIOSignals and GetIOSignals methods.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.14"
+      "description": "This structure contains the signal information which is used in SetIOSignals and GetIOSignals methods.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.14",
+      "x-type-id": "org.opcfoundation.IJT.Base.SignalDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SignalDataType"
     },
     "Parameters": {
       "type": "object",
@@ -2405,8 +2455,8 @@
         }
       },
       "description": "The Parameters Object is an instance of 0:FolderType to group set of common parameters of an asset in a joining system.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Parameters.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Parameters",
+      "x-type-id": "org.opcfoundation.IJT.Base.Parameters.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Parameters",
       "x-opc-ua-type": "DataSet"
     },
     "ReleaseResultHandleResponse": {
@@ -2421,8 +2471,8 @@
       "x-request-type": {
         "$ref": "#/$defs/ReleaseResultHandleCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.ReleaseResultHandle.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReleaseResultHandleResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.ReleaseResultHandle.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReleaseResultHandleResponse",
       "x-opc-ua-type": "Method"
     },
     "ReleaseResultHandleCall": {
@@ -2437,8 +2487,8 @@
       "x-response-type": {
         "$ref": "#/$defs/ReleaseResultHandleResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.ReleaseResultHandle.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReleaseResultHandleCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.ReleaseResultHandle.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReleaseResultHandleCall",
       "x-opc-ua-type": "Method"
     },
     "ReportedValueDataType": {
@@ -2483,7 +2533,9 @@
           "description": "It is the engineering unit of the CurrentValue, PreviousValue, LowLimit, HighLimit.\nIt is not applicable for values which does not have PhysicalQuantity."
         }
       },
-      "description": "This structure provides the given value and corresponding limits for a given physical quantity (if applicable).\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.12"
+      "description": "This structure provides the given value and corresponding limits for a given physical quantity (if applicable).\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.12",
+      "x-type-id": "org.opcfoundation.IJT.Base.ReportedValueDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ReportedValueDataType"
     },
     "RequestResultsResponse": {
       "type": "object",
@@ -2505,8 +2557,8 @@
       "x-request-type": {
         "$ref": "#/$defs/RequestResultsCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.RequestResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestResultsResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.RequestResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestResultsResponse",
       "x-opc-ua-type": "Method"
     },
     "RequestResultsCall": {
@@ -2539,8 +2591,8 @@
       "x-response-type": {
         "$ref": "#/$defs/RequestResultsResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.RequestResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestResultsCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.RequestResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestResultsCall",
       "x-opc-ua-type": "Method"
     },
     "RequestUnacknowledgedResultsResponse": {
@@ -2567,8 +2619,8 @@
       "x-request-type": {
         "$ref": "#/$defs/RequestUnacknowledgedResultsCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.RequestUnacknowledgedResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestUnacknowledgedResultsResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.RequestUnacknowledgedResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestUnacknowledgedResultsResponse",
       "x-opc-ua-type": "Method"
     },
     "RequestUnacknowledgedResultsCall": {
@@ -2587,16 +2639,16 @@
       "x-response-type": {
         "$ref": "#/$defs/RequestUnacknowledgedResultsResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.RequestUnacknowledgedResults.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestUnacknowledgedResultsCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.RequestUnacknowledgedResults.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestUnacknowledgedResultsCall",
       "x-opc-ua-type": "Method"
     },
     "RequestedResultEventType": {
       "type": "object",
       "properties": {},
       "description": "This EventType provides the requested results from the Server using RequestResults method or RequestUnacknowledgedResults method.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/8.4",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.RequestedResultEventType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestedResultEventType",
+      "x-type-id": "org.opcfoundation.IJT.Base.RequestedResultEventType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/RequestedResultEventType",
       "x-opc-ua-type": "Event"
     },
     "ResetJoiningProcessResponse": {
@@ -2615,8 +2667,8 @@
       "x-request-type": {
         "$ref": "#/$defs/ResetJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.ResetJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResetJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.ResetJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResetJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "ResetJoiningProcessCall": {
@@ -2635,8 +2687,8 @@
       "x-response-type": {
         "$ref": "#/$defs/ResetJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.ResetJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResetJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.ResetJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResetJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "ResultManagement": {
@@ -2648,24 +2700,24 @@
         }
       },
       "description": "The ResultManagement Object is an instance of JoiningSystemResultManagementType which provides mechanisms to access results generated by the joining system.",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.ResultManagement.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultManagement",
+      "x-type-id": "org.opcfoundation.IJT.Base.ResultManagement.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/ResultManagement",
       "x-opc-ua-type": "DataSet"
     },
     "ResultReadyEventType": {
       "type": "object",
       "properties": {},
       "description": "Provides information of a complete or partial result.\nhttps://reference.opcfoundation.org/Machinery/Result/v101/docs/8.1",
-      "x-cloudevent-type": "org.opcfoundation.Machinery.Result.ResultReadyEventType.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/ResultReadyEventType",
+      "x-type-id": "org.opcfoundation.Machinery.Result.ResultReadyEventType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/Machinery/Result/v1.01.0/#/$defs/ResultReadyEventType",
       "x-opc-ua-type": "Event"
     },
     "Results": {
       "type": "object",
       "properties": {},
       "description": "https://reference.opcfoundation.org/v105/Core/docs/Part5/6.6",
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.Results.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Results",
+      "x-type-id": "org.opcfoundation.IJT.Base.Results.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/Results",
       "x-opc-ua-type": "DataSet"
     },
     "SelectJoiningProcessResponse": {
@@ -2684,8 +2736,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SelectJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SelectJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SelectJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "SelectJoiningProcessCall": {
@@ -2704,8 +2756,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SelectJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SelectJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SelectJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "SelectJointResponse": {
@@ -2724,8 +2776,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SelectJointCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SelectJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJointResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SelectJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJointResponse",
       "x-opc-ua-type": "Method"
     },
     "SelectJointCall": {
@@ -2748,8 +2800,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SelectJointResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SelectJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJointCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SelectJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SelectJointCall",
       "x-opc-ua-type": "Method"
     },
     "SendJoiningProcessResponse": {
@@ -2768,8 +2820,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SendJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "SendJoiningProcessCall": {
@@ -2792,8 +2844,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SendJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "SendJointResponse": {
@@ -2812,8 +2864,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SendJointCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointResponse",
       "x-opc-ua-type": "Method"
     },
     "SendJointCall": {
@@ -2832,8 +2884,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SendJointResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJoint.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJoint.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointCall",
       "x-opc-ua-type": "Method"
     },
     "SendJointComponentResponse": {
@@ -2852,8 +2904,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SendJointComponentCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointComponentResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointComponentResponse",
       "x-opc-ua-type": "Method"
     },
     "SendJointComponentCall": {
@@ -2872,8 +2924,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SendJointComponentResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJointComponent.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointComponentCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJointComponent.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointComponentCall",
       "x-opc-ua-type": "Method"
     },
     "SendJointDesignResponse": {
@@ -2892,8 +2944,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SendJointDesignCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointDesignResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointDesignResponse",
       "x-opc-ua-type": "Method"
     },
     "SendJointDesignCall": {
@@ -2912,8 +2964,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SendJointDesignResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SendJointDesign.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointDesignCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SendJointDesign.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SendJointDesignCall",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessCounterResponse": {
@@ -2932,8 +2984,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SetJoiningProcessCounterCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessCounterResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessCounterResponse",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessCounterCall": {
@@ -2956,8 +3008,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SetJoiningProcessCounterResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessCounter.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessCounterCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessCounter.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessCounterCall",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessMappingResponse": {
@@ -2976,8 +3028,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SetJoiningProcessMappingCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessMapping.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessMappingResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessMapping.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessMappingResponse",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessMappingCall": {
@@ -2996,8 +3048,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SetJoiningProcessMappingResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessMapping.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessMappingCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessMapping.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessMappingCall",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessSizeResponse": {
@@ -3016,8 +3068,8 @@
       "x-request-type": {
         "$ref": "#/$defs/SetJoiningProcessSizeCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessSize.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessSizeResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessSize.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessSizeResponse",
       "x-opc-ua-type": "Method"
     },
     "SetJoiningProcessSizeCall": {
@@ -3040,8 +3092,8 @@
       "x-response-type": {
         "$ref": "#/$defs/SetJoiningProcessSizeResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.SetJoiningProcessSize.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessSizeCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.SetJoiningProcessSize.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/SetJoiningProcessSizeCall",
       "x-opc-ua-type": "Method"
     },
     "StartJoiningProcessResponse": {
@@ -3060,8 +3112,8 @@
       "x-request-type": {
         "$ref": "#/$defs/StartJoiningProcessCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.StartJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartJoiningProcessResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.StartJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartJoiningProcessResponse",
       "x-opc-ua-type": "Method"
     },
     "StartJoiningProcessCall": {
@@ -3087,8 +3139,8 @@
       "x-response-type": {
         "$ref": "#/$defs/StartJoiningProcessResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.StartJoiningProcess.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartJoiningProcessCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.StartJoiningProcess.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartJoiningProcessCall",
       "x-opc-ua-type": "Method"
     },
     "StartSelectedJoiningResponse": {
@@ -3107,8 +3159,8 @@
       "x-request-type": {
         "$ref": "#/$defs/StartSelectedJoiningCall"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.StartSelectedJoining.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartSelectedJoiningResponse",
+      "x-type-id": "org.opcfoundation.IJT.Base.StartSelectedJoining.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartSelectedJoiningResponse",
       "x-opc-ua-type": "Method"
     },
     "StartSelectedJoiningCall": {
@@ -3127,8 +3179,8 @@
       "x-response-type": {
         "$ref": "#/$defs/StartSelectedJoiningResponse"
       },
-      "x-cloudevent-type": "org.opcfoundation.IJT.Base.StartSelectedJoining.v1",
-      "x-cloudevent-dataschema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartSelectedJoiningCall",
+      "x-type-id": "org.opcfoundation.IJT.Base.StartSelectedJoining.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/StartSelectedJoiningCall",
       "x-opc-ua-type": "Method"
     },
     "TraceDataType": {
@@ -3143,7 +3195,9 @@
           "description": "It is the system-wide unique identifier of the associated result. This is useful to link Result and Trace instances when the Result and Trace are sent separately."
         }
       },
-      "description": "It is a base type to encapsulate common data for a Trace.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.6"
+      "description": "It is a base type to encapsulate common data for a Trace.\nhttps://reference.opcfoundation.org/IJT/Base/v100/docs/10.6",
+      "x-type-id": "org.opcfoundation.IJT.Base.TraceDataType.v1",
+      "x-type-schema": "https://aschamberger.github.com/schemas/UA/IJT/Base/v1.01.0/#/$defs/TraceDataType"
     },
     "meta": {
       "type": "object",

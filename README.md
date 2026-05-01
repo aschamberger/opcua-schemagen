@@ -108,7 +108,7 @@ flowchart TD
 * Custom attributes:
   * `x-opc-ua-type` to distinguish: "DataSet", "Method", "Event"
   * `x-opc-ua-state-machine` with extracted state machine states and transitions
-  * `x-cloudevent-type` / `x-cloudevent-dataschema` for CloudEvents integration
+  * `x-type-id` / `x-type-schema` for type identification
 
 #### Inheritance / Processing Order
 

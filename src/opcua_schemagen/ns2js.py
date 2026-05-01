@@ -255,11 +255,11 @@ class NodesetToJSONSchema:
         ce_ds = self._namespace_to_cloudevents_dataschema_path(namespace)
         js_objecttype = (
             js_objecttype.set(
-                "x-cloudevent-type",
+                "x-type-id",
                 f"{ce_base}.{displayname}.{ce_ver}",
             )
             .set(
-                "x-cloudevent-dataschema",
+                "x-type-schema",
                 f"{ce_ds}#/$defs/{displayname}",
             )
             .set("x-opc-ua-type", "DataSet")
@@ -854,11 +854,11 @@ class NodesetToJSONSchema:
                     )
                     js_methodtype = (
                         js_methodtype.set(
-                            "x-cloudevent-type",
+                            "x-type-id",
                             f"{ce_base}.{child_node.displayname}.{ce_ver}",
                         )
                         .set(
-                            "x-cloudevent-dataschema",
+                            "x-type-schema",
                             f"{ce_ds}#/$defs/{method}",
                         )
                         .set("x-opc-ua-type", "Method")
@@ -924,11 +924,11 @@ class NodesetToJSONSchema:
                 ce_ds = self._namespace_to_cloudevents_dataschema_path(own_namespace)
                 js_eventtype = (
                     js_eventtype.set(
-                        "x-cloudevent-type",
+                        "x-type-id",
                         f"{ce_base}.{displayname}.{ce_ver}",
                     )
                     .set(
-                        "x-cloudevent-dataschema",
+                        "x-type-schema",
                         f"{ce_ds}#/$defs/{child_node.displayname}",
                     )
                     .set("x-opc-ua-type", "Event")
@@ -1064,10 +1064,10 @@ class NodesetToJSONSchema:
         ce_base, ce_ver = self._namespace_to_cloudevents_type_path(own_namespace)
         ce_ds = self._namespace_to_cloudevents_dataschema_path(own_namespace)
         js_datatype = js_datatype.set(
-            "x-cloudevent-type",
+            "x-type-id",
             f"{ce_base}.{node.displayname}.{ce_ver}",
         ).set(
-            "x-cloudevent-dataschema",
+            "x-type-schema",
             f"{ce_ds}#/$defs/{node.displayname}",
         )
         self.schema = js_datatype.end()
